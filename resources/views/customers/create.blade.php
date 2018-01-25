@@ -106,8 +106,6 @@
                     <textarea name="notes" id="notes" cols="5" rows="5" class="form-control" placeholder="enter customer notes..">{{ old('notes') }}</textarea>
                 </div>
             </div>
-
-
                 <button class="btn btn-primary" type="submit">Enviar</button>
 
         </form>
