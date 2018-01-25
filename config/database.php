@@ -44,7 +44,7 @@ return [
             'host' => env('DB_HOST', '192.168.10.10'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'crm'),
-            'username' => env('DB_USERNAME', 'root'),
+            'username' => env('DB_USERNAME', 'homestead'),
             'password' => env('DB_PASSWORD', 'secret'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',

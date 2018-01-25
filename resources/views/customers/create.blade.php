@@ -1,7 +1,21 @@
 @extends('layouts.app')
 
+@section('menu')
+    <ol class="breadcrumb">
+        <li><a href="{{route('raiz')}}">Home</a></li>
+        <li><a href="{{route('customer.list')}}">Customers List</a></li>
+        <li class="active">New</li>
+    </ol>
+@endsection
 @section('content')
     <div class="container">
+        <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation"><a href="#">Home</a></li>
+                <li role="presentation" class="active"><a href="{{route('customer.new')}}">Create Customer</a></li>
+                <li role="presentation"><a href="{{route('customer.list')}}">List Customers</a></li>
+            </ul>
+        </div>
         <h3>Created New Customer</h3>
         <form action="{{route('customer.store')}}" method="post">
             {{ csrf_field() }}
@@ -89,14 +103,19 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="notes">Notes</label>
-                    <textarea name="notes" id="notes" cols="30" rows="10" class="form-control" placeholder="enter customer notes..">{{ old('notes') }}</textarea>
+                    <textarea name="notes" id="notes" cols="5" rows="5" class="form-control" placeholder="enter customer notes..">{{ old('notes') }}</textarea>
                 </div>
             </div>
 
-            <div class="col-md-1">
+
                 <button class="btn btn-primary" type="submit">Enviar</button>
-            </div>
+
         </form>
     </div>
+
+@endsection
+
+@section('js')
+    <script src="{{asset('js/validacion.js')}}"> </script>
 
 @endsection

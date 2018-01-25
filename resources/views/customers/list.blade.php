@@ -1,8 +1,20 @@
 @extends('layouts.app')
-
+@section('menu')
+    <ol class="breadcrumb">
+        <li><a href="{{route('raiz')}}">Home</a></li>
+        <li class="active">Customers List</li>
+    </ol>
+@endsection
 @section('content')
 <div class="container">
-    <a class="btn btn-primary" role="botton" href="{{route('customer.new')}}">Create New Customer</a>
+    <div class="col-md-2">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="{{route('raiz')}}">Home</a></li>
+            <li role="presentation"><a href="{{route('customer.new')}}">Create Customer</a></li>
+            <li role="presentation" class="active"><a href="{{route('customer.list')}}">List Customers</a></li>
+        </ul>
+    </div>
+    <div class="col-md-10">
     <br>
     <table class="table table-striped">
         <thead>
@@ -33,4 +45,5 @@
         </tbody>
     </table>
     </div>
+</div>
 @endsection

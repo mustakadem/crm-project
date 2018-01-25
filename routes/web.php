@@ -13,11 +13,22 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('raiz');
 
+/**
+ * Rutas de los controladores de la carpeta Auth
+ */
 Auth::routes();
+Route::post('/register/name','Auth\RegisterController@validarFetch');
 
-Route::get('/home', 'CustomersController@list')->name('home');
+/**
+ *Rutas del Controlador Home
+ */
+
+
+/**
+ * Rutas del Controllador Customer
+ */
 Route::get('/customer/new','CustomersController@create')->name('customer.new');
 Route::post('/customer/new','CustomersController@store')->name('customer.store');
-
+Route::get('/customers/list', 'CustomersController@list')->name('customer.list');

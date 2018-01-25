@@ -19,7 +19,7 @@
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong id="errorName">{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -117,4 +117,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+    <script src="{{asset('js/validacion.js')}}"></script>
 @endsection

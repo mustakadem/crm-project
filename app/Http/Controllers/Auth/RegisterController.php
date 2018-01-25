@@ -48,7 +48,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:20|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'avatar' => 'required|string',
             'movil' => 'required|numeric',
@@ -72,6 +72,24 @@ class RegisterController extends Controller
             'sector'=> $data['sector'],
             'avatar' => $data['avatar'],
             'password' => bcrypt($data['password']),
+        ]);
+    }
+
+    public function validarFetch(array $data){
+
+        $validator =  Validator::make($data, [
+            'name' => 'required|string|max:20|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+            'avatar' => 'required|string',
+            'movil' => 'required|numeric',
+            'sector' => 'required|string|max:255',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $errors=$validator->errors();
+
+        return response()->json([
+            'name' => $errors->get('name')
         ]);
     }
 }
