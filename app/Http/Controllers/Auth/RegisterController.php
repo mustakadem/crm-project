@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/customers/list';
 
     /**
      * Create a new controller instance.
@@ -48,11 +48,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:20|unique:users',
+            'username' =>'required|string|unique:users|min:5',
             'email' => 'required|string|email|max:255|unique:users',
-            'avatar' => 'required|string',
             'movil' => 'required|numeric',
-            'sector' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -66,30 +64,23 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'movil'=> $data['movil'],
-            'sector'=> $data['sector'],
-            'avatar' => $data['avatar'],
-            'password' => bcrypt($data['password']),
+            'password' => bcrypt($data['password'])
         ]);
     }
 
     public function validarFetch(array $data){
 
         $validator =  Validator::make($data, [
-            'name' => 'required|string|max:20|unique:users',
-            'email' => 'required|string|email|max:255|unique:users',
-            'avatar' => 'required|string',
-            'movil' => 'required|numeric',
-            'sector' => 'required|string|max:255',
-            'password' => 'required|string|min:6|confirmed',
+            'username' => 'required|string|max:20|unique:users',
         ]);
 
         $errors=$validator->errors();
 
         return response()->json([
-            'name' => $errors->get('name')
+            'username' => $errors->get('username'),
         ]);
     }
 }

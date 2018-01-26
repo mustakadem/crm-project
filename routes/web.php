@@ -19,16 +19,19 @@ Route::get('/', function () {
  * Rutas de los controladores de la carpeta Auth
  */
 Auth::routes();
-Route::post('/register/name','Auth\RegisterController@validarFetch');
+Route::post('/register/username','Auth\RegisterController@validarFetch');
 
 /**
  *Rutas del Controlador Home
  */
+Route::get('/profile','HomeController@profile')->name('profile')->middleware('auth');
+
+
 
 
 /**
  * Rutas del Controllador Customer
  */
-Route::get('/customer/new','CustomersController@create')->name('customer.new');
+Route::get('/customer/new','CustomersController@create')->name('customer.new')->middleware('auth');
 Route::post('/customer/new','CustomersController@store')->name('customer.store');
-Route::get('/customers/list', 'CustomersController@list')->name('customer.list');
+Route::get('/customers/list', 'CustomersController@list')->name('customer.list')->middleware('auth');

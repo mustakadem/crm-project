@@ -48,11 +48,15 @@
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                              <li> <a href="{{route('profile')}}" role="button" aria-expanded="false" aria-haspopup="true">
+                                    Profile
+                                </a></li>
 
-                                <ul class="dropdown-menu">
+                          <li class="dropdown-toggle" data-toggle="dropdown"><a href="#"  role="button" aria-expanded="false" aria-haspopup="true">
+                                    {{ Auth::user()->username }} <span class="caret"></span>
+                                </a></li>
+
+                            <ul class="dropdown-menu">
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
