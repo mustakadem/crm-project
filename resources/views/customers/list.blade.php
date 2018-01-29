@@ -9,9 +9,9 @@
 <div class="container">
     <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
-            <li role="presentation"><a href="{{route('raiz')}}">Home</a></li>
-            <li role="presentation"><a href="{{route('customer.new')}}">Create Customer</a></li>
-            <li role="presentation" class="active"><a href="{{route('customer.list')}}">List Customers</a></li>
+            <li role="presentation"><a href="{{route('user.home')}}">Home</a></li>
+            <li role="presentation"><a href="#">Create Customer</a></li>
+            <li role="presentation" class="active"><a href="#">List Customers</a></li>
         </ul>
     </div>
     <div class="col-md-10">

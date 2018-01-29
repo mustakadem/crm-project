@@ -12,26 +12,33 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 })->name('raiz');
 
 /**
  * Rutas de los controladores de la carpeta Auth
  */
+Route::post('/register/validate','Auth\RegisterController@validarFetch');
 Auth::routes();
-Route::post('/register/username','Auth\RegisterController@validarFetch');
 
 /**
- *Rutas del Controlador Home
+ *Rutas del Controlador User
  */
-Route::get('/profile','HomeController@profile')->name('profile')->middleware('auth');
-
-
-
+Route::get('/home','UserController@home')->name('user.home')->middleware('auth');
+//Route::get('home/profile/{user}','UserController@index')->name('profile')->middleware('auth');
+//Route::get('home/{user}/edit','UserController@edit')->name('edit')->middleware('auth');
 
 /**
- * Rutas del Controllador Customer
+ * Rutas del Controlador Customer
  */
-Route::get('/customer/new','CustomersController@create')->name('customer.new')->middleware('auth');
-Route::post('/customer/new','CustomersController@store')->name('customer.store');
-Route::get('/customers/list', 'CustomersController@list')->name('customer.list')->middleware('auth');
+//Route::get('home/{user}/customers/new','CustomersController@create')->name('customer.new')->middleware('auth');
+//Route::post('home/{user}/customers/new','CustomersController@store')->name('customer.store')->middleware('auth');
+//Route::get('home/{user}/customers/', 'CustomersController@home')->name('customer.home')->middleware('auth');
+
+/**
+ * Rutas del Controlador Product
+ */
+//Route::get('home/{user}/product/{product}','ProductController@index')->name('product.index')->middleware('auth');
+//Route::get('home/{user}/product/new','ProductController@create')->name('product.new')->middleware('auth');
+
+

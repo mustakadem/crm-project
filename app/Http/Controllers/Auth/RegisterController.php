@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/customers/list';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -71,16 +72,16 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function validarFetch(array $data){
+    public function validarFetch(Request $request){
 
-        $validator =  Validator::make($data, [
-            'username' => 'required|string|max:20|unique:users',
+        $validator =  Validator::make($request->all(), [
+            'username' => 'required|string|max:20|min:4|unique:users'
         ]);
 
         $errors=$validator->errors();
 
         return response()->json([
-            'username' => $errors->get('username'),
+            'username' => $errors->get('username')
         ]);
     }
 }

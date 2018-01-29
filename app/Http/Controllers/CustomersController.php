@@ -14,7 +14,7 @@ class CustomersController extends Controller
      * para coneguir el customer facilitado por el parámetro.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function list(){
+    public function home(){
         $customers= Customer::orderBy('created_at','desc')->get();
 
 

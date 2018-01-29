@@ -17,14 +17,4 @@ class HomeController extends Controller
 
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function profile()
-    {
-
-        return view('user.profile');
-    }
 }

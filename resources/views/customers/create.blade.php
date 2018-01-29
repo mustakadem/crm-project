@@ -11,13 +11,13 @@
     <div class="container">
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked">
-                <li role="presentation"><a href="#">Home</a></li>
-                <li role="presentation" class="active"><a href="{{route('customer.new')}}">Create Customer</a></li>
-                <li role="presentation"><a href="{{route('customer.list')}}">List Customers</a></li>
+                <li role="presentation"><a href="{{route('user.home')}}">Home</a></li>
+                <li role="presentation" class="active"><a href="#">Create Customer</a></li>
+                <li role="presentation"><a href="#">List Customers</a></li>
             </ul>
         </div>
         <h3>Created New Customer</h3>
-        <form action="{{route('customer.store')}}" method="post">
+        <form action="#" method="post">
             {{ csrf_field() }}
         <div class="col-md-3">
           <div class="form-group @if( $errors->has('name'))has-error @endif">
