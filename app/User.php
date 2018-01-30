@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Un usuario tendra n customers
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function customers(){
+        return $this->hasMany(Customer::class);
+    }
 }

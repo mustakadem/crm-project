@@ -48,7 +48,7 @@
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
-                              <li> <a href="{{url('/')}}/home/profile/"{{Auth::user()->id}} role="button" aria-expanded="false" aria-haspopup="true">
+                              <li> <a href="{{route('user.profile',array('user' => Auth::user()->username))}}" role="button" aria-expanded="false" aria-haspopup="true">
                                     Profile
                                 </a></li>
 

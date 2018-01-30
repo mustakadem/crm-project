@@ -25,15 +25,18 @@ Auth::routes();
  *Rutas del Controlador User
  */
 Route::get('/home','UserController@home')->name('user.home')->middleware('auth');
-//Route::get('home/profile/{user}','UserController@index')->name('profile')->middleware('auth');
-//Route::get('home/{user}/edit','UserController@edit')->name('edit')->middleware('auth');
+Route::get('home/profile/{user}','UserController@show')->name('user.profile');
+Route::get('home/{user}/edit','UserController@edit')->name('user.edit')->middleware('auth');
+Route::put('home/{user}/edit','UserController@update')->name('user.update')->middleware('auth');
+
 
 /**
  * Rutas del Controlador Customer
  */
+
 //Route::get('home/{user}/customers/new','CustomersController@create')->name('customer.new')->middleware('auth');
 //Route::post('home/{user}/customers/new','CustomersController@store')->name('customer.store')->middleware('auth');
-//Route::get('home/{user}/customers/', 'CustomersController@home')->name('customer.home')->middleware('auth');
+Route::get('home/{user}/customers/', 'CustomersController@index')->name('customer.home')->middleware('auth');
 
 /**
  * Rutas del Controlador Product

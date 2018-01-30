@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Http\Request;
 use App\customer;
 use App\Http\Requests\CreateCustomersRequest;
+use Illuminate\Support\Facades\DB;
 
 class CustomersController extends Controller
 {
@@ -14,12 +15,12 @@ class CustomersController extends Controller
      * para coneguir el customer facilitado por el parámetro.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function home(){
-        $customers= Customer::orderBy('created_at','desc')->get();
+    public function index(User $user){
 
+        $customers = $user->customers()->latest();
 
         return view('customers.list',[
-            'customers' => $customers
+           'customers' => $customers
         ]);
     }
 
