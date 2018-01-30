@@ -32,6 +32,6 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function customers(){
-        return $this->hasMany(Customer::class);
+        return $this->hasMany(Customer::class)->latest();
     }
 }

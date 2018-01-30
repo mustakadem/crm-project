@@ -39,15 +39,15 @@ class CreateCustomersRequest extends FormRequest
             'email' => [
               'required','email'
             ],
-            'company' => [
-                'string'
-            ],
-            'job_title' => [
-                'string'
-            ],
-            'notes' => [
-                'string'
-            ],
+//            'company' => [
+//                'string'
+//            ],
+//            'job_title' => [
+//                'string'
+//            ],
+//            'notes' => [
+//                'string'
+//            ],
         ];
     }
 
@@ -66,10 +66,10 @@ class CreateCustomersRequest extends FormRequest
             'email.email' => 'Debes introducir un email correcto',
             'movil.required' => 'El numero de movil es requerido',
             'movil.numeric' => 'El numero movil debe estar compuesta solo por numeros',
-            'number.numeric' => 'El numero fijo debe estar compuesta solo por numeros',
-            'company.string' => 'El nombre de la Compania debe estar compuesta por letras o letras y numeros',
-            'job_title.string' => 'El puesto de trabajo debe estar compuesta por letras o letras y numeros',
-            'notes.string' => 'Las notas sobre el cliente deben estar compuesta por letras o letras y numeros'
+//            'number.numeric' => 'El numero fijo debe estar compuesta solo por numeros',
+//            'company.string' => 'El nombre de la Compania debe estar compuesta por letras o letras y numeros',
+//            'job_title.string' => 'El puesto de trabajo debe estar compuesta por letras o letras y numeros',
+//            'notes.string' => 'Las notas sobre el cliente deben estar compuesta por letras o letras y numeros'
         ];
     }
 }

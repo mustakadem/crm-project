@@ -33,10 +33,9 @@ Route::put('home/{user}/edit','UserController@update')->name('user.update')->mid
 /**
  * Rutas del Controlador Customer
  */
-
-//Route::get('home/{user}/customers/new','CustomersController@create')->name('customer.new')->middleware('auth');
-//Route::post('home/{user}/customers/new','CustomersController@store')->name('customer.store')->middleware('auth');
 Route::get('home/{user}/customers/', 'CustomersController@index')->name('customer.home')->middleware('auth');
+Route::get('home/{user}/customers/new','CustomersController@create')->name('customer.new')->middleware('auth');
+Route::post('home/{user}/customers/new','CustomersController@store')->name('customer.store')->middleware('auth');
 
 /**
  * Rutas del Controlador Product

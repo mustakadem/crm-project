@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('menu')
     <ol class="breadcrumb">
-        <li><a href="{{route('raiz')}}">Home</a></li>
-        <li class="active">Customers List</li>
+        <li><a href="{{route('user.home')}}">Home</a></li>
+        <li class="active">Create Customers</li>
     </ol>
 @endsection
 @section('content')
@@ -11,7 +11,7 @@
         <ul class="nav nav-pills nav-stacked">
             <li role="presentation"><a href="{{route('user.home')}}">Home</a></li>
             <li role="presentation" class="active"><a href="#">Customers</a></li>
-            <li role="presentation"><a href="#">Create Customer</a></li>
+            <li role="presentation"><a href="{{route('customer.new',array('user' => Auth::user()))}}">Create Customer</a></li>
         </ul>
     </div>
     <div class="col-md-10">

@@ -3,7 +3,7 @@
 @section('menu')
     <ol class="breadcrumb">
         <li><a href="{{route('raiz')}}">Home</a></li>
-        <li><a href="{{route('customer.list')}}">Customers List</a></li>
+        <li><a href="#">Customers List</a></li>
         <li class="active">New</li>
     </ol>
 @endsection
@@ -12,12 +12,12 @@
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked">
                 <li role="presentation"><a href="{{route('user.home')}}">Home</a></li>
-                <li role="presentation" class="active"><a href="#">Create Customer</a></li>
-                <li role="presentation"><a href="#">List Customers</a></li>
+                <li role="presentation"><a href="{{route('customer.home',array('user' =>  Auth::user()))}}">Customers</a></li>
+                <li role="presentation" class="active"><a>Create Customer</a></li>
             </ul>
         </div>
         <h3>Created New Customer</h3>
-        <form action="#" method="post">
+        <form action="{{route('customer.store',array('user' =>  Auth::user()))}}" method="post">
             {{ csrf_field() }}
         <div class="col-md-3">
           <div class="form-group @if( $errors->has('name'))has-error @endif">
