@@ -11,7 +11,7 @@ $factory->define(App\Customer::class, function (Faker $faker) {
         'name' => $name,
         'surnames' => $surnames,
         'type_customers'=> 'activo',
-        'image' => 'https://picsum.photos/150/150/?random',
+        'image' => 'https://picsum.photos/150/150/people',
         'address' => $faker->address,
         'number' => $faker->phoneNumber,
         'movil' => $faker->phoneNumber,
