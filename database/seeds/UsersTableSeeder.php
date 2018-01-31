@@ -20,6 +20,11 @@ class UsersTableSeeder extends Seeder
                ->create([
                    'user_id' => $users->id,
                ]);
+            $products= factory(App\Product::class)
+                ->times(30)
+                ->create([
+                   'user_id' => $users->id,
+                ]);
         });
     }
 }
