@@ -47,3 +47,7 @@ Route::group(['prefix' => 'home/{user}/customers'],function (){
 //Route::get('home/{user}/product/new','ProductController@create')->name('product.new')->middleware('auth');
 
 
+/**
+ * Statistics Controller
+ */
+Route::get('/statistics','StatisticsController@count');
