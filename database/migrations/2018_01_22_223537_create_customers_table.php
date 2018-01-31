@@ -20,8 +20,8 @@ class CreateCustomersTable extends Migration
             $table->enum('type_customers',['potencial','activo','exporadico'])->nullable();
             $table->longText('image')->nullable();
             $table->string('address');
-            $table->integer('number')->nullable();
-            $table->integer('movil');
+            $table->string('number')->nullable();
+            $table->string('movil');
             $table->string('email');
             $table->string('company')->nullable();
             $table->string('job_title')->nullable();
