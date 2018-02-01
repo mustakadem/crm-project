@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <nav class="nav flex-column navbar-dark bg-dark pr-5 pb-5 pl-4 ">
+        <nav class="nav flex-column navbar-dark bg-dark pr-5 pb-5 pl-4 h-100">
             <a class="nav-link " href="{{route('user.home')}}">Home</a>
             <div class="dropright m-3">
                 <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="row">
-                <nav class="nav flex-column navbar-dark bg-dark pr-5 pb-5 pl-4 justify-content-center">
+        <div class="col-md-2">
+                <nav class="nav flex-column navbar-dark bg-dark pr-5 pb-5 pl-4  h-100">
                     <a class="nav-link disabled" href="#">Home</a>
                     <div class="dropright m-3">
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -26,5 +27,11 @@
                     <a class="nav-link " href="#">Statics</a>
                     <a class="nav-link" href="#">Messages</a>
                 </nav>
+        </div>
+        <div class="col-md-10">
+        <div class="container pt-5 pl-5">
+            <img src="https://www.faq-mac.com/wp-content/uploads/2012/03/captura-pantalla-2012-03-05-114445_36103_640.jpg" alt="">
+        </div>
+    </div>
     </div>
 @endsection
