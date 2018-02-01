@@ -15,7 +15,7 @@ class StatisticsController extends Controller
 
         $countCustomers = DB::table('customers')->where('user_id',$user->id)->get()->count();
 
-        $countProduct=DB::table('customers')->where('user_id',$user->id)->count();
+        $countProduct=DB::table('products')->where('user_id',$user->id)->count();
 
         return response()->json([
             'customers' => $countCustomers  ,

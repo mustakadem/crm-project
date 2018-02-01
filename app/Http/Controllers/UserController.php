@@ -16,7 +16,7 @@ class UserController extends Controller
      */
 
     public function home(){
-        return view('user.home');
+        return view('user.panel');
     }
 
     /**

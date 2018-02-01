@@ -1,21 +1,20 @@
 @extends('layouts.app')
 @section('menu')
     <ol class="breadcrumb">
-        <li><a href="{{route('user.home')}}">Home</a></li>
+        <li><a href="">Home</a></li>
         <li><a href="{{route('user.profile',array('user' => Auth::user()->username))}}">Profile</a></li>
         <li class="active">Edit</li>
     </ol>
 @endsection
 @section('content')
+    <div class="col-md-2 jumbotron">
+        <nav class="nav flex-column">
+            <a class="nav-link" href="{{route('user.home')}}">Home</a>
+            <a class="nav-link active" href="{{route('user.edit',array('user'=> $user->username))}}">Edit User</a>
+            <a class="nav-link" href="#">Statistics</a>
+        </nav>
+    </div>
     <div class="container">
-        <div class="col-md-3 jumbotron">
-            <ul class="nav nav-pills nav-stacked">
-                <li role="presentation"><a href="{{route('user.home')}}">Home</a></li>
-                <li role="presentation" class="active"><a href="{{route('user.edit',array('user'=> Auth::user()->username))}}">Edit User</a></li>
-                <li role="presentation"><a href="#">Statistics</a></li>
-            </ul>
-        </div>
-
         <h3>Edit User</h3>
         <form action="{{route('user.update',array('id'=>Auth::user()->id))}}" method="post">
             {{ csrf_field() }}

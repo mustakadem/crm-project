@@ -27,11 +27,12 @@ $(function () {
                  return response.json()
              }).then(function (data) {
                  if (data.username.length > 0) {
-                     $("#errorUsername").text(data.username).attr("class", "help-block");
-                     $("#divUsername").attr("class", "form-group has-error");
+                     $("#errorUsername").text(data.username).addClass("form-control-feedback");
+                     $("#username").addClass("form-control form-control-danger");
+                     $("#divUsername").addClass("form-group row has-danger");
                  }else {
-                     $("#divUsername").attr("class", "form-group has-success");
-                     $("#errorUsername").text("Correct").attr("class", "help-block");
+                     $("#divUsername").attr("class", "form-group is-valid");
+                     $("#errorUsername").text("Correct").attr("class", "valid-feedback");
                  }
              }).catch(function (err) {
                  console.log(err);

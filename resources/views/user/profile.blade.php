@@ -12,14 +12,14 @@
 @endsection
 
 @section('content')
-    <div class="col-md-2 jumbotron">
-        <ul class="nav nav-pills nav-stacked">
-            <li role="presentation"><a href="{{route('user.home')}}">Home</a></li>
-            <li role="presentation"><a href="{{route('user.edit',array('user'=> $user->username))}}">Edit User</a></li>
-            <li role="presentation"><a href="#">Statistics</a></li>
-        </ul>
-    </div>
-    <div class="col-md-1"></div>
+    <div class="row">
+        <div class="col-md-2 jumbotron">
+            <nav class="nav flex-column">
+                <a class="nav-link active" href="{{route('user.home')}}">Home</a>
+                <a class="nav-link" href="{{route('user.edit',array('user'=> $user->username))}}">Edit User</a>
+                <a class="nav-link" href="#">Statistics</a>
+            </nav>
+        </div>
     <div class="container">
     <div class="row">
         <div class="col-md-2">
@@ -42,15 +42,14 @@
 
     </div>
         <div class="row">
-            <div class="col-md-2"></div>
             <div class="col-md-10">
-            <canvas id="staticUser" width="25" height="5"></canvas>
+            <canvas id="staticUser" width="100" height="25"></canvas>
             </div>
         </div>
     </div>
-
+    </div>
 @endsection
 
-@section('js')
-    <script src="{{asset('js/statistics.js')}}"></script>
-@endsection
+@push('js')
+    <script src="{{asset('js/statistics.js')}}" defer></script>
+@endpush

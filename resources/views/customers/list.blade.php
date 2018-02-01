@@ -6,14 +6,16 @@
     </ol>
 @endsection
 @section('content')
-<div class="container">
-    <div class="col-md-2">
-        <ul class="nav nav-pills nav-stacked">
-            <li role="presentation"><a href="{{route('user.home')}}">Home</a></li>
-            <li role="presentation" class="active"><a href="#">Customers</a></li>
-            <li role="presentation"><a href="{{route('customer.new',array('user' => Auth::user()))}}">Create Customer</a></li>
-        </ul>
+    <div class="row">
+    <div class="col-md-2 jumbotron">
+        <nav class="nav flex-column">
+            <a class="nav-link" href="{{route('user.home')}}">Home</a>
+            <a class="nav-link active" href="">Customers</a>
+            <a class="nav-link" href="{{route('customer.new',array('user' => Auth::user()))}}">Create Customer</a>
+        </nav>
     </div>
+<div class="container">
+
     <div class="col-md-10">
     <br>
     <table class="table table-striped">
@@ -45,5 +47,6 @@
         </tbody>
     </table>
     </div>
+</div>
 </div>
 @endsection

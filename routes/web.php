@@ -25,9 +25,9 @@ Auth::routes();
  *Rutas del Controlador User
  */
 Route::get('/home','UserController@home')->name('user.home')->middleware('auth');
-Route::get('home/profile/{user}','UserController@show')->name('user.profile');
-Route::get('home/{user}/edit','UserController@edit')->name('user.edit')->middleware('auth');
-Route::put('home/{user}/edit','UserController@update')->name('user.update')->middleware('auth');
+Route::get('/home/profile/{user}','UserController@show')->name('user.profile');
+Route::get('/home/{user}/edit','UserController@edit')->name('user.edit')->middleware('auth');
+Route::put('/home/{user}/edit','UserController@update')->name('user.update')->middleware('auth');
 
 
 /**
@@ -51,3 +51,5 @@ Route::group(['prefix' => 'home/{user}/customers'],function (){
  * Statistics Controller
  */
 Route::get('/statistics','StatisticsController@count');
+
+
