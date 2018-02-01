@@ -5,7 +5,8 @@
         <div class="col-md-2">
                 <nav class="nav flex-column navbar-dark bg-dark pr-5 pb-5 pl-4  h-100">
                     <a class="nav-link disabled" href="#">Home</a>
-                    <div class="dropright m-3">
+                    <div class="dropright m-3 btn-group">
+                        <span class="button-group-addon" ><img src="https://icon-icons.com/icons2/876/PNG/512/user-circle_icon-icons.com_68282.png" width="30" height="30" alt=""></span>
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Customers
                         </button>
@@ -14,7 +15,8 @@
                             <a class="dropdown-item" href="{{route('customer.new',array('user' => Auth::user()))}}">Create</a>
                         </div>
                     </div>
-                    <div class="dropright m-3">
+                    <div class="dropright m-3 btn-group">
+                        <span class="button-group-addon " ><img src="https://www.peerby.com/img/archetypes/moving_boxes-big.png" width="30" height="30" alt=""></span>
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Products
                         </button>
