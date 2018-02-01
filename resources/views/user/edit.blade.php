@@ -1,12 +1,7 @@
 @extends('layouts.app')
-@section('menu')
-    <ol class="breadcrumb">
-        <li><a href="">Home</a></li>
-        <li><a href="{{route('user.profile',array('user' => Auth::user()->username))}}">Profile</a></li>
-        <li class="active">Edit</li>
-    </ol>
-@endsection
+
 @section('content')
+    <div class="row pt-5">
     <div class="col-md-2 jumbotron">
         <nav class="nav flex-column">
             <a class="nav-link" href="{{route('user.home')}}">Home</a>
@@ -77,6 +72,7 @@
             <button class="btn btn-primary" type="submit">Enviar</button>
 
         </form>
+    </div>
     </div>
 
 @endsection

@@ -1,20 +1,32 @@
 @extends('layouts.app')
-@section('menu')
-    <ol class="breadcrumb">
-        <li><a href="{{route('user.home')}}">Home</a></li>
-        <li class="active">Create Customers</li>
-    </ol>
-@endsection
+
 @section('content')
     <div class="row">
-    <div class="col-md-2 jumbotron">
-        <nav class="nav flex-column">
-            <a class="nav-link" href="{{route('user.home')}}">Home</a>
-            <a class="nav-link active" href="">Customers</a>
-            <a class="nav-link" href="{{route('customer.new',array('user' => Auth::user()))}}">Create Customer</a>
+        <nav class="nav flex-column navbar-dark bg-dark pr-5 pb-5 pl-4 ">
+            <a class="nav-link " href="{{route('user.home')}}">Home</a>
+            <div class="dropright m-3">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Customers
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item btn " href="{{route('customer.home',array('user' =>  Auth::user()))}}">List</a>
+                    <a class="dropdown-item" href="{{route('customer.new',array('user' => Auth::user()))}}">Create</a>
+                </div>
+            </div>
+            <div class="dropright m-3">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Products
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">List</a>
+                    <a class="dropdown-item" href="#">Create</a>
+                </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a class="nav-link " href="#">Statics</a>
+            <a class="nav-link disabled" href="#">Messages</a>
         </nav>
-    </div>
-<div class="container">
+<div class="container pt-5">
 
     <div class="col-md-10">
     <br>

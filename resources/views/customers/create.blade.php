@@ -1,28 +1,36 @@
 @extends('layouts.app')
 
-@section('menu')
-    <ol class="breadcrumb">
-        <li><a href="{{route('raiz')}}">Home</a></li>
-        <li><a href="#">Customers List</a></li>
-        <li class="active">New</li>
-    </ol>
-@endsection
 @section('content')
     <div class="row">
-    <div class="col-md-2 jumbotron">
-        <nav class="nav flex-column">
-            <a class="nav-link" href="{{route('user.home')}}">Home</a>
-            <a class="nav-link" href="{{route('customer.home',array('user' =>  Auth::user()))}}">Costumers</a>
-            <a class="nav-link active" href="#">Create Customer</a>
+        <nav class="nav flex-column navbar-dark bg-dark pr-5 pb-5 pl-4 ">
+            <a class="nav-link " href="{{route('user.home')}}">Home</a>
+            <div class="dropright m-3">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Customers
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item btn " href="{{route('customer.home',array('user' =>  Auth::user()))}}">List</a>
+                    <a class="dropdown-item" href="{{route('customer.new',array('user' => Auth::user()))}}">Create</a>
+                </div>
+            </div>
+            <div class="dropright m-3">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Products
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">List</a>
+                    <a class="dropdown-item" href="#">Create</a>
+                </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a class="nav-link " href="#">Statics</a>
+            <a class="nav-link disabled" href="#">Messages</a>
         </nav>
-    </div>
-    <div class="container">
+    <div class="container pt-5 ">
         <h3 class="text-center">Created New Customer</h3>
         <div class="col-md-10">
-        <form action="{{route('customer.store',array('user' =>  Auth::user()))}}" method="post">
+        <form action="{{route('customer.store',array('user' =>  Auth::user()))}}" method="post" >
             {{ csrf_field() }}
-
-
         <div class="row">
             <div class="col">
                 <div class="form-group {{ $errors->has('name') ? ' is-invalid' : '' }}">
