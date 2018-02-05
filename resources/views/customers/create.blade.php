@@ -6,7 +6,7 @@
         <nav class="nav flex-column navbar-dark bg-dark pr-2 pb-5 pl-4 ">
             <a class="nav-link " href="{{route('user.home')}}">Home</a>
             <div class="dropright m-3 btn-group">
-                <span class="button-group-addon" ><img src="https://icon-icons.com/icons2/876/PNG/512/user-circle_icon-icons.com_68282.png" width="30" height="30" alt=""></span>
+                <span class="button-group-addon" ><img src="http://simpleicon.com/wp-content/uploads/account.svg" width="30" height="30" alt=""></span>
                 <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Customers
                 </button>
@@ -20,8 +20,8 @@
                     Products
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">List</a>
-                    <a class="dropdown-item" href="#">Create</a>
+                    <a class="dropdown-item" href="{{route('product.list',array('user' => Auth::user()))}}">List</a>
+                    <a class="dropdown-item" href="{{route('product.new',array('user' => Auth::user()))}}">Create</a>
                 </div>
             </div>
             <div class="dropdown-divider"></div>
@@ -35,50 +35,50 @@
             {{ csrf_field() }}
         <div class="row">
             <div class="col">
-                <div class="form-group {{ $errors->has('name') ? ' is-invalid' : '' }}">
+                <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Customer Name"  value="{{ old('name') }}">
+                    <input type="text" class="form-control  {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="name" placeholder="Customer Name"  value="{{ old('name') }}">
                     @if ($errors->has('name'))
-                        <span class="invalid-feedback">
-                      <strong>{{ $errors->first('name') }}</strong>
-                  </span>
+                        <div class="invalid-feedback">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </div>
                     @endif
                 </div>
             </div>
 
             <div class="col">
-                <div class="form-group {{ $errors->has('surnames') ? ' is-invalid' : '' }}">
+                <div class="form-group">
                     <label for="surnames">Surnames</label>
-                    <input type="text" class="form-control" name="surnames" id="surnames" placeholder="Customer Surnames"  value="{{ old('surnames') }}">
+                    <input type="text" class="form-control  {{ $errors->has('surnames') ? ' is-invalid' : '' }}" name="surnames" id="surnames" placeholder="Customer Surnames"  value="{{ old('surnames') }}">
                     @if ($errors->has('surnames'))
-                        <span class="invalid-feedback">
-                      <strong>{{ $errors->first('surnames') }}</strong>
-                  </span>
+                        <div class="invalid-feedback">
+                            <strong>{{ $errors->first('surnames') }}</strong>
+                        </div>
                     @endif
                 </div>
             </div>
             <div class="col">
 
-                <div class="form-group {{ $errors->has('email') ? ' is-invalid' : '' }}">
+                <div class="form-group ">
                     <label for="email" >Email</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Customer Email"  value="{{ old('email') }}">
+                    <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="email" placeholder="Customer Email"  value="{{ old('email') }}">
                     @if ($errors->has('email'))
-                        <span class="invalid-feedback">
-                      <strong>{{ $errors->first('email') }}</strong>
-                  </span>
+                        <div class="invalid-feedback">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </div>
                     @endif
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <div class="form-group {{ $errors->has('address') ? ' is-invalid' : '' }}">
+                <div class="form-group ">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" name="address" id="address" placeholder="Customer Address"  value="{{ old('address') }}">
+                    <input type="text" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" id="address" placeholder="Customer Address"  value="{{ old('address') }}">
                     @if ($errors->has('address'))
-                        <span class="invalid-feedback">
-                      <strong>{{ $errors->first('address') }}</strong>
-                  </span>
+                        <div class="invalid-feedback">
+                            <strong>{{ $errors->first('address') }}</strong>
+                        </div>
                     @endif
                 </div>
             </div>
@@ -89,13 +89,13 @@
                 </div>
             </div>
            <div class="col">
-               <div class="form-group {{ $errors->has('movil') ? ' is-invalid' : '' }}">
+               <div class="form-group ">
                    <label for="movil">Movil</label>
-                   <input type="number" class="form-control" name="movil" id="movil" min="0" placeholder="Customer Movil"  value="{{ old('movil') }}">
+                   <input type="number" class="form-control {{ $errors->has('movil') ? ' is-invalid' : '' }}" name="movil" id="movil" min="0" placeholder="Customer Movil"  value="{{ old('movil') }}">
                    @if ($errors->has('movil'))
-                       <span class="invalid-feedback">
-                      <strong>{{ $errors->first('movil') }}</strong>
-                  </span>
+                       <div class="invalid-feedback">
+                           <strong>{{ $errors->first('movil') }}</strong>
+                       </div>
                    @endif
                </div>
            </div>
@@ -109,18 +109,18 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="form-group {{ $errors->has('type_customers') ? ' is-invalid' : '' }}">
+                    <div class="form-group ">
                         <label for="type_customer">Type Customer</label>
-                        <select name="type_customer" id="type_customer" class="form-control">
+                        <select name="type_customer" id="type_customer" class="form-control {{ $errors->has('type_customers') ? ' is-invalid' : '' }}">
                             <option value="select">Select</option>
                             <option value="potencial">potencial</option>
                             <option value="activo">activo</option>
                             <option value="exporadico">exporadico</option>
                         </select>
                         @if ($errors->has('type_customers'))
-                            <span class="invalid-feedback">
-                      <strong>{{ $errors->first('type_customers') }}</strong>
-                  </span>
+                            <div class="invalid-feedback">
+                                <strong>{{ $errors->first('type_customers') }}</strong>
+                            </div>
                         @endif
                     </div>
                 </div>

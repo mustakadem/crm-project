@@ -2,10 +2,11 @@
 
 @section('content')
     <div class="row">
-        <nav class="nav flex-column navbar-dark bg-dark pr-2 pb-5 pl-4 h-100">
+        <div class="col-md-2">
+        <nav class="nav flex-column navbar-dark bg-dark pr-2 pb-5 pl-4 h-100 position-fixed">
             <a class="nav-link " href="{{route('user.home')}}">Home</a>
             <div class="dropright m-3 btn-group">
-                <span class="button-group-addon" ><img src="https://icon-icons.com/icons2/876/PNG/512/user-circle_icon-icons.com_68282.png" width="30" height="30" alt=""></span>
+                <span class="button-group-addon" ><img src="http://simpleicon.com/wp-content/uploads/account.svg" width="30" height="30" alt=""></span>
                 <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Customers
                 </button>
@@ -19,47 +20,50 @@
                     Products
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">List</a>
-                    <a class="dropdown-item" href="#">Create</a>
+                    <a class="dropdown-item" href="{{route('product.list',array('user' => Auth::user()))}}">List</a>
+                    <a class="dropdown-item" href="{{route('product.new',array('user' => Auth::user()))}}">Create</a>
                 </div>
             </div>
             <div class="dropdown-divider"></div>
             <a class="nav-link " href="#">Statics</a>
             <a class="nav-link disabled" href="#">Messages</a>
         </nav>
-<div class="container">
-
+        </div>
+<div class="container pt-3">
     <div class="col-md-10">
-    <br>
-        <h5>List Of Costumers</h5>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Movil</th>
-            <th>Type Customer</th>
-            <th>Company</th>
-        </tr>
-        </thead>
+        <h3 class="text-center bg-info">List Of Costumers</h3>
+    <div class="row m-2">
     @forelse($customers as $customer)
-        <tbody>
-        <tr>
-            <td> <img src="{{$customer['image']}}" alt="{{$customer['name']}}" height="150" width="150" ></td>
-            <td>{{$customer['name']}}</td>
-            <td>{{$customer['surnames']}}</td>
-            <td>{{$customer['email']}}</td>
-            <td>{{$customer['movil']}}</td>
-            <td>{{$customer['type_customers']}}</td>
-            <td>{{$customer['company']}}</td>
-        </tr>
+                <div class="col-md-4 mb-3">
+                    <!--Card-->
+                    <div class="card card-cascade">
+                        <!--Card image-->
+                        <img class="card-img-top" src="{{$customer['image']}}" alt="Card image of customer {{$customer['name']}}">
+                        <!--/Card image-->
+
+                        <!--Card content-->
+                        <div class="card-body">
+                            <h4 class="text-center">Customers  ID#{{$customer['id']}}</h4>
+                            <p class="card-text">Name: <br><strong>{{$customer['name']}} {{$customer['surnames']}}</strong></p>
+                            <p class="card-text">Email: <br><strong>{{$customer['email']}}</strong></p>
+                            <p class="card-text">Movil: <br><strong>{{$customer['movil']}}</strong></p>
+                            <p class="card-text">Type Customer: <br><strong>{{$customer['type_customers']}}</strong></p>
+                            <div id="option" class="d-flex justify-content-around">
+                                <a class="btn btn-danger" href="#"><img src="https://es.seaicons.com/wp-content/uploads/2017/02/delete-icon-1.png" width="25" height="25" alt=""></a>
+                                <a class="btn btn-success" href="#"><img src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/write-circle-green-256.png" width="25" height="25" alt=""></a>
+                                <a class="btn btn-info" href="#"><img src="http://www.tecnovirtual.edu.ec/virtual/pluginfile.php/2005/block_html/content/icon-user.png" width="25" height="25" alt=""></a>
+                            </div>
+                        </div>
+                        <div id="footerCard" class=" bg-secondary text-center">
+                            <p>Created: <strong class="align-text-top">{{$customer['created_at']}}</strong></p>
+                        </div>
+                        <!--/.Card content-->
+                    </div>
+                </div>
     @empty
     <p>No hay Clientes</p>
     @endforelse
-        </tbody>
-    </table>
+    </div>
     </div>
 </div>
 </div>
