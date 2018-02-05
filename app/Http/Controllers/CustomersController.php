@@ -29,9 +29,7 @@ class CustomersController extends Controller
      */
     public function create(User $user){
 
-        return view('customers.create',[
-            'user' => $user
-            ]);
+        return view('customers.create');
     }
 
     public function store(CreateCustomersRequest $request, User $user){
