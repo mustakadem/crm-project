@@ -43,8 +43,10 @@ Route::group(['prefix' => 'home/{user}/customers'],function (){
 /**
  * Rutas del Controlador Product
  */
-//Route::get('home/{user}/product/{product}','ProductController@index')->name('product.index')->middleware('auth');
-//Route::get('home/{user}/product/new','ProductController@create')->name('product.new')->middleware('auth');
+Route::get('home/{user}/product','ProductController@index')->name('product.list')->middleware('auth');
+Route::get('home/{user}/product/new','ProductController@create')->name('product.new')->middleware('auth');
+Route::post('home/{user}/product/new','ProductController@store')->name('product.store')->middleware('auth');
+
 
 
 /**
