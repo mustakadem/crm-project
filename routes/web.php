@@ -48,6 +48,13 @@ Route::get('home/{user}/product/new','ProductController@create')->name('product.
 Route::post('home/{user}/product/new','ProductController@store')->name('product.store')->middleware('auth');
 
 
+/**
+ * Bills Controller
+ */
+
+Route::get('home/{user}/bill/new','BillsController@create')->name('bill.new')->middleware('auth');
+Route::post('home/{user}/bill/new','BillsController@store')->name('bill.store')->middleware('auth');
+
 
 /**
  * Statistics Controller

@@ -11,8 +11,6 @@ class CustomersController extends Controller
 {
 
     /**
-     * Método que muestra la información de un mensaje. Utiliza Route Binding
-     * para coneguir el customer facilitado por el parámetro.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(User $user){

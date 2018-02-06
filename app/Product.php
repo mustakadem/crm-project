@@ -9,4 +9,8 @@ class product extends Model
     protected $guarded=[
         'id','created_at','update_at'
     ];
+
+    public function bills(){
+        return $this->belongsToMany(Bills::class);
+    }
 }
