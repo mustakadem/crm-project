@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('style')
-    <link rel="stylesheet" href="/public/bower_resources/bootstrap-select/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="{{asset('css/multi.min.css')}}">
 @endsection
 @section('content')
     <div class="row">
         <div class="col-md-2">
-            <nav class="nav flex-column navbar-dark bg-dark pr-5 pb-5 pl-4 position-fixed h-100">
+            <nav class="nav flex-column navbar-dark bg-dark pr-5 pb-5 pl-4 position-relative h-100">
                 <a class="nav-link disabled" href="#">Home</a>
                 <div class="dropright m-3 btn-group">
                     <span class="button-group-addon" ><img src="http://simpleicon.com/wp-content/uploads/account.svg" width="30" height="30" alt=""></span>
@@ -43,16 +43,17 @@
                 <a class="nav-link" href="#">Messages</a>
             </nav>
         </div>
-        <div class="container pt-5 ">
-            <h3 class="text-center">Created New Product</h3>
-            <div class="col-md-10 m-3">
+        <div class="col-md-10">
+        <div class="container pt-5  ">
+            <h3 class="text-center">Created New Bill</h3>
+                <div class="w-50">
                 <form action="{{route('bill.store',array('user' =>  Auth::user()))}}" method="post" >
                     {{ csrf_field() }}
                     <div class="row">
                         <div class="col">
                             <div class="form-group ">
                                 <label for="customer">Customer</label>
-                                <select name="customer" id="customer"  class="selectpicker show-menu-arrow" multiple="multiple" data-style="form-control"  data-style="form-control" data-live-search="true">
+                                <select name="customer" id="customer"  class="custom-select" >
                                     @forelse($customers as $customer)
                                         <option data-tokens="{{$customer['name']}}" value="{{$customer['id']}}">
                                            {{$customer['name']}}
@@ -62,14 +63,12 @@
                                    @endforelse
                                 </select>
                             </div>
-                        </div>
-                        <div class="col">
 
                             <div class="form-group ">
-                                <label for="name">Products</label>
-                                <select name="product" id="product" class="selectpicker multiple">
+                                <label for="products">Prducts</label>
+                                <select name="products" id="products" multiple="multiple">
                                     @forelse($products as $product)
-                                        <option value="{{$product['id']}}">
+                                        <option data-token="{{$product['name']}}" value="{{$product['id']}}">
                                             {{$product['name']}}
                                         </option>
                                     @empty
@@ -77,62 +76,48 @@
                                     @endforelse
                                 </select>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
+
                             <div class="form-group ">
                                 <label for="price">Price</label>
-                                <input type="number" class="form-control {{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" id="price" min="0" placeholder="Product Price"  value="{{ old('price') }}">
+                                <input type="text" readonly class="form-control {{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" id="price"   value="{{ old('price') }}">
                                 @if ($errors->has('price'))
                                     <div class="invalid-feedback">
                                         <strong>{{ $errors->first('price') }}</strong>
                                     </div>
                                 @endif
                             </div>
-                        </div>
-                        <div class="col">
                             <div class="form-group ">
-                                <label for="type_product">Type Product</label>
-                                <select name="type_product" id="type_product" class="form-control {{ $errors->has('type_product') ? ' is-invalid' : '' }}">
-                                    <option value="select">Select</option>
-                                    <option value="servicio">servicio</option>
-                                    <option value="bienes">bienes</option>
-                                </select>
-                                @if ($errors->has('type_product'))
+                                <label for="discount">Discount</label>
+                                <input type="number" class="form-control {{ $errors->has('discount') ? ' is-invalid' : '' }}" name="discount" id="discount" min="0" placeholder="Optional Discount"  value="{{ old('discount') }}">
+                                @if ($errors->has('discount'))
                                     <div class="invalid-feedback">
-                                        <strong>{{ $errors->first('type_product') }}</strong>
+                                        <strong>{{ $errors->first('discount') }}</strong>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="form-group ">
+                                <label for="total">Total</label>
+                                <input type="text" readonly class="form-control {{ $errors->has('total') ? ' is-invalid' : '' }}" name="total" id="total" min="0" placeholder="Total Products Price"  value="{{ old('total') }}">
+                                @if ($errors->has('total'))
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $errors->first('total') }}</strong>
                                     </div>
                                 @endif
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-
-                    </div>
-                    <div class="row">
-
-                    </div>
-                    <div class="col">
-                        <div class="form-group ">
-                            <label for="description">Description</label>
-                            <textarea name="description" id="description" cols="5" rows="5" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" placeholder="enter description product">{{ old('description') }}</textarea>
-                            @if ($errors->has('description'))
-                                <div class="invalid-feedback">
-                                    <strong>{{ $errors->first('description') }}</strong>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" type="submit">Enviar</button>
+                    <button class="btn btn-primary" type="submit">Create Bill</button>
 
                 </form>
-            </div>
+                </div>
         </div>
+    </div>
+    </div>
 @endsection
 
-@section('js')
-            <script src="/public/bower_resources/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-            <script src="/public/js/select.js"></script>
-@endsection
+@push('js')
+             <script src="{{asset('js/ajaxCalls.js')}}"></script>
+            <script src="{{asset('js/multi.min.js')}}"></script>
+            <script src="{{asset('js/select.js')}}"></script>
+
+@endpush
