@@ -123,5 +123,5 @@
 @endsection
 
 @push('js')
-    <script src="{{asset('js/validacion.js')}}"></script>
+    <script src="{{asset('ajaajax.jscript>
 @endpush

@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-2">
-        <nav class="nav flex-column navbar-dark bg-dark pr-2 pb-5 pl-4 h-100 position-fixed">
+        <nav class="nav flex-column navbar-dark bg-dark pr-2 pb-5 pl-4 h-100 position-relative">
             <a class="nav-link " href="{{route('user.home')}}">Home</a>
             <div class="dropright m-3 btn-group">
                 <span class="button-group-addon" ><img src="http://simpleicon.com/wp-content/uploads/account.svg" width="30" height="30" alt=""></span>
@@ -45,8 +45,6 @@
                         <div class="card-body">
                             <h4 class="text-center">Customers  ID#{{$customer['id']}}</h4>
                             <p class="card-text">Name: <br><strong>{{$customer['name']}} {{$customer['surnames']}}</strong></p>
-                            <p class="card-text">Email: <br><strong>{{$customer['email']}}</strong></p>
-                            <p class="card-text">Movil: <br><strong>{{$customer['movil']}}</strong></p>
                             <p class="card-text">Type Customer: <br><strong>{{$customer['type_customers']}}</strong></p>
                             <div id="option" class="d-flex justify-content-around">
                                 <a class="btn btn-danger" href="#"><img src="https://es.seaicons.com/wp-content/uploads/2017/02/delete-icon-1.png" width="25" height="25" alt=""></a>

@@ -155,6 +155,6 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('js/validacion.js')}}"> </script>
+    <script src="{{asset('ajaxCalls.jsls.js')}}"> </script>
 
 @endsection
