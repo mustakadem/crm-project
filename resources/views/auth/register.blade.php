@@ -10,7 +10,7 @@
                     <form role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}
 
-                        <div id="divUsername" class="form-group row">
+                        <div  class="form-group row">
                             <label class="col-lg-4 col-form-label text-lg-right">username</label>
 
                             <div class="col-lg-6">
@@ -24,7 +24,7 @@
                                 <div id="errorUsername"></div>
                                 @if ($errors->has('username'))
                                     <div class="invalid-feedback">
-                                        <strong>{{ $errors->first('username') }}</strong>
+                                            <strong>{{ $errors->first('username') }}</strong>
                                     </div>
                                 @endif
                             </div>
@@ -42,6 +42,7 @@
                                         id="userEmail"
                                         value="{{ old('email') }}"
                                         required>
+                                <div id="errorUserEmail"></div>
 
                                 @if ($errors->has('email'))
                                     <div class="invalid-feedback">
@@ -62,7 +63,6 @@
                                         id="movil"
                                         value="{{ old('movil') }}"
                                         required>
-
                                 @if ($errors->has('movil'))
                                     <div class="invalid-feedback">
                                         <strong>{{ $errors->first('movil') }}</strong>
@@ -97,8 +97,7 @@
                                         type="password"
                                         class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}"
                                         name="password_confirmation"
-                                        required
-                                >
+                                        required>
                                 @if ($errors->has('password_confirmation'))
                                     <div class="invalid-feedback">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -123,5 +122,5 @@
 @endsection
 
 @push('js')
-    <script src="{{asset('ajaajax.jscript>
-@endpush
+    <script src="{{asset('js/ajaxCalls.js')}}"></script>
+@endpush()

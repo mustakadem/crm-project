@@ -72,16 +72,23 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function validarFetch(Request $request){
+    public function validarFetch(Request $request,$dato){
 
-        $validator =  Validator::make($request->all(), [
-            'username' => 'required|string|max:20|min:4|unique:users'
-        ]);
+        if ($dato == 'username') {
+            $validator = Validator::make($request->all(), [
+                'username' => 'required|string|max:20|min:4|unique:users'
+            ]);
+        }
+        if ($dato == 'email') {
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email|unique:users'
+            ]);
+        }
 
         $errors=$validator->errors();
 
         return response()->json([
-            'username' => $errors->get('username')
+            $dato => $errors->get($dato)
         ]);
     }
 }

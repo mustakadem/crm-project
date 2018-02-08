@@ -21,6 +21,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "izimodal": "^1.5.1",
         "multi.js": "^0.2.3"
     }
 }
