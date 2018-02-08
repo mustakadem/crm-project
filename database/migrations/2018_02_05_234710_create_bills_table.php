@@ -18,8 +18,9 @@ class CreateBillsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('customer_id')->unsigned();
-            $table->integer('total');
+            $table->integer('price')->nullable();
             $table->integer('discount')->nullable();
+            $table->integer('total');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

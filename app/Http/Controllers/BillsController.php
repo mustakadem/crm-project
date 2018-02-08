@@ -27,6 +27,19 @@ class BillsController extends Controller
         $customer=Customer::find($request->customer);
 
 
+        $bill = $customer->bills()->create([
+            'user_id' => $user->id,
+            'total' => $request->total,
+            'price' => $request->price,
+            'discount' => $request->discount
+        ]);
+
+
+        $bill->products()->attach($request->products);
+
+
+        return redirect('/home');
+
 
     }
 

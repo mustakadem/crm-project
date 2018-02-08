@@ -1,15 +1,18 @@
 
-
 $(function () {
      $("#username").on("change",function () {
-             validateRegister();
+             validateRegister("username","#username","#errorUsername");
      });
+
+    $("#userEmail").on("change",function () {
+        validateRegister('email',"#userEmail","#errorUserEmail");
+    });
 
      $("#products").on("change",function () {
             totalPrice();
      });
 
-    $("#discount").on("click",function () {
+    $("#discount").on("change",function () {
             discountPrice();
     })
 
@@ -17,7 +20,7 @@ $(function () {
 });
 
 
-function validateRegister() {
+function validateRegister(dato,selector,selectorDiv) {
 //Se guarda en esta variable las cabeceras
     let headers = new Headers();
 
@@ -25,7 +28,7 @@ function validateRegister() {
     // Se guarda en esta variable los datos recogidos del formulario
     let form = new FormData();
 
-    form.append("username",$("#username").val());
+    form.append(dato,$(selector).val());
 
     //Se guarda en la variable la configuracion de la llamada
 
@@ -38,16 +41,18 @@ function validateRegister() {
 
     // Comienza la llamada
 
-    fetch("/register/validate",configuration).then(function (response){
+    fetch("/register/validate/"+dato,configuration).then(function (response){
         return response.json()
     }).then(function (data) {
-        if (data.username.length > 0) {
-            $("#errorUsername").text(data.username).addClass("form-control-feedback");
-            $("#username").addClass("form-control form-control-danger");
-            $("#divUsername").addClass("form-group row has-danger");
+        if (data.dato.length > 0) {
+            $(selectorDiv).addClass("invalid-feedback").text(data.dato);
+            $(selector).removeClass("is-valid");
+            $(selector).addClass("is-invalid");
         }else {
-            $("#divUsername").attr("class", "form-group is-valid");
-            $("#errorUsername").text("Correct").attr("class", "valid-feedback");
+            $(selector).removeClass("is-invalid");
+            $(selector).addClass("is-valid");
+            $(selectorDiv).removeClass("invalid-feedback");
+            $(selectorDiv).addClass("valid-feedback").text("Correct");
         }
     }).catch(function (err) {
         console.log(err);
@@ -60,7 +65,8 @@ function totalPrice() {
     axios.post('/bill/price', {
         products: $("#products").val()
     }).then(function (response) {
-        $("#price").val(response.data.total)
+        $("#price").val(response.data.total);
+        $("#total").val(response.data.total);
     })
         .catch(function (error) {
             console.log(error);

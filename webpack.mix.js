@@ -18,3 +18,4 @@ mix.js('resources/assets/js/app.js', 'public/js')
 
 mix.babel('node_modules/multi.js/dist/multi.min.js','public/js/multi.min.js');
 mix.js('resources/assets/js/ajaxCalls.js','public/js');
+mix.js('node_modules/izimodal/js/iziModal.min.js',"public/js/iziModal.min.js");

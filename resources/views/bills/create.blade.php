@@ -66,10 +66,10 @@
 
                             <div class="form-group ">
                                 <label for="products">Prducts</label>
-                                <select name="products" id="products" multiple="multiple">
+                                <select name="products[]" id="products" multiple="multiple">
                                     @forelse($products as $product)
                                         <option data-token="{{$product['name']}}" value="{{$product['id']}}">
-                                            {{$product['name']}}
+                                            {{$product['name']}}   <------------->   {{$product['price']}}$
                                         </option>
                                     @empty
                                         <option value="null" selected>No Tienes Productos</option>
