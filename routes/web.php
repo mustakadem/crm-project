@@ -43,17 +43,23 @@ Route::group(['prefix' => 'home/{user}/customers'],function (){
 /**
  * Rutas del Controlador Product
  */
-Route::get('/home/{user}/product','ProductController@index')->name('product.list')->middleware('auth');
-Route::get('/home/{user}/product/new','ProductController@create')->name('product.new')->middleware('auth');
-Route::post('/home/{user}/product/new','ProductController@store')->name('product.store')->middleware('auth');
+Route::group(['prefix' => 'home/{user}/products'],function (){
+    Route::get('','ProductController@index')->name('product.list')->middleware('auth');
+    Route::get('new','ProductController@create')->name('product.new')->middleware('auth');
+    Route::post('new','ProductController@store')->name('product.store')->middleware('auth');
+});
+
 
 
 /**
  * Bills Controller
  */
+Route::group(['prefix' => 'home/{user}/bills'],function (){
+    Route::get('','BillsController@index')->name('bills.list')->middleware('auth');
+    Route::get('new','BillsController@create')->name('bill.new')->middleware('auth');
+    Route::post('new','BillsController@store')->name('bill.store')->middleware('auth');
+});
 
-Route::get('/home/{user}/bill/new','BillsController@create')->name('bill.new')->middleware('auth');
-Route::post('/home/{user}/bill/new','BillsController@store')->name('bill.store')->middleware('auth');
 Route::post('/bill/price','BillsController@price')->name('bill.price')->middleware('auth');
 
 
