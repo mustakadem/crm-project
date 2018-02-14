@@ -2,33 +2,45 @@
 
 @section('content')
     <div class="row">
-        <nav class="nav flex-column navbar-dark bg-dark pr-2 pb-5 pl-4 h-100">
-            <a class="nav-link " href="{{route('user.home')}}">Home</a>
-            <div class="dropright m-3 btn-group">
-                <span class="button-group-addon" ><img src="http://simpleicon.com/wp-content/uploads/account.svg" width="30" height="30" alt=""></span>
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Customers
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item btn " href="{{route('customer.home',array('user' =>  Auth::user()))}}">List</a>
-                    <a class="dropdown-item" href="{{route('customer.new',array('user' => Auth::user()))}}">Create</a>
+        <div class="col-md-2">
+            <nav class="nav flex-column navbar-dark bg-dark mt-5 position-fixed h-100">
+                <a class="nav-link  " href="{{route('user.home')}}">Home</a>
+                <div class="dropright m-3 btn-group">
+                    <span class="button-group-addon" ><img src="http://simpleicon.com/wp-content/uploads/account.svg" width="30" height="30" alt=""></span>
+                    <button class="btn dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Customers
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item btn " href="{{route('customer.home',array('user' =>  Auth::user()))}}">List</a>
+                        <a class="dropdown-item" href="{{route('customer.new',array('user' => Auth::user()))}}">Create</a>
+                    </div>
                 </div>
-            </div>
-            <div class="dropright m-3 btn-group">
-                <span class="button-group-addon " ><img src="https://www.peerby.com/img/archetypes/moving_boxes-big.png" width="30" height="30" alt=""></span>
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Products
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{{route('product.new',array('user' => Auth::user()))}}">Create</a>
+                <div class="dropright m-3 btn-group">
+                    <span class="button-group-addon " ><img src="https://www.peerby.com/img/archetypes/moving_boxes-big.png" width="30" height="30" alt=""></span>
+                    <button class="btn dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Products
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{route('product.new',array('user' => Auth::user()))}}">Create</a>
+                    </div>
                 </div>
-            </div>
-            <div class="dropdown-divider"></div>
-            <a class="nav-link " href="#">Statics</a>
-            <a class="nav-link disabled" href="#">Messages</a>
-        </nav>
-        <div class="container pt-3">
-            <div class="col-md-10">
+                <div class="dropright m-3 btn-group">
+                    <span class="button-group-addon" ><img src="https://image.flaticon.com/icons/png/512/522/522575.png" width="30" height="30" alt=""></span>
+                    <button class="btn dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Bills
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item btn " href="{{route('bills.list',array('user' =>  Auth::user()->username))}}">List</a>
+                        <a class="dropdown-item" href="{{route('bill.new',array('user' => Auth::user()->username))}}">Create</a>
+                    </div>
+                </div>
+                <div class="dropdown-divider"></div>
+                <a class="nav-link " href="#">Statics</a>
+                <a class="nav-link" href="#">Messages</a>
+            </nav>
+        </div>
+        <div class="container pt-3 w-75 mt-5">
+            <div class="col-md-12">
                 <h3 class="text-center bg-info">List Of Products</h3>
                 <div class="row m-2">
                     @forelse($products as $product)
@@ -44,7 +56,7 @@
                                     <h4 class="text-center">Product  ID#{{$product['id']}}</h4>
                                     <p class="card-text">Name: <br><strong>{{$product['name']}}</strong></p>
                                     <p class="card-text">Description: <br> <strong>{{$product['description']}}</strong></p>
-                                    <p class="card-text">Price: <br><strong>{{$product['price']}}</strong></p>
+                                    <p class="card-text">Price: <br><strong>{{$product['price']}}$</strong></p>
                                     <p class="card-text">Type Product: <br><strong>{{$product['type_product']}}</strong></p>
                                 </div>
 

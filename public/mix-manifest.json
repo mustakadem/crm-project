@@ -1,8 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/iziModal.min.js": "/js/iziModal.min.js",
     "/js/select.js": "/js/select.js",
+    "/js/modal.js": "/js/modal.js",
     "/js/ajaxCalls.js": "/js/ajaxCalls.js",
-    "/js/multi.min.js": "/js/multi.min.js"
+    "/css/iziModal.min.js": "/css/iziModal.min.js",
+    "/js/multi.min.js": "/js/multi.min.js",
+    "/js/iziModal.min.js": "/js/iziModal.min.js"
 }

@@ -6,8 +6,8 @@
 @section('content')
     <div class="row">
         <div class="col-md-2">
-            <nav class="nav flex-column navbar-dark bg-dark pr-5 pb-5 pl-4 position-relative h-100">
-                <a class="nav-link disabled" href="#">Home</a>
+            <nav class="nav flex-column navbar-dark bg-dark  mt-5 position-fixed h-100">
+                <a class="nav-link" href="{{route('user.home')}}">Home</a>
                 <div class="dropright m-3 btn-group">
                     <span class="button-group-addon" ><img src="http://simpleicon.com/wp-content/uploads/account.svg" width="30" height="30" alt=""></span>
                     <button class="btn dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -34,8 +34,7 @@
                         Bills
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item btn " href="{{route('customer.home',array('user' =>  Auth::user()))}}">List</a>
-                        <a class="dropdown-item" href="{{route('bill.new',array('user' => Auth::user()->username))}}">Create</a>
+                        <a class="dropdown-item btn " href="{{route('bill.new',array('user' =>  Auth::user()))}}">List</a>
                     </div>
                 </div>
                 <div class="dropdown-divider"></div>
@@ -43,10 +42,10 @@
                 <a class="nav-link" href="#">Messages</a>
             </nav>
         </div>
-        <div class="col-md-10">
-        <div class="container pt-5  ">
+        <div class="col-md-8">
+        <div class="container pt-5 mt-5 ">
+            <div class="w-50">
             <h3 class="text-center">Created New Bill</h3>
-                <div class="w-50">
                 <form action="{{route('bill.store',array('user' =>  Auth::user()))}}" method="post" >
                     {{ csrf_field() }}
                     <div class="row">

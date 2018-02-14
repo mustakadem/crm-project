@@ -8,8 +8,8 @@
     <div class="row">
         @if (!Auth::guest())
             <div class="col-md-2">
-                <nav class="nav flex-column navbar-dark bg-dark pr-5 pb-5 pl-4  h-100">
-                    <a class="nav-link " href="{{route('user.home')}}">Home</a>
+                <nav class="nav flex-column navbar-dark bg-dark mt-5 position-fixed h-100">
+                    <a class="nav-link" href="{{route('user.home')}}">Home</a>
                     <div class="dropright m-3 btn-group">
                         <span class="button-group-addon" ><img src="http://simpleicon.com/wp-content/uploads/account.svg" width="30" height="30" alt=""></span>
                         <button class="btn dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,19 +36,19 @@
                             Bills
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item btn " href="{{route('customer.home',array('user' =>  Auth::user()))}}">List</a>
+                            <a class="dropdown-item btn " href="{{route('bills.list',array('user' =>  Auth::user()->username))}}">List</a>
                             <a class="dropdown-item" href="{{route('bill.new',array('user' => Auth::user()->username))}}">Create</a>
                         </div>
                     </div>
                     <div class="dropdown-divider"></div>
-                    <a class="nav-link" href="{{route('user.edit',array('user' => Auth::user()))}}">Edit Data</a>
+                    <a class="nav-link " href="{{route('user.edit',array('user' => Auth::user()->username))}}">Edit Data</a>
                     <a class="nav-link " href="#">Statics</a>
                     <a class="nav-link" href="#">Messages</a>
                 </nav>
             </div>
         @endif
-    <div class="container ">
-    <div class="row pt-5">
+    <div class="container  ">
+    <div class="col-md-10 row pt-5 m-5">
         <div class="col-md-2  m-2">
             <img src="{{$user->avatar }}" alt="user image" width="150" height="150">
             <p>Nick: <strong>{{$user->username }}</strong></p>
