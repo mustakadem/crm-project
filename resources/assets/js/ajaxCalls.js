@@ -42,10 +42,11 @@ function validateRegister(dato,selector,selectorDiv) {
     // Comienza la llamada
 
     fetch("/register/validate/"+dato,configuration).then(function (response){
-        return response.json()
-    }).then(function (data) {
-        if (data.dato.length > 0) {
-            $(selectorDiv).addClass("invalid-feedback").text(data.dato);
+        return response.json();
+    }).then(function (data){
+        console.log(dato);
+        if (data[dato].length > 0) {
+            $(selectorDiv).addClass("invalid-feedback").text(data[dato]);
             $(selector).removeClass("is-valid");
             $(selector).addClass("is-invalid");
         }else {
@@ -65,7 +66,7 @@ function totalPrice() {
     axios.post('/bill/price', {
         products: $("#products").val()
     }).then(function (response) {
-        $("#price").val(response.data.total);
+        $("#price").val(response.data);
         $("#total").val(response.data.total);
     })
         .catch(function (error) {

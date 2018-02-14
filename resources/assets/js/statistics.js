@@ -24,13 +24,14 @@ $(function () {
          let barChart = new Chart(staticUser, {
              type: 'bar',
              data: {
-                 labels: ["Customers", "Product"],
+                 labels: ["Customers", "Product","Bills"],
                  datasets: [{
                      label: 'Create',
-                     data: [response.data.customers,response.data.products],
+                     data: [response.data.customers,response.data.products,response.data.bills],
                      backgroundColor: [
                          'rgba(255, 99, 132, 0.6)',
                          'rgba(54, 162, 235, 0.6)',
+                         'rgba(54, 162, 235, 0.6)'
                      ]
                  }]
              },
