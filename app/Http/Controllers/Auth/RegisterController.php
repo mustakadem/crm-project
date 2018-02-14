@@ -74,6 +74,7 @@ class RegisterController extends Controller
 
     public function validarFetch(Request $request,$dato){
 
+
         if ($dato == 'username') {
             $validator = Validator::make($request->all(), [
                 'username' => 'required|string|max:20|min:4|unique:users'

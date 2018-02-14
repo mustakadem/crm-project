@@ -14,17 +14,21 @@ class UsersTableSeeder extends Seeder
 
         $users= factory(App\User::class,10)->create();
 
-        $users->each(function (App\User $users){
+
+
+        $users->each(function (App\User $user){
             $customers = factory(App\Customer::class)
                ->times(15)
                ->create([
-                   'user_id' => $users->id,
+                   'user_id' => $user->id,
                ]);
             $products= factory(App\Product::class)
                 ->times(30)
                 ->create([
-                   'user_id' => $users->id,
+                   'user_id' => $user->id,
                 ]);
+
+
         });
     }
 }
