@@ -12,7 +12,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item btn " href="{{route('customer.home',array('username' =>  Auth::user()->username))}}">List</a>
-                        <a class="dropdown-item" href="{{route('customer.new',array('user' => Auth::user()))}}">Create</a>
+                        <a class="dropdown-item" href="{{route('customer.new',array('user' => Auth::user()->username))}}">Create</a>
                     </div>
                 </div>
                 <div class="dropright m-3 btn-group">

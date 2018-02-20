@@ -27,7 +27,7 @@ class CustomersController extends Controller
      * Metodo para mostrar el formulario para crear un customer
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(User $user){
+    public function create($username){
 
         return view('customers.create');
     }
