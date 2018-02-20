@@ -1,7 +1,7 @@
 
 <div id="modalRegister">
             <div class="card">
-                <div class="card-header">Register</div>
+                <div class="card-header text-center">Register</div>
                 <div class="card-body">
                     <form role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}
@@ -75,8 +75,10 @@
                                         type="password"
                                         class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                         name="password"
+                                        id ="passwordRegister"
                                         required
                                 >
+                                <div id="errorUserPassword"></div>
                                 @if ($errors->has('password'))
                                     <div class="invalid-feedback">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -93,7 +95,9 @@
                                         type="password"
                                         class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}"
                                         name="password_confirmation"
+                                        id="password_confirmation"
                                         required>
+                                <div id="errorUserPasswordConfirmation"></div>
                                 @if ($errors->has('password_confirmation'))
                                     <div class="invalid-feedback">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>

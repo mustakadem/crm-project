@@ -18,7 +18,7 @@ Route::get('/', function () {
 /**
  * Rutas de los controladores de la carpeta Auth
  */
-Route::post('/register/validate/{dato}','Auth\RegisterController@validarFetch');
+Route::post('/register/validate/{dato}','Auth\RegisterController@validateRegister');
 Auth::routes();
 
 /**

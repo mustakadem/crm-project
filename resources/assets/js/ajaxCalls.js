@@ -8,6 +8,14 @@ $(function () {
         validateRegister('email',"#userEmail","#errorUserEmail");
     });
 
+    $("#passwordRegister").on("change",function () {
+        validateRegister('password',"#passwordRegister","#errorUserPassword");
+    });
+
+    $("#password_confirmation").on("change",function () {
+        validateRegister('password_confirmation',"#password_confirmation","#errorUserPasswordConfirmation");
+    });
+
      $("#products").on("change",function () {
             totalPrice();
      });
@@ -15,8 +23,6 @@ $(function () {
     $("#discount").on("change",function () {
             discountPrice();
     })
-
-
 });
 
 

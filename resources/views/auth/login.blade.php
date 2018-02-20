@@ -1,6 +1,6 @@
 <div id="modalLogin">
             <div class="card">
-                <div class="card-header">Login</div>
+                <div class="card-header text-center">Login</div>
                 <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
