@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/statistics.js": "/js/statistics.js",
     "/js/select.js": "/js/select.js",
     "/js/modal.js": "/js/modal.js",
     "/js/ajaxCalls.js": "/js/ajaxCalls.js",

@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 45);
+/******/ 	return __webpack_require__(__webpack_require__.s = 48);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 45:
+/***/ 48:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(46);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
 
-/***/ 46:
+/***/ 49:
 /***/ (function(module, exports) {
 
 $(function () {
@@ -100,11 +100,11 @@ $(function () {
         var barChart = new Chart(staticUser, {
             type: 'bar',
             data: {
-                labels: ["Customers", "Product"],
+                labels: ["Customers", "Product", "Bills", "Sales $"],
                 datasets: [{
-                    label: 'Create',
-                    data: [response.data.customers, response.data.products],
-                    backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)']
+                    label: 'Total',
+                    data: [response.data.customers, response.data.products, response.data.bills, response.data.totalSales],
+                    backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(34, 153, 84 , 0.6)', 'rgba(26, 82, 118, 0.6)']
                 }]
             },
             option: chartOptions

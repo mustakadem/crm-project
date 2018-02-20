@@ -12,19 +12,24 @@ class StatisticsController extends Controller
     public function count(){
 
         $username=$_GET['name'];
+
         $user= User::where('username',$username)->first();
 
 
-        $countCustomers = DB::table('customers')->where('user_id',$user->id)->get()->count();
+        $countCustomers = $user->customers()->get()->count();
 
-        $countProduct=DB::table('products')->where('user_id',$user->id)->count();
+        $countProduct=$user->products()->get()->count();
 
-        $countBills = Bills::where('user_id',$user->id)->count();
+        $countBills = $user->bills()->get()->count();
+
+        $totalSales= $user->bills()->get()->sum('total');
+
 
         return response()->json([
             'customers' => $countCustomers  ,
             'products' => $countProduct,
-            'bills' => $countBills
+            'bills' => $countBills,
+            'totalSales' => $totalSales
         ]);
     }
 }

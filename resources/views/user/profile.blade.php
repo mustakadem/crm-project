@@ -1,8 +1,5 @@
 @extends('layouts.app')
 
-@section('style')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-@endsection
 
 @section('content')
     <div class="row">
@@ -77,5 +74,6 @@
 @endsection
 
 @push('js')
-    <script src="{{asset('js/statistics.js')}}" defer></script>
+    <script src="{{asset('js/chart.min.js')}}"></script>
+    <script src="{{asset('js/statistics.js')}}" ></script>
 @endpush
