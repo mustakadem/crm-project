@@ -22,6 +22,7 @@ class CreateBillsTable extends Migration
             $table->integer('discount')->nullable();
             $table->integer('total');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('customer_id')->references('id')->on('customers');

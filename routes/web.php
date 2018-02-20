@@ -34,9 +34,10 @@ Route::put('/home/{user}/edit','UserController@update')->name('user.update')->mi
  * Rutas del Controlador Customer
  */
 Route::group(['prefix' => 'home/{user}/customers'],function (){
-    Route::get('', 'CustomersController@index')->name('customer.home')->middleware('auth');
+    Route::get('list', 'CustomersController@index')->name('customer.home')->middleware('auth');
     Route::get('new','CustomersController@create')->name('customer.new')->middleware('auth');
     Route::post('new','CustomersController@store')->name('customer.store')->middleware('auth');
+    Route::delete('','CustomersController@destroy')->name('customer.delete')->middleware('auth');
 });
 
 
@@ -44,9 +45,10 @@ Route::group(['prefix' => 'home/{user}/customers'],function (){
  * Rutas del Controlador Product
  */
 Route::group(['prefix' => 'home/{user}/products'],function (){
-    Route::get('','ProductController@index')->name('product.list')->middleware('auth');
+    Route::get('list','ProductController@index')->name('product.list')->middleware('auth');
     Route::get('new','ProductController@create')->name('product.new')->middleware('auth');
     Route::post('new','ProductController@store')->name('product.store')->middleware('auth');
+    Route::delete('','ProductController@destroy')->name('product.delete')->middleware('auth');
 });
 
 

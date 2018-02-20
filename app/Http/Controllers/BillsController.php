@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bills;
 use App\Customer;
 use App\product;
 use App\User;
@@ -54,6 +55,17 @@ class BillsController extends Controller
         return redirect('/home');
 
 
+    }
+
+    public function destroy($id){
+
+        Bills::where('id',$id)->delete();
+
+        $user = Auth::user();
+
+        return view('bills.list',[
+            'bills' => $user ->bills()->get()
+        ]);
     }
 
     public function price(Request $request){

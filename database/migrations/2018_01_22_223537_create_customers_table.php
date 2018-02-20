@@ -29,6 +29,7 @@ class CreateCustomersTable extends Migration
             $table->string('job_title')->nullable();
             $table->text('notes')->nullable(  );
             $table->timestamps();
+            $table->softDeletes();
 
 
             $table->foreign('user_id')->references('id')->on('users');
