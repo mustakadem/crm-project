@@ -16,8 +16,6 @@
 </head>
 <body>
 <div id="app">
-
-
     <div class="container">@yield('menu')</div>
     @yield('content')
 </div>

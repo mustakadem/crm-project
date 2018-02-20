@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-2">
-            <nav class="nav flex-column navbar-dark bg-dark mt-5 position-fixed h-100">
+            <nav class="nav flex-column navbar-dark bg-dark pt-5 position-fixed h-100">
                 <a class="nav-link disabled" href="#">Home</a>
                 <div class="dropright m-3 btn-group">
                     <span class="button-group-addon" ><img src="http://simpleicon.com/wp-content/uploads/account.svg" width="30" height="30" alt=""></span>
@@ -11,7 +11,7 @@
                         Customers
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item btn " href="{{route('customer.home',array('user' =>  Auth::user()))}}">List</a>
+                        <a class="dropdown-item btn " href="{{route('customer.home',array('username' =>  Auth::user()->username))}}">List</a>
                         <a class="dropdown-item" href="{{route('customer.new',array('user' => Auth::user()))}}">Create</a>
                     </div>
                 </div>

@@ -72,7 +72,7 @@ function totalPrice() {
     axios.post('/bill/price', {
         products: $("#products").val()
     }).then(function (response) {
-        $("#price").val(response.data);
+        $("#price").val(response.data.total);
         $("#total").val(response.data.total);
     })
         .catch(function (error) {

@@ -8,7 +8,7 @@
     <div class="row">
         @if (!Auth::guest())
             <div class="col-md-2">
-                <nav class="nav flex-column navbar-dark bg-dark mt-5 position-fixed h-100">
+                <nav class="nav flex-column navbar-dark bg-dark pt-5 position-fixed h-100">
                     <a class="nav-link" href="{{route('user.home')}}">Home</a>
                     <div class="dropright m-3 btn-group">
                         <span class="button-group-addon" ><img src="http://simpleicon.com/wp-content/uploads/account.svg" width="30" height="30" alt=""></span>
