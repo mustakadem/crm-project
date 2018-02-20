@@ -6,6 +6,7 @@ use App\Http\Requests\CreateProductRequest;
 use App\product;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -100,7 +101,7 @@ class ProductController extends Controller
 
         $user = Auth::user();
 
-        return view('products.list',[
+        return view('product.list',[
             'products' => $user ->products()->get()
         ]);
     }
