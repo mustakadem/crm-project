@@ -1,50 +1,17 @@
-@extends('layouts.app')
 
-@section('style')
-    <link rel="stylesheet" href="{{asset('css/multi.min.css')}}">
-@endsection
-@section('content')
-    <div class="row">
-        <div class="col-md-2">
-            <nav class="nav flex-column navbar-dark bg-dark  pt-5 position-fixed h-100">
-                <a class="nav-link" href="{{route('user.home')}}">Home</a>
-                <div class="dropright m-3 btn-group">
-                    <span class="button-group-addon" ><img src="http://simpleicon.com/wp-content/uploads/account.svg" width="30" height="30" alt=""></span>
-                    <button class="btn dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Customers
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item btn " href="{{route('customer.home',array('user' =>  Auth::user()))}}">List</a>
-                        <a class="dropdown-item" href="{{route('customer.new',array('user' => Auth::user()))}}">Create</a>
-                    </div>
-                </div>
-                <div class="dropright m-3 btn-group">
-                    <span class="button-group-addon " ><img src="https://www.peerby.com/img/archetypes/moving_boxes-big.png" width="30" height="30" alt=""></span>
-                    <button class="btn dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Products
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{route('product.list',array('user' => Auth::user()))}}">List</a>
-                        <a class="dropdown-item" href="{{route('product.new',array('user' => Auth::user()))}}">Create</a>
-                    </div>
-                </div>
-                <div class="dropright m-3 btn-group">
-                    <span class="button-group-addon" ><img src="https://image.flaticon.com/icons/png/512/522/522575.png" width="30" height="30" alt=""></span>
-                    <button class="btn dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Bills
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item btn " href="{{route('bill.new',array('user' =>  Auth::user()))}}">List</a>
-                    </div>
-                </div>
-                <div class="dropdown-divider"></div>
-                <a class="nav-link " href="#">Statics</a>
-                <a class="nav-link" href="#">Messages</a>
-            </nav>
-        </div>
-        <div class="col-md-8">
-        <div class="container pt-5 mt-5 ">
-            <div class="w-50">
+<div class="container">
+    <ul class="nav nav-tabs mb-5">
+        <li class="nav-item">
+            <a class="nav-link " id="homeBill" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " id="listBill" href="#">List Bills</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" id="newBill" href="#">Create New Bill</a>
+        </li>
+    </ul>
+            <div class="w-50 align-content-center">
             <h3 class="text-center">Created New Bill</h3>
                 <form action="{{route('bill.store',array('user' =>  Auth::user()))}}" method="post" >
                     {{ csrf_field() }}
@@ -110,13 +77,4 @@
                 </form>
                 </div>
         </div>
-    </div>
-    </div>
-@endsection
 
-@push('js')
-             <script src="{{asset('js/ajaxCalls.js')}}"></script>
-            <script src="{{asset('js/multi.min.js')}}"></script>
-            <script src="{{asset('js/select.js')}}"></script>
-
-@endpush

@@ -16,13 +16,11 @@
 </head>
 <body>
 <div id="app">
-    <div class="container">@yield('menu')</div>
     @yield('content')
 </div>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
-<script src="{{asset('js/iziModal.min.js')}}"></script>
 @stack('js')
 </body>
 </html>

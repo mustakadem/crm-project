@@ -7,21 +7,32 @@ use App\product;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class ProductController extends Controller
 {
+
+
+
+    public function panel(){
+        return view::make('product.panel')->render();
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @param User $user
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index($username)
     {
+        $user = User::where('username',$username)->first();
         $products= $user->products()->get();
-        return view('product.list',[
-            'products' => $products
-        ]);
+
+        return view::make('product.list',array(
+                'products' => $products
+            ))->render();
     }
 
     /**
@@ -31,7 +42,7 @@ class ProductController extends Controller
      */
     public function create(Product $product)
     {
-        return view('product.create');
+        return view::make('product.create')->render();
     }
 
     /**
@@ -58,8 +69,8 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int $id
+     * @return void
      */
     public function show($id)
     {
@@ -99,10 +110,7 @@ class ProductController extends Controller
 
         Product::where('id',$id)->delete();
 
-        $user = Auth::user();
 
-        return view('product.list',[
-            'products' => $user ->products()->get()
-        ]);
+        return redirect('/home');
     }
 }

@@ -7,19 +7,27 @@ use App\Customer;
 use App\product;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class BillsController extends Controller
 {
 
+    /**
+     * @return mixed
+     */
+    public function panel(){
+        return view::make('bills.panel')->render();
+    }
 
     public function index( $username){
+
         $user = User::where('username' ,$username)->first();
 
         $bills= $user->bills()->get();
 
-        return view('bills.list',[
-            'bills' => $bills
-        ]);
+        return view::make('bills.list',array(
+                'bills' => $bills
+            ))->render();
     }
 
 
@@ -27,10 +35,11 @@ class BillsController extends Controller
         $user=User::where('username',$username)->first();
         $customers= Customer::where('user_id',$user->id)->get();
         $products= Product::where('user_id',$user->id)->get();
-        return view("bills.create",[
-            'customers' => $customers,
-            'products' => $products
-        ]);
+
+        return view::make("bills.create",array(
+                'customers' => $customers,
+                'products' => $products
+        ))->render();
     }
 
 

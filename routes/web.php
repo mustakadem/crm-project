@@ -52,17 +52,19 @@ Route::group(['prefix' => 'home/{user}/products'],function (){
     Route::delete('','ProductController@destroy')->name('product.delete')->middleware('auth');
 });
 
+Route::get('product/panel','ProductController@panel');
 
 
 /**
  * Bills Controller
  */
 Route::group(['prefix' => 'home/{user}/bills'],function (){
-    Route::get('','BillsController@index')->name('bills.list')->middleware('auth');
+    Route::get('list','BillsController@index')->name('bills.list')->middleware('auth');
     Route::get('new','BillsController@create')->name('bill.new')->middleware('auth');
     Route::post('new','BillsController@store')->name('bill.store')->middleware('auth');
 });
 
+Route::get('bill/panel','BillsController@panel');
 Route::post('/bill/price','BillsController@price')->name('bill.price')->middleware('auth');
 
 
