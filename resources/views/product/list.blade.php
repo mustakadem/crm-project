@@ -40,7 +40,7 @@
             </nav>
         </div>
         <div class="container pt-3 w-75 mt-5">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <h3 class="text-center bg-info">List Of Products</h3>
                 <div class="row m-2">
                     @forelse($products as $product)

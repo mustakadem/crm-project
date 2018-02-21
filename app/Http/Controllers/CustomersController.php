@@ -8,19 +8,27 @@ use App\Customer;
 use App\Http\Requests\CreateCustomersRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
+
 
 class CustomersController extends Controller
 {
+
+    public function panel(){
+        return view::make('customers.panel')->render();
+    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index($username){
+
         $user = User::where('username',$username)->first();
         $customers = $user->customers()->get();
-        return view('customers.list',[
-           'customers' => $customers
-        ]);
+
+        return view::make('customers.list',array(
+            'customers' => $customers
+            ))->render();
     }
 
     /**
@@ -55,11 +63,6 @@ class CustomersController extends Controller
     public function destroy($id){
 
         Customer::where('id',$id)->delete();
-
-        $user = Auth::user();
-
-       return view('customers.list',[
-           'customers' => $user ->customers()->get()
-       ]);
+       return redirect('/home');
     }
 }

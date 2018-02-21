@@ -40,6 +40,7 @@ Route::group(['prefix' => 'home/{user}/customers'],function (){
     Route::delete('','CustomersController@destroy')->name('customer.delete')->middleware('auth');
 });
 
+Route::get('customers/panel','CustomersController@panel');
 
 /**
  * Rutas del Controlador Product

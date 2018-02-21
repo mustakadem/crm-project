@@ -5,7 +5,11 @@
     <div class="row">
         @if (!Auth::guest())
             <div class="col-md-2">
-                <nav class="nav flex-column navbar-dark bg-dark pt-5 position-fixed h-100">
+                <nav class="nav flex-column navbar-dark bg-dark pt-1 position-fixed h-100">
+                    <div class="text-center">
+                        <a href="{{route('user.profile',array('user'=> Auth::user()->username))}}" class="nav-link"><img src="{{Auth::user()->avatar}}" alt="user image" class="rounded-circle">
+                            <p class="bg-info">hellow!! <strong>{{Auth::user()->name}}</strong></p></a>
+                    </div>
                     <a class="nav-link" href="{{route('user.home')}}">Home</a>
                     <div class="dropright m-3 btn-group">
                         <span class="button-group-addon" ><img src="http://simpleicon.com/wp-content/uploads/account.svg" width="30" height="30" alt=""></span>
@@ -41,6 +45,18 @@
                     <a class="nav-link " href="{{route('user.edit',array('user' => Auth::user()->username))}}">Edit Data</a>
                     <a class="nav-link " href="#">Statics</a>
                     <a class="nav-link" href="#">Messages</a>
+                    <ul class="menu vertical list-unstyled">
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();" class="nav-link">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
                 </nav>
             </div>
         @endif

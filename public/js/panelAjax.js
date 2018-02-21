@@ -60,60 +60,52 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 54);
+/******/ 	return __webpack_require__(__webpack_require__.s = 48);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 54:
+/***/ 48:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(55);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
 
-/***/ 55:
+/***/ 49:
 /***/ (function(module, exports) {
 
 $(function () {
+    username = $("#username").val();
 
-    var username = $("#username").val();
-    var chartOptions = {
-        scales: {
-            yAxes: [{
-                barPercentage: 0.5
-            }]
-        },
-        elements: {
-            rectangle: {
-                borderSkipped: 'left'
-            }
-        }
-    };
+    $("#buttonCustomer").on("click", function (event) {
+        event.preventDefault();
 
-    axios.get('/statistics?name=' + username, {}).then(function (response) {
-        var staticUser = $("#staticUser");
+        displayData('customers/panel');
+    });
 
-        //Se guarda en la variable la configuracion de la llamada
+    $("#listCustomer").on("click", function (event) {
+        event.preventDefault();
 
-        var barChart = new Chart(staticUser, {
-            type: 'bar',
-            data: {
-                labels: ["Customers", "Product", "Bills", "Sales $"],
-                datasets: [{
-                    label: 'Total',
-                    data: [response.data.customers, response.data.products, response.data.bills, response.data.totalSales],
-                    backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(34, 153, 84 , 0.6)', 'rgba(26, 82, 118, 0.6)']
-                }]
-            },
-            option: chartOptions
-        });
+        displayData('home/' + username + '/customers/list');
+    });
+
+    $("#newCustomer").on("click", function (event) {
+        event.preventDefault();
+
+        displayData('home/' + username + '/customers/new');
+    });
+});
+
+function displayData(ruta) {
+    axios.get(ruta, {}).then(function (response) {
+        $("#panel").html(response.data);
     }).catch(function (error) {
         console.log(error);
         alert("EERRRORR");
     });
-});
+}
 
 /***/ })
 

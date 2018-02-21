@@ -3,6 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/js/statistics.js": "/js/statistics.js",
     "/js/select.js": "/js/select.js",
+    "/js/panelAjax.js": "/js/panelAjax.js",
     "/js/modal.js": "/js/modal.js",
     "/js/ajaxCalls.js": "/js/ajaxCalls.js",
     "/css/iziModal.min.css": "/css/iziModal.min.css",
