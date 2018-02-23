@@ -26,3 +26,8 @@ mix.babel('node_modules/multi.js/dist/multi.min.js','public/js/multi.min.js')
 
 mix.babel('node_modules/chart.js/dist/Chart.bundle.min.js','public/js/chart.min.js')
     .js('resources/assets/js/statistics.js','public/js');
+
+
+mix.babel('node_modules/fullpage.js/dist/jquery.fullpage.min.js','public/js/jquery.fullpage.min.js')
+    .styles(['node_modules/fullpage.js/dist/jquery.fullpage.min.css'],'public/css/jquery.fullpage.min.css')
+    .js('resources/assets/js/scrollPage.js','public/js');

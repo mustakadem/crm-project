@@ -3,19 +3,47 @@
 namespace App\Http\Controllers;
 use App\Bills;
 use App\User;
+use DateTime;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\Http\Requests\CreateCustomersRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
-
+use Carbon\Carbon;
 
 class CustomersController extends Controller
 {
 
     public function panel(){
-        return view::make('customers.panel')->render();
+
+        $now=Carbon::now();
+        $fechaCompracion=$now->subWeek();
+
+        $user = Auth::user();
+        $totalCustomers = $user->customers()->get();
+
+        $customersOfTheWeek = array();
+        $customersMorePurchases = array();
+
+
+        foreach ($totalCustomers as $customer){
+
+            $fecha2 = $customer['created_at'];
+            $difference = $now->diffForHumans($fecha2);
+
+            $totalPrice = $customer->bills()->get()->max('total');
+
+
+            if (strcmp ( $difference, "1 week before" ) === 0){
+            array_push($customersOfTheWeek,$customer);
+            }
+        }
+
+        return view::make('customers.panel',array(
+            'customersOfTheWeek' => $customersOfTheWeek
+        ))->render();
     }
 
     /**

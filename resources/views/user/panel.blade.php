@@ -13,7 +13,7 @@
                 </div>
                 <a class="nav-link disabled" href="#">Home</a>
                 <div class="dropright m-3 btn-group">
-                    <span class="button-group-addon" ><img src="http://simpleicon.com/wp-content/uploads/account.svg" width="30" height="30" alt=""></span>
+                    <span class="button-group-addon" ><img src="http://www.onsiteinspecting.com/wp-content/uploads/2016/02/male-user.png" width="30" height="30" alt=""></span>
                     <button class="btn ml-2" type="button" id="buttonCustomer"  aria-haspopup="true" aria-expanded="false">
                         Customers
                     </button>
@@ -48,17 +48,17 @@
             </nav>
         </div>
         <div id="panel"  class="col-md-10 pt-5">
-
+            <div>
+                <canvas id="staticUser" width="100" height="30"></canvas>
+            </div>
         </div>
 
     </div>
 @endsection
 
 @push('js')
-    <script src="{{asset('js/panelAjax.js')}}"></script>
-    <script src="{{asset('js/ajaxCalls.js')}}"></script>
-    <script src="{{asset('js/multi.min.js')}}"></script>
-    <script src="{{asset('js/select.js')}}"></script>
-
-
+    <script src="{{asset('js/panelAjax.js')}}" ></script>
+    <script src="{{asset('js/ajaxCalls.js')}}" ></script>
+    <script src="{{asset('js/multi.min.js')}}" ></script>
+    <script src="{{asset('js/select.js')}}" ></script>
 @endpush

@@ -1,54 +1,58 @@
 @extends('layouts.app')
 @section('style')
     <link rel="stylesheet" href="{{asset('css/iziModal.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery.fullpage.min.css')}}">
 @endsection
 @section('content')
     <header>
-        <section class="  w-100 h-25 pt-5">
-            <img src="http://www.ekaenlinea.com/wp-content/uploads/2016/08/learning-e1447968809700.jpg" class="img-fluid h-25 w-100" alt="">
-        </section>
         <nav class="fixed-top bg-light pr-4">
             <ul class="d-flex flex-row navbar-nav p-1 justify-content-end ">
-                <li class="nav-item p-2 "><a href="{{ route('login') }}" class="nav-link login">Login</a></li>
-                <li class="nav-item p-2 "><a href="{{ route('register') }}" class="nav-link register">Register</a></li>
+                @if(Auth::check())
+                    <li class="nav-item p-2 "><a href="{{ route('raiz')}}" class="nav-link login">Home</a></li>
+                @else
+                    <li class="nav-item p-2 "><a href="{{ route('login') }}" class="nav-link login">Login</a></li>
+                    <li class="nav-item p-2 "><a href="{{ route('register') }}" class="nav-link register">Register</a></li>
+                 @endif
             </ul>
         </nav>
     </header>
 
 
-    <div class="container pt-5 ">
-      <section class="row ">
+    <div id="fullpage">
+        <section class="section">
+            <img src="http://www.ekaenlinea.com/wp-content/uploads/2016/08/learning-e1447968809700.jpg" class="img-fluid h-25 w-100" alt="">
+        </section>
+      <section class="section ">
+          <div class="slide">
           <div class="col-md-5">
               <img class="featurette-image img-fluid mx-auto w-75 h-100" src="https://cdn.onlinewebfonts.com/svg/img_21192.png" alt="">
           </div>
-          <div class="col-md-7">
-              <h2>ACCEDE DESDE DONDE QUIERAS</h2>
-              <p>Una forma sencilla y eficaz de llevar tu negocio en el bolsillo</p>
-          </div>
-      </section>
-
-        <hr class="featurette-divider bg-info">
-        <section class="row">
             <div class="col-md-7">
+                <h2>ACCEDE DESDE DONDE QUIERAS</h2>
+                <p>Una forma sencilla y eficaz de llevar tu negocio en el bolsillo</p>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="col-md-5">
                 <h2>CREA TU RED</h2>
                 <p>Gestiona tus clientes y contactos de manera dinamica</p>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-7">
                 <img class="featurette-image img-fluid mx-auto w-75 h-100" src="http://www.westside-tennis.com/wp-content/uploads/2015/01/4-user-icon.png" alt="">
             </div>
+          </div>
+          <div class="slide">
+              <div class="col-md-5">
+                  <img class="featurette-image img-fluid mx-auto w-75 h-100" src="http://freevector.co/wp-content/uploads/2014/06/46998-bars-graphic-with-ascendant-arrow.png" alt="">
+              </div>
+              <div class="col-md-7">
+                  <h2>AUMENTA TUS INGRESOS</h2>
+                  <p>Gestiona tus facturas y visualiza estadisticas personalizadas</p>
+              </div>
+          </div>
         </section>
-        <hr class="featurette-divider bg-info">
-        <section class="row">
-            <div class="col-md-5">
-                <img class="featurette-image img-fluid mx-auto w-75 h-100" src="http://freevector.co/wp-content/uploads/2014/06/46998-bars-graphic-with-ascendant-arrow.png" alt="">
-            </div>
-            <div class="col-md-7">
-                <h2>AUMENTA TUS INGRESOS</h2>
-                <p>Gestiona tus facturas y visualiza estadisticas personalizadas</p>
-            </div>
-        </section>
-    </div>
-    <footer >
+
+    <footer class="section fp-auto-height" >
         <section  class="bg-dark h-100 w-100 row" >
             <div class="col-md-2">
             <ul class="d-flex  navbar-nav p-1 justify-content-between p-5">
@@ -84,6 +88,7 @@
             </div>
         </section>
     </footer>
+    </div>
         @include('auth.login')
         @include('auth.register')
 @endsection
@@ -92,4 +97,6 @@
     <script src="{{asset('js/iziModal.min.js')}}"></script>
     <script src="{{asset('js/modal.js')}}"></script>
     <script src="{{asset('js/ajaxCalls.js')}}"></script>
+    <script src="{{asset('js/jquery.fullpage.min.js')}}"></script>
+    <script src="{{asset('js/scrollPage.js')}}"></script>
 @endpush
