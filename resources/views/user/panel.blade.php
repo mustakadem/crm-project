@@ -57,8 +57,6 @@
 @endsection
 
 @push('js')
-    <script src="{{asset('js/panelAjax.js')}}" ></script>
-    <script src="{{asset('js/ajaxCalls.js')}}" ></script>
     <script src="{{asset('js/multi.min.js')}}" ></script>
-    <script src="{{asset('js/select.js')}}" ></script>
+    <script src="{{asset('js/panel.js')}}" ></script>
 @endpush

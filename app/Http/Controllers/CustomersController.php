@@ -16,13 +16,17 @@ use Carbon\Carbon;
 class CustomersController extends Controller
 {
 
+    /**
+     * @return mixed
+     */
     public function panel(){
 
         $now=Carbon::now();
-        $fechaCompracion=$now->subWeek();
+
 
         $user = Auth::user();
         $totalCustomers = $user->customers()->get();
+        $media= DB::table('bills')->avg('total');
 
         $customersOfTheWeek = array();
         $customersMorePurchases = array();
@@ -31,18 +35,22 @@ class CustomersController extends Controller
         foreach ($totalCustomers as $customer){
 
             $fecha2 = $customer['created_at'];
-            $difference = $now->diffForHumans($fecha2);
+            $difference = $now->diffInWeeks($fecha2);
 
             $totalPrice = $customer->bills()->get()->max('total');
 
+            if ($totalPrice >= $media){
+                array_push($customersMorePurchases,$customer);
+            };
 
-            if (strcmp ( $difference, "1 week before" ) === 0){
+            if ($difference <= 1){
             array_push($customersOfTheWeek,$customer);
-            }
+            };
         }
 
         return view::make('customers.panel',array(
-            'customersOfTheWeek' => $customersOfTheWeek
+            'customersOfTheWeek' => $customersOfTheWeek,
+            'customersMorePurchases' => $customersMorePurchases
         ))->render();
     }
 

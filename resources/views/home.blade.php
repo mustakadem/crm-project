@@ -2,16 +2,21 @@
 @section('style')
     <link rel="stylesheet" href="{{asset('css/iziModal.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/jquery.fullpage.min.css')}}">
+    <style>
+        .login:hover, .register:hover{
+            border-top: 2px solid white;
+        }
+    </style>
 @endsection
 @section('content')
     <header>
-        <nav class="fixed-top bg-light pr-4">
+        <nav class="fixed-top pr-4" id="nav">
             <ul class="d-flex flex-row navbar-nav p-1 justify-content-end ">
                 @if(Auth::check())
-                    <li class="nav-item p-2 "><a href="{{ route('raiz')}}" class="nav-link login">Home</a></li>
+                    <li class="nav-item p-2 bg-white "><a href="{{ route('/')}}" class="nav-link login">Home</a></li>
                 @else
-                    <li class="nav-item p-2 "><a href="{{ route('login') }}" class="nav-link login">Login</a></li>
-                    <li class="nav-item p-2 "><a href="{{ route('register') }}" class="nav-link register">Register</a></li>
+                    <li class="nav-item p-2 h4 "><a href="{{ route('login') }}" class="nav-link login text-white">Login</a></li>
+                    <li class="nav-item p-2 h4 "><a href="{{ route('register') }}" class="nav-link register text-white">Register</a></li>
                  @endif
             </ul>
         </nav>
@@ -20,7 +25,6 @@
 
     <div id="fullpage">
         <section class="section">
-            <img src="http://www.ekaenlinea.com/wp-content/uploads/2016/08/learning-e1447968809700.jpg" class="img-fluid h-25 w-100" alt="">
         </section>
       <section class="section ">
           <div class="slide">
@@ -53,7 +57,7 @@
         </section>
 
     <footer class="section fp-auto-height" >
-        <section  class="bg-dark h-100 w-100 row" >
+        <section  class="row" >
             <div class="col-md-2">
             <ul class="d-flex  navbar-nav p-1 justify-content-between p-5">
                 <li class="p-2">Hola</li>
@@ -82,7 +86,8 @@
             </div>
             </div>
         </section>
-        <section class="row h-25 w-100 bg-info">
+        <hr class="featurette-divider bg-info">
+        <section class="row">
             <div class="col-md-12">
                 <p class="text-center">Copiright <strong>Multaso</strong></p>
             </div>

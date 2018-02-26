@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('home');
-})->name('raiz');
+})->name('/');
 
 /**
  * Rutas de los controladores de la carpeta Auth

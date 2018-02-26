@@ -16,13 +16,6 @@ $(function () {
         validateRegister('password_confirmation',"#password_confirmation","#errorUserPasswordConfirmation");
     });
 
-     $("#products").on("change",function () {
-            totalPrice();
-     });
-
-    $("#discount").on("change",function () {
-            discountPrice();
-    })
 });
 
 
@@ -67,22 +60,3 @@ function validateRegister(dato,selector,selectorDiv) {
     });
 }
 
-function totalPrice() {
-
-    axios.post('/bill/price', {
-        products: $("#products").val()
-    }).then(function (response) {
-        $("#price").val(response.data.total);
-        $("#total").val(response.data.total);
-    })
-        .catch(function (error) {
-            console.log(error);
-            alert("EERRRORR")
-        });
-}
-
-function discountPrice() {
-   let  total= $("#price").val() - $("#discount").val();
-
-   $("#total").val(total);
-}

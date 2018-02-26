@@ -60,24 +60,31 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 56);
+/******/ 	return __webpack_require__(__webpack_require__.s = 50);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 56:
+/***/ 50:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(57);
+module.exports = __webpack_require__(51);
 
 
 /***/ }),
 
-/***/ 57:
+/***/ 51:
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-    $('#fullpage').fullpage();
+    $('#fullpage').fullpage({
+        scrollingSpeed: 1000,
+        loopTop: true,
+        loopBottom: true,
+        navigation: true,
+        fixedElements: '#nav',
+        sectionsColor: ['#11c392', '#7BAABE', '#543e70', '#99c3bf']
+    });
 });
 
 /***/ })

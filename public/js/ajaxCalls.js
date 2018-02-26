@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 46);
+/******/ 	return __webpack_require__(__webpack_require__.s = 44);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 46:
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(47);
+module.exports = __webpack_require__(45);
 
 
 /***/ }),
 
-/***/ 47:
+/***/ 45:
 /***/ (function(module, exports) {
 
 
@@ -92,14 +92,6 @@ $(function () {
 
     $("#password_confirmation").on("change", function () {
         validateRegister('password_confirmation', "#password_confirmation", "#errorUserPasswordConfirmation");
-    });
-
-    $("#products").on("change", function () {
-        totalPrice();
-    });
-
-    $("#discount").on("change", function () {
-        discountPrice();
     });
 });
 
@@ -142,25 +134,6 @@ function validateRegister(dato, selector, selectorDiv) {
         console.log(err);
         alert("EERRROOR");
     });
-}
-
-function totalPrice() {
-
-    axios.post('/bill/price', {
-        products: $("#products").val()
-    }).then(function (response) {
-        $("#price").val(response.data.total);
-        $("#total").val(response.data.total);
-    }).catch(function (error) {
-        console.log(error);
-        alert("EERRRORR");
-    });
-}
-
-function discountPrice() {
-    var total = $("#price").val() - $("#discount").val();
-
-    $("#total").val(total);
 }
 
 /***/ })

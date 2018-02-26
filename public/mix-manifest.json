@@ -2,9 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/statistics.js": "/js/statistics.js",
-    "/js/select.js": "/js/select.js",
     "/js/scrollPage.js": "/js/scrollPage.js",
-    "/js/panelAjax.js": "/js/panelAjax.js",
     "/js/modal.js": "/js/modal.js",
     "/js/ajaxCalls.js": "/js/ajaxCalls.js",
     "/css/iziModal.min.css": "/css/iziModal.min.css",
@@ -13,5 +11,6 @@
     "/css/multi.min.css": "/css/multi.min.css",
     "/js/chart.min.js": "/js/chart.min.js",
     "/js/jquery.fullpage.min.js": "/js/jquery.fullpage.min.js",
-    "/css/jquery.fullpage.min.css": "/css/jquery.fullpage.min.css"
+    "/css/jquery.fullpage.min.css": "/css/jquery.fullpage.min.css",
+    "/js/panel.js": "/js/panel.js"
 }
