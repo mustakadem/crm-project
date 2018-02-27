@@ -33,12 +33,12 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $name
+     * @param $username
      * @return void
      */
-    public function show($name)
+    public function show($username)
     {
-        $user= User::where('username', $name)->first();
+        $user= User::where('username', $username)->first();
 
 
         return view('user.profile')->with('user',$user);

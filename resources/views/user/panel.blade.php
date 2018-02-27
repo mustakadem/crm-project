@@ -7,7 +7,7 @@
         <div class="col-md-2">
             <nav class="nav flex-column navbar-dark bg-dark pt-1 position-fixed h-100">
                 <div class="text-center">
-                    <a href="{{route('user.profile',array('user'=> Auth::user()->username))}}" class="nav-link"><img src="{{Auth::user()->avatar}}" alt="user image" class="rounded-circle">
+                    <a href="#" id="buttonProfile" class="nav-link"><img src="{{Auth::user()->avatar}}" alt="user image" class="rounded-circle">
                     <p class="bg-info">hellow!! <strong>{{Auth::user()->name}}</strong></p></a>
                     <input type="hidden" id="username" value="{{Auth::user()->username}}">
                 </div>
@@ -48,11 +48,7 @@
             </nav>
         </div>
         <div id="panel"  class="col-md-10 pt-5">
-            <div>
-                <canvas id="staticUser" width="100" height="30"></canvas>
-            </div>
         </div>
-
     </div>
 @endsection
 

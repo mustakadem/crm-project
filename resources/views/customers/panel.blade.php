@@ -53,10 +53,10 @@
                         </div>
 
                         <!-- Left and right controls -->
-                        <a class="carousel-control-prev" href="#customersOfTheWeek" data-slide="prev">
+                        <a class="carousel-control-prev bg-dark" href="#customersOfTheWeek" data-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
                         </a>
-                        <a class="carousel-control-next" href="#customersOfTheWeek" data-slide="next">
+                        <a class="carousel-control-next bg-dark" href="#customersOfTheWeek" data-slide="next">
                             <span class="carousel-control-next-icon"></span>
                         </a>
 
@@ -104,10 +104,10 @@
                             </div>
 
                             <!-- Left and right controls -->
-                            <a class="carousel-control-prev" href="#customersMorePurchases" data-slide="prev">
+                            <a class="carousel-control-prev bg-dark" href="#customersMorePurchases" data-slide="prev">
                                 <span class="carousel-control-prev-icon"></span>
                             </a>
-                            <a class="carousel-control-next" href="#customersMorePurchases" data-slide="next">
+                            <a class="carousel-control-next bg-dark" href="#customersMorePurchases" data-slide="next">
                                 <span class="carousel-control-next-icon"></span>
                             </a>
 

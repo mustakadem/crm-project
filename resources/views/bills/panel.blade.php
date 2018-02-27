@@ -15,7 +15,7 @@
         <div class="col-md-5">
             <h5 class="text-center bg-info">Bill Created Last Month</h5>
             <div class="card card-cascade">
-                <div class="card-body">
+                <div class="card-body ">
                     <div id="demo" class="carousel slide" data-ride="carousel">
 
                         <!-- Indicators -->

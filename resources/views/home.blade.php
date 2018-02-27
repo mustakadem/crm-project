@@ -13,7 +13,7 @@
         <nav class="fixed-top pr-4" id="nav">
             <ul class="d-flex flex-row navbar-nav p-1 justify-content-end ">
                 @if(Auth::check())
-                    <li class="nav-item p-2 bg-white "><a href="{{ route('/')}}" class="nav-link login">Home</a></li>
+                    <li class="nav-item p-2 h4 "><a href="{{ route('/')}}" class="nav-link login text-white">Home</a></li>
                 @else
                     <li class="nav-item p-2 h4 "><a href="{{ route('login') }}" class="nav-link login text-white">Login</a></li>
                     <li class="nav-item p-2 h4 "><a href="{{ route('register') }}" class="nav-link register text-white">Register</a></li>
@@ -24,8 +24,25 @@
 
 
     <div id="fullpage">
-        <section class="section">
-        </section>
+        <div class="section">
+            <div class=" row m-5 d-flex justify-content-between">
+                <div class="w-50">
+                    <p><img src="https://www.ibiscomputer.com/images/CRMBanner.png" alt="" height="150" width="150">  <strong class="h3 text-white">CRM Proyect</strong></p>
+                    <p><strong class="text-white h5">El término wikinota 1​ (del hawaiano wiki, «rápido»)2​ alude al nombre que recibe un sitio web, cuyas páginas pueden ser editadas directamente desde el navegador, donde los mismos usuarios crean, modifican o eliminan contenidos que, generalmente, comparten. No tiene por qué ser necesariamente un sitio en la web, puesto que hay wikis instalables para uso en el escritorio de un computador personal o que pueden portarse en un llavero USB que lleven un entorno LAMP, como por ejemplo XAMPP.</strong></p>
+                </div>
+
+                <form action="" class=" d-flex flex-row-reverse">
+                <ul class="navbar-nav mr-5 ">
+                    <li class="m-3"><p class="h3 text-white">Quick Registration</p></li>
+                    <li class="m-3"><input type="text" placeholder="username" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
+                    <li class="m-3"><input type="text" placeholder="email" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
+                    <li class="m-3"><input type="text" placeholder="password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
+                    <li class="m-3"><input type="text" placeholder="confirmate password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0 "></li>
+                    <li class="m-3"><button type="submit" class="btn btn-info w-100">Create Account</button></li>
+                </ul>
+                </form>
+            </div>
+        </div>
       <section class="section ">
           <div class="slide">
           <div class="col-md-5">
@@ -55,6 +72,8 @@
               </div>
           </div>
         </section>
+        <section class="section">
+        </section>
 
     <footer class="section fp-auto-height" >
         <section  class="row" >
@@ -65,25 +84,6 @@
                 <li class="p-2">Quetal</li>
                 <li class="p-2">Buenas</li>
             </ul>
-            </div>
-            <div class="col-md-4 pt-5">
-                <h3 class="text-center">Clients</h3>
-                <div class="row pl-5">
-                    <div class="col-md-6">
-                <ul class="navbar-nav">
-                    <li class="p-2"><img class="featurette-image img-fluid mx-auto w-50 h-50"  src="http://range-trans.com/wp-content/uploads/2015/07/LG_logo.png" alt=""></li>
-                    <li class="p-2"><img class="featurette-image img-fluid mx-auto w-50 h-50" src="http://www.staffcreativa.pe/blog/wp-content/uploads/03_El-uso-de-min%C3%BAsculas-en-dise%C3%B1o-de-logotipos-Un-enigma-de-marcas.png" alt=""></li>
-                    <li class="p-2"><img class="featurette-image img-fluid mx-auto w-50 h-50"  src="https://www.xantaro.net/wp-content/uploads/2016/09/Cisco.png" alt=""></li>
-                </ul>
-                    </div>
-                    <div class="col-md-6">
-                <ul class="navbar-nav">
-                    <li class="p-2"><img class="featurette-image img-fluid mx-auto w-50 h-50" src="https://seeklogo.com/images/S/senal-colombia-2005-2009-logo-B127E74CAB-seeklogo.com.png" alt=""></li>
-                    <li class="p-2"><img class="featurette-image img-fluid mx-auto w-25 h-50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Sena_Colombia_logo.svg/220px-Sena_Colombia_logo.svg.png" alt=""></li>
-                    <li class="p-2"><img class="featurette-image img-fluid mx-auto w-50 h-50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Walmart_Chile_Logo_1.svg/1280px-Walmart_Chile_Logo_1.svg.png" alt=""></li>
-                </ul>
-                    </div>
-            </div>
             </div>
         </section>
         <hr class="featurette-divider bg-info">

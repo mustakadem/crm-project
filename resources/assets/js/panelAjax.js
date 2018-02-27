@@ -62,6 +62,18 @@ $(function () {
         displayData('product/panel',"")
     });
 
+
+    /**
+     * Function Profile
+     */
+
+    $("#buttonProfile").on("click",function (e) {
+       e.preventDefault();
+
+       displayData('/home/profile/'+username,"");
+
+    });
+
     /**
      * Function bills
      */
