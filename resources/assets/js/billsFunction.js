@@ -10,6 +10,9 @@ function cargarMultiSelect(){
         ' non_selected_header ' :  null ,
         ' selected_header ' :  null
     });
+    $(elementSelect).on("change",function () {
+        totalPrice();
+    });
 }
 
 function totalPrice() {

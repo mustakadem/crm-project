@@ -22,15 +22,18 @@ mix.styles(['node_modules/izimodal/css/iziModal.min.css'],'public/css/iziModal.m
 mix.babel('node_modules/multi.js/dist/multi.min.js','public/js/multi.min.js')
     .styles(['node_modules/multi.js/dist/multi.min.css'],'public/css/multi.min.css');
 
-mix.babel('node_modules/chart.js/dist/Chart.bundle.min.js','public/js/chart.min.js')
-    .js('resources/assets/js/statistics.js','public/js');
+mix.babel('node_modules/chart.js/dist/Chart.bundle.min.js','public/js/chart.min.js');
 
 
 mix.babel('node_modules/fullpage.js/dist/jquery.fullpage.min.js','public/js/jquery.fullpage.min.js')
     .styles(['node_modules/fullpage.js/dist/jquery.fullpage.min.css'],'public/css/jquery.fullpage.min.css')
     .js('resources/assets/js/scrollPage.js','public/js');
 
+
 mix.combine([
     'resources/assets/js/panelAjax.js',
     'resources/assets/js/billsFunction.js',
+    'resources/assets/js/statistics.js',
+    'resources/assets/js/table.js',
+    'resources/assets/js/validateCustomer.js'
 ],'public/js/panel.js');

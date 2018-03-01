@@ -18,13 +18,13 @@ $(function () {
     panel.on("click","#listCustomer",function (e) {
         e.preventDefault();
 
-        displayData('home/'+username+'/customers/list',"");
+        displayData('home/'+username+'/customers/list',cargarTabla);
     });
 
     panel.on("click","#newCustomer",function (e) {
         e.preventDefault();
 
-        displayData('home/'+username+'/customers/new',"");
+        displayData('home/'+username+'/customers/new',validateCustomer);
     });
 
     panel.on("click","#homeCostumer",function (e) {
@@ -70,7 +70,7 @@ $(function () {
     $("#buttonProfile").on("click",function (e) {
        e.preventDefault();
 
-       displayData('/home/profile/'+username,"");
+       displayData('/home/profile/'+username,cargarEstadisticas);
 
     });
 
@@ -79,6 +79,12 @@ $(function () {
      */
 
     $("#buttonBill").on("click",function (e) {
+        e.preventDefault();
+
+        displayData('bill/panel',"");
+    });
+
+    panel.on("click",'#homeBill',function (e) {
         e.preventDefault();
 
         displayData('bill/panel',"");
@@ -97,11 +103,8 @@ $(function () {
     });
 
 
-    $("#products").on("change",function () {
-        totalPrice();
-    });
 
-    $("#discount").on("change",function () {
+    panel.on("change","#discount",function () {
         discountPrice();
     })
 });

@@ -21,6 +21,7 @@
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control  {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="name" placeholder="Customer Name"  value="{{ old('name') }}">
+                   <div id="errorName"></div>
                     @if ($errors->has('name'))
                         <div class="invalid-feedback">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -33,7 +34,9 @@
                 <div class="form-group">
                     <label for="surnames">Surnames</label>
                     <input type="text" class="form-control  {{ $errors->has('surnames') ? ' is-invalid' : '' }}" name="surnames" id="surnames" placeholder="Customer Surnames"  value="{{ old('surnames') }}">
-                    @if ($errors->has('surnames'))
+                    <div id="errorSurnames"></div>
+
+                @if ($errors->has('surnames'))
                         <div class="invalid-feedback">
                             <strong>{{ $errors->first('surnames') }}</strong>
                         </div>
@@ -45,7 +48,9 @@
                 <div class="form-group ">
                     <label for="email" >Email</label>
                     <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="email" placeholder="Customer Email"  value="{{ old('email') }}">
-                    @if ($errors->has('email'))
+                    <div id="errorEmail"></div>
+
+                @if ($errors->has('email'))
                         <div class="invalid-feedback">
                             <strong>{{ $errors->first('email') }}</strong>
                         </div>
@@ -58,7 +63,8 @@
                 <div class="form-group ">
                     <label for="address">Address</label>
                     <input type="text" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" id="address" placeholder="Customer Address"  value="{{ old('address') }}">
-                    @if ($errors->has('address'))
+                    <div id="errorAddress"></div>
+                @if ($errors->has('address'))
                         <div class="invalid-feedback">
                             <strong>{{ $errors->first('address') }}</strong>
                         </div>
@@ -75,7 +81,8 @@
                <div class="form-group ">
                    <label for="movil">Movil</label>
                    <input type="number" class="form-control {{ $errors->has('movil') ? ' is-invalid' : '' }}" name="movil" id="movil" min="0" placeholder="Customer Movil"  value="{{ old('movil') }}">
-                   @if ($errors->has('movil'))
+                   <div id="errorMovil"></div>
+               @if ($errors->has('movil'))
                        <div class="invalid-feedback">
                            <strong>{{ $errors->first('movil') }}</strong>
                        </div>
@@ -89,6 +96,7 @@
                     <div class="form-group">
                         <label for="job_title">Job Title</label>
                         <input type="text" class="form-control" name="job_title" id="job_title" placeholder="Job Title Customer"  value="{{ old('job_title') }}">
+                        <div id="errorJob_title"></div>
                     </div>
                 </div>
                 <div class="col">
@@ -111,6 +119,8 @@
                     <div class="form-group">
                         <label for="company">Company</label>
                         <input type="text" class="form-control" name="company" id="company" placeholder="Customer Company"  value="{{ old('company') }}">
+                        <div id="errorCompany"></div>
+
                     </div>
                 </div>
             </div>
@@ -129,8 +139,9 @@
                     <textarea name="notes" id="notes" cols="5" rows="5" class="form-control" placeholder="enter customer notes..">{{ old('notes') }}</textarea>
                 </div>
             </div>
-                <button class="btn btn-primary" type="submit">Enviar</button>
-
+            <div id="button" class=" d-flex justify-content-center">
+                <button class="btn btn-primary" type="submit" disabled id="buttonForm">Enviar</button>
+            </div>
         </form>
         </div>
     </div>

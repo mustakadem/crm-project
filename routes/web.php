@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('home');
-})->name('/');
+})->name('/home');
 
 /**
  * Rutas de los controladores de la carpeta Auth
@@ -41,6 +41,7 @@ Route::group(['prefix' => 'home/{user}/customers'],function (){
 });
 
 Route::get('customers/panel','CustomersController@panel');
+Route::post('/customer/new/validate/{campo}','CustomersController@validateNewCustomer');
 
 /**
  * Rutas del Controlador Product

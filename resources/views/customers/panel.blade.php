@@ -20,7 +20,6 @@
                         <!-- Indicators -->
                         <ul class="carousel-indicators">
                             @for($i = 0 ; $i < count($customersOfTheWeek) ; $i++)
-                                <li data-target="#customersOfTheWeek" data-slide-to="0" class="active"></li>
                                 <li data-target="#customersOfTheWeek" data-slide-to="{{$i+1}}"></li>
                              @endfor
                         </ul>
@@ -37,9 +36,9 @@
                                     <!--Card content-->
                                     <div class="card-body bg-light">
                                         <h4 class="text-center">{{$customer->name}} {{$customer->surnames}}</h4>
-                                        <p class="card-text">Type Customer:{{$customer->type_customers}} <br><strong></strong></p>
-                                        <div id="footerCard" class=" bg-secondary text-center">
-                                            <p>Created: {{$customer->created_at->format('d/m/Y')}} <strong class="align-text-top"></strong></p>
+                                        <p class="card-text">Type Customer: <br><strong>{{$customer->type_customers}}</strong></p>
+                                        <div id="footerCard" class=" bg-secondary text-center d-flex justify-content-center">
+                                            <p>Created: {{$customer->created_at->format('d/m/Y')}}</p>
                                         </div>
                                     </div>
 
@@ -71,8 +70,8 @@
                             <!-- Indicators -->
                             <ul class="carousel-indicators">
                                 @for($i = 0 ; $i < count($customersMorePurchases) ; $i++)
-                                    <li data-target="#customersMorePurchases" data-slide-to="0" class="active"></li>
-                                    <li data-target="#customersMorePurchases" data-slide-to="{{$i+1}}"></li>
+
+                                    <li data-target="#customersMorePurchases" data-slide-to="{{$i+1}}" ></li>
                                 @endfor
                             </ul>
 
@@ -89,8 +88,8 @@
                                             <div class="card-body">
                                                 <h4 class="text-center">{{$customer->name}} {{$customer->surnames}}</h4>
                                                 <p class="card-text">Purchases:{{$customer->bills()->get()->max('total')}} <br><strong></strong></p>
-                                                <div id="footerCard" class=" bg-secondary text-center">
-                                                    <p>Created: {{$customer->created_at->format('d/m/Y')}} <strong class="align-text-top"></strong></p>
+                                                <div id="footerCard" class=" bg-secondary text-center d-flex justify-content-center">
+                                                    <p>Created: {{$customer->created_at->format('d/m/Y')}}</p>
                                                 </div>
                                             </div>
 

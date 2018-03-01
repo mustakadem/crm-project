@@ -10,6 +10,7 @@ use App\Customer;
 use App\Http\Requests\CreateCustomersRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Carbon\Carbon;
 
@@ -35,7 +36,7 @@ class CustomersController extends Controller
         foreach ($totalCustomers as $customer){
 
             $fecha2 = $customer['created_at'];
-            $difference = $now->diffInWeeks($fecha2);
+            $difference = $now->diffInDays($fecha2);
 
             $totalPrice = $customer->bills()->get()->max('total');
 
@@ -43,7 +44,8 @@ class CustomersController extends Controller
                 array_push($customersMorePurchases,$customer);
             };
 
-            if ($difference <= 1){
+
+            if ($difference <= 7){
             array_push($customersOfTheWeek,$customer);
             };
         }
@@ -100,5 +102,50 @@ class CustomersController extends Controller
 
         Customer::where('id',$id)->delete();
        return redirect('/home');
+    }
+
+    public function validateNewCustomer(Request $request , $campo){
+
+
+
+        if ($campo == 'name'){
+            $validator = Validator::make($request->all(),[
+                'name' => 'string|min:4|required'
+            ]);
+        }else if($campo == 'surnames'){
+            $validator = Validator::make($request->all(),[
+                'surnames' => 'string|min:4|required'
+            ]);
+        }else if($campo == 'email'){
+            $validator = Validator::make($request->all(),[
+                'email' => 'email|required'
+            ]);
+        }else if($campo == 'address'){
+            $validator = Validator::make($request->all(),[
+                'address' => 'string|nullable'
+            ]);
+        }else if($campo == 'movil'){
+            $validator = Validator::make($request->all(),[
+                'movil' => 'numeric|required'
+            ]);
+        }else if($campo == 'job_title'){
+            $validator = Validator::make($request->all(),[
+                'job_title' => 'string|min:4|nullable'
+            ]);
+        }else if($campo == 'company'){
+            $validator = Validator::make($request->all(),[
+                'company' => 'string|min:4|nullable'
+            ]);
+        }
+
+
+
+        $errors=$validator->errors();
+
+
+
+        return response()->json([
+            $campo => $errors->get($campo)
+        ]);
     }
 }

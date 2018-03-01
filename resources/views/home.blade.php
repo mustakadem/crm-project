@@ -13,7 +13,7 @@
         <nav class="fixed-top pr-4" id="nav">
             <ul class="d-flex flex-row navbar-nav p-1 justify-content-end ">
                 @if(Auth::check())
-                    <li class="nav-item p-2 h4 "><a href="{{ route('/')}}" class="nav-link login text-white">Home</a></li>
+                    <li class="nav-item p-2 h4 "><a href="{{ route('/home')}}" class="nav-link login text-white">Home</a></li>
                 @else
                     <li class="nav-item p-2 h4 "><a href="{{ route('login') }}" class="nav-link login text-white">Login</a></li>
                     <li class="nav-item p-2 h4 "><a href="{{ route('register') }}" class="nav-link register text-white">Register</a></li>
@@ -31,7 +31,8 @@
                     <p><strong class="text-white h5">El término wikinota 1​ (del hawaiano wiki, «rápido»)2​ alude al nombre que recibe un sitio web, cuyas páginas pueden ser editadas directamente desde el navegador, donde los mismos usuarios crean, modifican o eliminan contenidos que, generalmente, comparten. No tiene por qué ser necesariamente un sitio en la web, puesto que hay wikis instalables para uso en el escritorio de un computador personal o que pueden portarse en un llavero USB que lleven un entorno LAMP, como por ejemplo XAMPP.</strong></p>
                 </div>
 
-                <form action="" class=" d-flex flex-row-reverse">
+                <form role="form" method="POST" action="{{ url('/register') }}" class=" d-flex flex-row-reverse">
+                    {!! csrf_field() !!}
                 <ul class="navbar-nav mr-5 ">
                     <li class="m-3"><p class="h3 text-white">Quick Registration</p></li>
                     <li class="m-3"><input type="text" placeholder="username" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
@@ -43,6 +44,8 @@
                 </form>
             </div>
         </div>
+        <section class="section">
+        </section>
       <section class="section ">
           <div class="slide">
           <div class="col-md-5">
@@ -72,8 +75,7 @@
               </div>
           </div>
         </section>
-        <section class="section">
-        </section>
+
 
     <footer class="section fp-auto-height" >
         <section  class="row" >
