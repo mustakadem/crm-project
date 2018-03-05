@@ -25,10 +25,12 @@ function validateCustomer() {
 }
 
 function validateData(dato,selector,selectorDiv) {
+    let formData = new FormData();
+    formData.append(dato,$(selector).val());
 
-    axios.post("/customer/new/validate/"+dato, {
-    }).then(function (response) {
-        console.log(dato);
+    axios.post("/customer/new/validate/"+dato, formData)
+        .then(function (response) {
+        console.log(response);
         if (response.data[dato].length > 0) {
             $(selectorDiv).addClass("invalid-feedback").text(response.data[dato]);
             $(selector).removeClass("is-valid");
@@ -40,7 +42,6 @@ function validateData(dato,selector,selectorDiv) {
             $(selectorDiv).removeClass("invalid-feedback");
             $(selectorDiv).addClass("valid-feedback").text("Correct");
             $("#buttonForm").removeAttr('disabled');
-
         }
     })
         .catch(function (error) {

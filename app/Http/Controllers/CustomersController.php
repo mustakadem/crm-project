@@ -20,7 +20,7 @@ class CustomersController extends Controller
     /**
      * @return mixed
      */
-    public function panel(){
+    public function panel($username){
 
         $now=Carbon::now();
 
@@ -110,7 +110,7 @@ class CustomersController extends Controller
 
         if ($campo == 'name'){
             $validator = Validator::make($request->all(),[
-                'name' => 'string|min:4|required'
+                'name' => 'required|string|min:4'
             ]);
         }else if($campo == 'surnames'){
             $validator = Validator::make($request->all(),[
@@ -137,8 +137,6 @@ class CustomersController extends Controller
                 'company' => 'string|min:4|nullable'
             ]);
         }
-
-
 
         $errors=$validator->errors();
 

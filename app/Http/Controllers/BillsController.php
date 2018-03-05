@@ -15,7 +15,7 @@ class BillsController extends Controller
     /**
      * @return mixed
      */
-    public function panel(){
+    public function panel($username){
         return view::make('bills.panel')->render();
     }
 

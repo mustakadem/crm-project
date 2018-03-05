@@ -2,7 +2,7 @@
 
     <ul class="nav nav-tabs mb-5">
         <li class="nav-item">
-            <a class="nav-link" id="homeCostumer" href="#">Home</a>
+            <a class="nav-link" id="homeCostumer" href="{{route('customer.panel',array('username' => Auth::user()->username))}}">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" id="listCustomer" href="#">List Customers</a>
@@ -58,7 +58,7 @@
                             </form>
                         </td>
                         <td>
-                            <a class="btn btn-info" href="#"><img src="http://www.tecnovirtual.edu.ec/virtual/pluginfile.php/2005/block_html/content/icon-user.png" width="25" height="25" alt=""></a>
+                            <a class="btn btn-info edit"  href="#"><img  class="edit" src="http://www.tecnovirtual.edu.ec/virtual/pluginfile.php/2005/block_html/content/icon-user.png" width="25" height="25" alt=""></a>
                         </td>
                     </tr>
     @empty
@@ -67,4 +67,7 @@
         </tbody>
         </table>
 </div>
+@include('customers.perfil')
+
+
 

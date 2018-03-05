@@ -26,46 +26,45 @@ Auth::routes();
  */
 Route::get('/home','UserController@home')->name('user.home')->middleware('auth');
 Route::get('/home/profile/{user}','UserController@show')->name('user.profile');
-Route::get('/home/{user}/edit','UserController@edit')->name('user.edit')->middleware('auth');
-Route::put('/home/{user}/edit','UserController@update')->name('user.update')->middleware('auth');
+
+Route::get('/home/profile/{user}/edit','UserController@edit')->name('user.edit')->middleware('auth');
+Route::get('/home/edit/password','UserController@edit')->name('edit.password')->middleware('auth');
+Route::get('/home/edit/avatar','UserController@edit')->name('edit.avatar')->middleware('auth');
+
+
+
 
 
 /**
  * Rutas del Controlador Customer
  */
-Route::group(['prefix' => 'home/{user}/customers'],function (){
-    Route::get('list', 'CustomersController@index')->name('customer.home')->middleware('auth');
-    Route::get('new','CustomersController@create')->name('customer.new')->middleware('auth');
-    Route::post('new','CustomersController@store')->name('customer.store')->middleware('auth');
-    Route::delete('','CustomersController@destroy')->name('customer.delete')->middleware('auth');
-});
-
-Route::get('customers/panel','CustomersController@panel');
-Route::post('/customer/new/validate/{campo}','CustomersController@validateNewCustomer');
+    Route::get('/home/{user}/customers/panel','CustomersController@panel')->name('customer.panel');
+    Route::get('/home/{user}/customers/list', 'CustomersController@index')->name('customer.list')->middleware('auth');
+    Route::get('/home/{user}/customer/new','CustomersController@create')->name('customer.new')->middleware('auth');
+    Route::post('/home/{user}/customer/new','CustomersController@store')->name('customer.store')->middleware('auth');
+    Route::delete('home/{user}/customer/delete','CustomersController@destroy')->name('customer.delete')->middleware('auth');
+    Route::post('/customer/new/validate/{campo}','CustomersController@validateNewCustomer');
 
 /**
  * Rutas del Controlador Product
  */
-Route::group(['prefix' => 'home/{user}/products'],function (){
-    Route::get('list','ProductController@index')->name('product.list')->middleware('auth');
-    Route::get('new','ProductController@create')->name('product.new')->middleware('auth');
-    Route::post('new','ProductController@store')->name('product.store')->middleware('auth');
-    Route::delete('','ProductController@destroy')->name('product.delete')->middleware('auth');
-});
+    Route::get('/home/{user}/products/panel','ProductController@panel')->name('product.panel');
+    Route::get('/home/{user}/products/list','ProductController@index')->name('product.list')->middleware('auth');
+    Route::get('/home/{user}/products/new','ProductController@create')->name('product.new')->middleware('auth');
+    Route::post('/home/{user}/products/new','ProductController@store')->name('product.store')->middleware('auth');
+    Route::delete('/home/{user}/products/delete','ProductController@destroy')->name('product.delete')->middleware('auth');
 
-Route::get('product/panel','ProductController@panel');
 
 
 /**
  * Bills Controller
  */
-Route::group(['prefix' => 'home/{user}/bills'],function (){
-    Route::get('list','BillsController@index')->name('bills.list')->middleware('auth');
-    Route::get('new','BillsController@create')->name('bill.new')->middleware('auth');
-    Route::post('new','BillsController@store')->name('bill.store')->middleware('auth');
-});
 
-Route::get('bill/panel','BillsController@panel');
+    Route::get('/home/{user}/bills/panel','BillsController@panel')->name('bill.panel');
+    Route::get('/home/{user}/bills/list','BillsController@index')->name('bills.list')->middleware('auth');
+    Route::get('/home/{user}/bills/new','BillsController@create')->name('bill.new')->middleware('auth');
+    Route::post('/home/{user}/bills/new','BillsController@store')->name('bill.store')->middleware('auth');
+
 Route::post('/bill/price','BillsController@price')->name('bill.price')->middleware('auth');
 
 

@@ -1,7 +1,7 @@
 <div class="container">
     <ul class="nav nav-tabs mb-5">
         <li class="nav-item">
-            <a class="nav-link " id="homeProduct" href="#">Home</a>
+            <a class="nav-link " id="homeProduct" href="{{route('product.panel',array('username' => Auth::user()->username))}}">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="listProduct" href="#">List Products</a>

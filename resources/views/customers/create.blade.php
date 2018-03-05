@@ -2,7 +2,7 @@
 
     <ul class="nav nav-tabs mb-4">
         <li class="nav-item">
-            <a class="nav-link "  id="homeCostumer" href="#">Home</a>
+            <a class="nav-link "  id="homeCostumer" href="{{route('customer.panel',array('username' => Auth::user()->username))}}">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link " id="listCustomer" href="#">List Customers</a>

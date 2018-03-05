@@ -10,4 +10,6 @@ $(function () {
         event.preventDefault();
         $('#modalRegister').iziModal('open', { zindex: 99999 });
     });
+
 });
+

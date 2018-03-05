@@ -6,6 +6,7 @@
         .login:hover, .register:hover{
             border-top: 2px solid white;
         }
+
     </style>
 @endsection
 @section('content')
@@ -13,7 +14,7 @@
         <nav class="fixed-top pr-4" id="nav">
             <ul class="d-flex flex-row navbar-nav p-1 justify-content-end ">
                 @if(Auth::check())
-                    <li class="nav-item p-2 h4 "><a href="{{ route('/home')}}" class="nav-link login text-white">Home</a></li>
+                    <li class="nav-item p-2 h4 "><a href="{{ route('/home')}}" class="nav-link text-white">Home</a></li>
                 @else
                     <li class="nav-item p-2 h4 "><a href="{{ route('login') }}" class="nav-link login text-white">Login</a></li>
                     <li class="nav-item p-2 h4 "><a href="{{ route('register') }}" class="nav-link register text-white">Register</a></li>
@@ -35,10 +36,16 @@
                     {!! csrf_field() !!}
                 <ul class="navbar-nav mr-5 ">
                     <li class="m-3"><p class="h3 text-white">Quick Registration</p></li>
-                    <li class="m-3"><input type="text" placeholder="username" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
+                    <li class="m-3"><input type="text" id="username" name="username" placeholder="username" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0">
+                        <div id="errorUsername"></div>
+                    </li>
+
                     <li class="m-3"><input type="text" placeholder="email" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
+                   <li><div id="errorUserEmail"></div></li>
                     <li class="m-3"><input type="text" placeholder="password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
+                    <li> <div id="errorUserPassword"></div></li>
                     <li class="m-3"><input type="text" placeholder="confirmate password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0 "></li>
+                    <li><div id="errorUserPasswordConfirmation"></div></li>
                     <li class="m-3"><button type="submit" class="btn btn-info w-100">Create Account</button></li>
                 </ul>
                 </form>
@@ -97,7 +104,6 @@
     </footer>
     </div>
         @include('auth.login')
-        @include('auth.register')
 @endsection
 
 @push('js')

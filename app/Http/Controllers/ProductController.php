@@ -14,7 +14,7 @@ class ProductController extends Controller
 
 
 
-    public function panel(){
+    public function panel($username){
         return view::make('product.panel')->render();
     }
 

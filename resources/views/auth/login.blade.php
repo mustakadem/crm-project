@@ -1,12 +1,12 @@
 <div id="modalLogin">
-            <div class="card">
-                <div class="card-header text-center">Login</div>
+            <div class="card bg-dark">
+                <div class="card-header text-center text-white">Login</div>
                 <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group row">
-                            <label for="email" class="col-lg-4 col-form-label text-lg-right">E-Mail Address</label>
+                            <label for="email" class="col-lg-4 col-form-label text-lg-right text-white">E-Mail Address</label>
 
                             <div class="col-lg-6">
                                 <input
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-lg-4 col-form-label text-lg-right">Password</label>
+                            <label for="password" class="col-lg-4 col-form-label text-lg-right text-white">Password</label>
 
                             <div class="col-lg-6">
                                 <input
@@ -51,7 +51,7 @@
                             <div class="col-lg-6 offset-lg-4">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                        <input type="checkbox" class="form-check-input text-white" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                                     </label>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link text-white" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>
                             </div>

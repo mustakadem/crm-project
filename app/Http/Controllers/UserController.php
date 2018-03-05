@@ -10,13 +10,23 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
 
+    private $user;
+    public function __construct()
+    {
+        $this->middleware( function($request, $next){
+            $this->user = auth()->user();
+            return $next($request);
+        });
+        $this->user = auth()->user();
+    }
+
 
     /**
      * Pagina principal del usuario
      */
 
     public function home(){
-        return view('user.panel');
+        return view('user.panel', ['user' => $this->user]);
     }
 
     /**
@@ -47,13 +57,12 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param $name
+     * @param $username
      * @return \Illuminate\Http\Response
      */
-    public function edit($name)
+    public function edit($username)
     {
-        $user= DB::table('users')->where('username', $name)->first();
-        return view('user.edit')->with('user', $user);
+        return view('user.edit.panel');
     }
 
     /**
