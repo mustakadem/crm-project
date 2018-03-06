@@ -58,7 +58,7 @@
                             </form>
                         </td>
                         <td>
-                            <a class="btn btn-info edit"  href="#"><img  class="edit" src="http://www.tecnovirtual.edu.ec/virtual/pluginfile.php/2005/block_html/content/icon-user.png" width="25" height="25" alt=""></a>
+                            <a class="btn btn-info"  href="{{route('customer.profile',array('username' => Auth::user()->username , 'customer' => $customer))}}"><img  class="edit" src="http://www.tecnovirtual.edu.ec/virtual/pluginfile.php/2005/block_html/content/icon-user.png" width="25" height="25" alt=""></a>
                         </td>
                     </tr>
     @empty
@@ -67,7 +67,7 @@
         </tbody>
         </table>
 </div>
-@include('customers.perfil')
+@include('customers.profile')
 
 
 

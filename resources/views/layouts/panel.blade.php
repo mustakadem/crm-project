@@ -26,7 +26,7 @@
     </div>
     <div class="dropdown-divider"></div>
     <a class="nav-link " href="#">Calendar</a>
-    <a class="nav-link" href="#">Contacts</a>
+    <a class="nav-link" href="{{route('contacts.panel',array('username' => Auth::user()->username))}}">Contacts</a>
     <ul class="menu vertical list-unstyled">
         <li>
             <a href="{{ route('logout') }}"

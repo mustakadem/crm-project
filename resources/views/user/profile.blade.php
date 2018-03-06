@@ -12,13 +12,13 @@
             <div class="container  ">
                 <ul class="nav nav-tabs mb-5 justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link active" id="homeProfile" href="{{route('product.panel',array('username' => Auth::user()->username))}}">Home</a>
+                        <a class="nav-link active" id="homeProfile" href="{{route('user.profile',array('username' => Auth::user()->username))}}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="Objectives" href="#">Objectives</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="editData" href="#">Edit Data</a>
+                        <a class="nav-link" id="editData" href="{{route('user.edit',array('username' => Auth::user()->username))}}">Edit Data</a>
                     </li>
                 </ul>
                 <div class="row col-md-10">
@@ -48,9 +48,7 @@
 
 @push('js')
     <script src="{{asset('js/chart.min.js')}}"></script>
-    <script src="{{asset('js/multi.min.js')}}" ></script>
-    <script src="{{asset('js/iziModal.min.js')}}"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.js"></script>
+    <script src="{{asset('js/statistics.js')}}"></script>
     <script src="{{asset('js/panel.js')}}" ></script>
 @endpush
 

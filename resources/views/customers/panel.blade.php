@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('style')
-    <link rel="stylesheet" href="{{asset('css/multi.min.css')}}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.css"/>
 @endsection
 @section('content')
@@ -44,9 +43,9 @@
                                             <!--/Card image-->
 
                                             <!--Card content-->
-                                            <div class="card-body bg-light">
+                                            <div class="card-body">
                                                 <h4 class="text-center text-white">{{$customer->name}} {{$customer->surnames}}</h4>
-                                                <p class="card-text text-center text-white">Type Customer:<strong>{{$customer->type_customers}}</strong></p>
+                                                <p class="card-text text-center text-white">Type Customer <br> <strong>{{$customer->type_customers}}</strong></p>
                                                 <div id="footerCard" class=" bg-secondary text-center d-flex justify-content-center">
                                                     <p>Created: {{$customer->created_at->format('d/m/Y')}}</p>
                                                 </div>
@@ -130,9 +129,6 @@
 @endsection
 
 @push('js')
-    <script src="{{asset('js/chart.min.js')}}"></script>
-    <script src="{{asset('js/multi.min.js')}}" ></script>
-    <script src="{{asset('js/iziModal.min.js')}}"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.js"></script>
     <script src="{{asset('js/panel.js')}}" ></script>
 @endpush

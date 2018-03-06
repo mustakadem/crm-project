@@ -1,39 +1,61 @@
-
-<div class="container  ">
-    <ul class="nav nav-tabs mb-5 justify-content-center">
-        <li class="nav-item">
-            <a class="nav-link " id="homeProfile" href="{{route('product.panel',array('username' => Auth::user()->username))}}">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " id="Objectives" href="#">Objectives</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" id="editData" href="#">Edit Data</a>
-        </li>
-    </ul>
+@extends('layouts.app')
+@section('style')
+    <link rel="stylesheet" href="{{asset('css/multi.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.css"/>
+@endsection
+@section('content')
     <div class="row">
-        <div class="row col-md-2">
-        <ul class="list-group d-flex justify-content-start">
-            <li class="list-group-item "><a href="{{route('user.edit',array('username'=>Auth::user()->username))}}">Edit Data</a></li>
-            <li class="list-group-item"><a href="{{route('edit.password')}}">Edit Password</a></li>
-            <li class="list-group-item"><a href="{{route('edit.avatar')}}">Edit avatar</a></li>
-        </ul>
+        <div class="col-md-2">
+            @include('layouts.panel')
         </div>
-        <div class="col-md-10">
-            <form action="{{ Request::url() }}" method="POST">
-                {{ csrf_field() }}
+        <div id="panel"  class="col-md-10 pt-5">
+            <div class="container  ">
+                <ul class="nav nav-tabs mb-5 justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link " id="homeProfile" href="{{route('user.profile',array('username' => Auth::user()->username))}}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " id="Objectives" href="#">Objectives</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" id="editData" href="{{route('user.edit',array('username' => Auth::user()->username))}}">Edit Data</a>
+                    </li>
+                </ul>
+                <div class="row">
+                    <div class="row col-md-4">
+                        <ul class="list-group d-flex justify-content-start">
+                            <li class="list-group-item   @if( Request::is('edit/data') ) active @endif  "><a class="@if( Request::is('edit/data') ) text-white @endif" href="{{route('user.edit')}}">Edit Data</a></li>
+                            <li class="list-group-item  @if( Request::is('edit/password') ) active @endif"><a class="@if( Request::is('edit/password') ) text-white @endif" href="{{route('edit.password')}}">Edit Password</a></li>
+                            <li class="list-group-item  @if( Request::is('edit/avatar') ) active @endif"><a class="@if( Request::is('edit/avatar') ) text-white @endif" href="{{route('edit.avatar')}}">Edit avatar</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8">
+                        <form action="{{ Request::url() }}" method="POST">
+                            {{ csrf_field() }}
 
 
-                @if( Request::is('profile/account') )
-                    @include('user.edit.avatar')
-                @elseif( Request::is('/home/edit/password') )
-                    @include('user.edit.password')
-                @elseif( Request::is('/home/profile/'.Auth::user()->username.'/edit') )
-                    @include('user.edit.avatar')
-                @endif
+                            @if( Request::is('edit/data') )
+                                @include('user.edit.data')
+                            @elseif( Request::is('edit/password') )
+                                @include('user.edit.password')
+                            @elseif( Request::is('edit/avatar') )
+                                @include('user.edit.avatar')
+                            @endif
 
 
-            </form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
+@endsection
+
+@push('js')
+@endpush
+
+
+
+
+
