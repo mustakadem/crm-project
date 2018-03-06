@@ -19,6 +19,11 @@ class BillsController extends Controller
         return view::make('bills.panel')->render();
     }
 
+    /**
+     * Muestra la lista de Facturas
+     * @param $username
+     * @return mixed
+     */
     public function index( $username){
 
         $user = User::where('username' ,$username)->first();
@@ -31,6 +36,11 @@ class BillsController extends Controller
     }
 
 
+    /**
+     * Metodo para mostrar el formulario de una nueva factura, con un select de los clientes y productos
+     * @param $username
+     * @return mixed
+     */
     public function create($username){
         $user=User::where('username',$username)->first();
         $customers= Customer::where('user_id',$user->id)->get();
@@ -43,7 +53,13 @@ class BillsController extends Controller
     }
 
 
-
+    /**
+     * En este metodo se crea la factura y luego se le aplica attach para añadir en la tabla pivot
+     * bills_products todos los productos que se han seleccionado
+     * @param User $user
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(User $user, Request $request){
 
 
@@ -61,11 +77,15 @@ class BillsController extends Controller
         $bill->products()->attach($request->products);
 
 
-        return redirect('/home');
+        return redirect('/home/'.$user->username.'/bills/panel');
 
 
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function destroy($id){
 
         Bills::where('id',$id)->delete();
@@ -77,6 +97,11 @@ class BillsController extends Controller
         ]);
     }
 
+    /**
+     * Metodo para la llamada asincrona que gestiona el precio final aplicandole el descuento
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function price(Request $request){
         $products= Product::whereIn('id',$request->products)->get();
         $total= 0;

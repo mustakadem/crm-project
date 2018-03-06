@@ -22,7 +22,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param User $user
+     * @param $username
      * @return \Illuminate\Http\Response
      */
     public function index($username)

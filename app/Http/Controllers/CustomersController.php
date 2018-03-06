@@ -18,6 +18,8 @@ class CustomersController extends Controller
 {
 
     /**
+     * Este metodo muestra el panel principal de los Customers, devuelve los clientes creados en la ultima semana y
+     * los clientes que estan por encima de la media en el total de compras.
      * @return mixed
      */
     public function panel($username){
@@ -57,6 +59,7 @@ class CustomersController extends Controller
     }
 
     /**
+     * Muestra la lista de los clientes.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index($username){
@@ -70,6 +73,19 @@ class CustomersController extends Controller
     }
 
     /**
+     * Muestra toda la informacion de un Customer
+     * @param $username
+     * @param Customer $customer
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($username,Customer $customer){
+
+        return view('customers.profile',[
+            'customer' => $customer
+        ]);
+    }
+
+    /**
      * Metodo para mostrar el formulario para crear un customer
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -78,6 +94,12 @@ class CustomersController extends Controller
         return view('customers.create');
     }
 
+    /**
+     *
+     * @param CreateCustomersRequest $request
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(CreateCustomersRequest $request, User $user){
         Customer::create([
             'name' => $request->input('name'),
@@ -98,12 +120,22 @@ class CustomersController extends Controller
 
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function destroy($id){
 
         Customer::where('id',$id)->delete();
        return redirect('/home');
     }
 
+    /**
+     * Metodo para la validacion asincrona en cliente
+     * @param Request $request
+     * @param $campo
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function validateNewCustomer(Request $request , $campo){
 
 
