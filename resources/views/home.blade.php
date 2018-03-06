@@ -17,7 +17,6 @@
                     <li class="nav-item p-2 h4 "><a href="{{ route('/home')}}" class="nav-link text-white">Home</a></li>
                 @else
                     <li class="nav-item p-2 h4 "><a href="{{ route('login') }}" class="nav-link login text-white">Login</a></li>
-                    <li class="nav-item p-2 h4 "><a href="{{ route('register') }}" class="nav-link register text-white">Register</a></li>
                  @endif
             </ul>
         </nav>
@@ -52,6 +51,17 @@
             </div>
         </div>
         <section class="section">
+            <div class="col-md-12">
+                <p class="h4 text-white">Las aplicaciones de mayor peso y a la que le debe su mayor fama hasta el momento, ha sido la creación de enciclopedias colectivas, género al que pertenece Wikipedia. Existen muchas otras aplicaciones más cercanas a la coordinación de informaciones y acciones, o la puesta en común de conocimientos o textos dentro de grupos.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{asset('img/list')}}" alt="" height="500" width="600">
+                </div>
+                <div class="col-md-6">
+                    <img src="{{asset('img/panel')}}" alt="" height="500" width="600">
+                </div>
+            </div>
         </section>
       <section class="section ">
           <div class="slide">

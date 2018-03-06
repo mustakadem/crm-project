@@ -28,6 +28,12 @@ class UsersTableSeeder extends Seeder
                    'user_id' => $user->id,
                 ]);
 
+            $contatcs= factory(App\Contact::class)
+                ->times(10)
+                ->create([
+                    'user_id' => $user->id,
+                ]);
+
 
         });
     }

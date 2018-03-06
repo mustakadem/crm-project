@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -54,39 +55,55 @@ class UserController extends Controller
         return view('user.profile')->with('user',$user);
     }
 
+
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param $username
      * @return \Illuminate\Http\Response
      */
-    public function edit($username)
+    public function edit(Request $request)
     {
-        return view('user.edit.panel');
+        return view('user.edit.panel',['user' => $this->user]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param CreateUserRequest $request
-     * @param  int $id
+     * @param UpdateUserRequest $request
      * @return void
      */
-    public function update(CreateUserRequest $request, $id)
+    public function update(UpdateUserRequest $request)
     {
+        $path = $request->path();
 
-        $user = User::find($id);
-        $user->name = $_POST['name']?$_POST['name']:null;
-        $user->surnames = $_POST['surname']?$_POST['surname']:null;
-        $user->email = $request->input('email');
-        $user->movil = $request->input('movil');
-        $user->sector = $_POST['sector']?$_POST['sector']:null;
-        $user->avatar = $_POST['avatar']?$_POST['avatar']:null;
-        $user->website = $_POST['website']?$_POST['website']:null;
+        if( strpos($path, 'data')) {
+            $data = array_filter($request->all());
+            $user = User::findOrFail($this->user->id);
+
+            $user->fill($data);
+        }elseif ( strpos($path, 'password') ){
+
+
+            if( ! Hash::check($request->get('currentPassword'), $this->user->password ) ){
+                return redirect()->back()->with('error', 'La constraseña actual no es correcta');
+            }
+
+            if( strcmp($request->get('currentPassword'), $request->get('newPassword')) == 0){
+                return redirect()->back()->with('error', 'La nueva contraseña debe ser diferente de la antigua.');
+            }
+
+            $this->user->password = bcrypt($request->get('newpasswordPassword'));
+        }
 
         $user->save();
 
-        return redirect('/home');
+        return redirect()
+            ->route('user.edit')
+            ->with('exito', 'Datos actualizados');
+
+
     }
 
     /**

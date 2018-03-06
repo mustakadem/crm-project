@@ -21,51 +21,68 @@ Route::get('/', function () {
 Route::post('/register/validate/{dato}','Auth\RegisterController@validateRegister');
 Auth::routes();
 
-/**
- *Rutas del Controlador User
- */
-Route::get('/home','UserController@home')->name('user.home')->middleware('auth');
-Route::get('/home/profile/{user}','UserController@show')->name('user.profile');
-
-Route::get('/home/profile/{user}/edit','UserController@edit')->name('user.edit')->middleware('auth');
-Route::get('/home/edit/password','UserController@edit')->name('edit.password')->middleware('auth');
-Route::get('/home/edit/avatar','UserController@edit')->name('edit.avatar')->middleware('auth');
 
 
 
+Route::group(['middleware' => 'auth'], function(){
+
+    /**
+     *Rutas del Controlador User
+     */
+    Route::get('/home','UserController@home')->name('user.home');
+    Route::get('/home/profile/{user}','UserController@show')->name('user.profile');
+
+    Route::get('edit/data','UserController@edit')->name('user.edit');
+    Route::patch('edit/data','UserController@update');
+    Route::get('edit/password','UserController@edit')->name('edit.password');
+    Route::patch('edit/password','UserController@update');
+    Route::get('edit/avatar','UserController@edit')->name('edit.avatar');
 
 
-/**
- * Rutas del Controlador Customer
- */
+    /**
+     * Rutas del Controlador Customer
+     */
     Route::get('/home/{user}/customers/panel','CustomersController@panel')->name('customer.panel');
-    Route::get('/home/{user}/customers/list', 'CustomersController@index')->name('customer.list')->middleware('auth');
-    Route::get('/home/{user}/customer/new','CustomersController@create')->name('customer.new')->middleware('auth');
-    Route::post('/home/{user}/customer/new','CustomersController@store')->name('customer.store')->middleware('auth');
-    Route::delete('home/{user}/customer/delete','CustomersController@destroy')->name('customer.delete')->middleware('auth');
+    Route::get('/home/{user}/customers/list', 'CustomersController@index')->name('customer.list');
+    Route::get('/home/{user}/customers/profile/{customer}', 'CustomersController@show')->name('customer.profile');
+    Route::get('/home/{user}/customer/new','CustomersController@create')->name('customer.new');
+    Route::post('/home/{user}/customer/new','CustomersController@store')->name('customer.store');
+    Route::delete('home/{user}/customer/delete','CustomersController@destroy')->name('customer.delete');
     Route::post('/customer/new/validate/{campo}','CustomersController@validateNewCustomer');
 
-/**
- * Rutas del Controlador Product
- */
+    /**
+     * Contacts Controller
+     */
+
+    Route::get('/home/{user}/contacts','ContactsController@index')->name('contacts.panel');
+
+    /**
+     * Rutas del Controlador Product
+     */
     Route::get('/home/{user}/products/panel','ProductController@panel')->name('product.panel');
-    Route::get('/home/{user}/products/list','ProductController@index')->name('product.list')->middleware('auth');
-    Route::get('/home/{user}/products/new','ProductController@create')->name('product.new')->middleware('auth');
-    Route::post('/home/{user}/products/new','ProductController@store')->name('product.store')->middleware('auth');
-    Route::delete('/home/{user}/products/delete','ProductController@destroy')->name('product.delete')->middleware('auth');
+    Route::get('/home/{user}/products/list','ProductController@index')->name('product.list');
+    Route::get('/home/{user}/products/new','ProductController@create')->name('product.new');
+    Route::post('/home/{user}/products/new','ProductController@store')->name('product.store');
+    Route::delete('/home/{user}/products/{product}','ProductController@destroy')->name('product.delete');
 
 
 
-/**
- * Bills Controller
- */
+    /**
+     * Bills Controller
+     */
 
     Route::get('/home/{user}/bills/panel','BillsController@panel')->name('bill.panel');
-    Route::get('/home/{user}/bills/list','BillsController@index')->name('bills.list')->middleware('auth');
-    Route::get('/home/{user}/bills/new','BillsController@create')->name('bill.new')->middleware('auth');
-    Route::post('/home/{user}/bills/new','BillsController@store')->name('bill.store')->middleware('auth');
+    Route::get('/home/{user}/bills/list','BillsController@index')->name('bills.list');
+    Route::get('/home/{user}/bills/new','BillsController@create')->name('bill.new');
+    Route::post('/home/{user}/bills/new','BillsController@store')->name('bill.store');
 
-Route::post('/bill/price','BillsController@price')->name('bill.price')->middleware('auth');
+    Route::post('/bill/price','BillsController@price')->name('bill.price');
+
+
+
+});
+
+
 
 
 /**

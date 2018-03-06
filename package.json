@@ -26,6 +26,7 @@
         "datatables.net-responsive-dt": "^2.2.1",
         "fullpage.js": "^2.9.6",
         "izimodal": "^1.5.1",
-        "multi.js": "^0.2.3"
+        "multi.js": "^0.2.3",
+        "octicons": "^7.1.0"
     }
 }
