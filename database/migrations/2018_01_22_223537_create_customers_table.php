@@ -22,12 +22,11 @@ class CreateCustomersTable extends Migration
             $table->enum('type_customers',['potencial','activo','exporadico'])->nullable();
             $table->longText('image')->nullable();
             $table->string('address');
-            $table->string('number')->nullable();
             $table->string('movil');
             $table->string('email');
             $table->string('company')->nullable();
             $table->string('job_title')->nullable();
-            $table->text('notes')->nullable(  );
+            $table->text('notes')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

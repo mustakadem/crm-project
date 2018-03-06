@@ -17,4 +17,10 @@ class Customer extends Model
     public function bills(){
         return $this->hasMany(Bills::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+
+    }
 }

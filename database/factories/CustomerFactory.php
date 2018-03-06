@@ -13,7 +13,6 @@ $factory->define(App\Customer::class, function (Faker $faker) {
         'type_customers'=> 'activo',
         'image' => 'https://picsum.photos/150/150/?random',
         'address' => $faker->address,
-        'number' => $faker->phoneNumber,
         'movil' => $faker->phoneNumber,
         'email' => $email,
         'company' => $faker->company,
