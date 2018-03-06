@@ -41,19 +41,6 @@ $(function () {
         displayData('/home/'+username+'/products/new',"");
     });
 
-
-
-    /**
-     * Function Profile
-     */
-
-    panel.on("click","#editData",function (e) {
-        e.preventDefault();
-
-        displayData('/home/profile/'+username+'/edit',"");
-    });
-
-
     /**
      * Function bills
      */
@@ -77,7 +64,6 @@ $(function () {
     });
 
 
-    modal();
 
 
 });

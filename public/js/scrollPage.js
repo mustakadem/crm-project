@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 48);
+/******/ 	return __webpack_require__(__webpack_require__.s = 52);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 48:
+/***/ 52:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(49);
+module.exports = __webpack_require__(53);
 
 
 /***/ }),
 
-/***/ 49:
+/***/ 53:
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
@@ -83,7 +83,7 @@ $(document).ready(function () {
         loopBottom: true,
         navigation: true,
         fixedElements: '#nav',
-        sectionsColor: ['#11c392', '#7BAABE', '#543e70', '#99c3bf']
+        sectionsColor: ['#11c392', '#3aa5be', '#007052', '#4587c3']
     });
 });
 

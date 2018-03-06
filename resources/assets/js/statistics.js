@@ -1,6 +1,5 @@
 
-function cargarEstadisticas() {
-
+$(function () {
     let username= $("#username").val();
     let chartOptions = {
         scales: {
@@ -42,7 +41,10 @@ function cargarEstadisticas() {
             console.log(error);
             alert("EERRRORR")
         });
-}
+
+});
+
+
 
 
 

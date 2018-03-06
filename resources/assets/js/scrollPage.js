@@ -5,6 +5,6 @@ $(document).ready(function() {
         loopBottom: true,
         navigation: true,
         fixedElements: '#nav',
-        sectionsColor: ['#11c392', '#7BAABE','#543e70','#99c3bf']
+        sectionsColor: ['#11c392', '#3aa5be','#007052','#4587c3']
     });
 });
