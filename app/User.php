@@ -35,6 +35,10 @@ class User extends Authenticatable
         return $this->hasMany(Customer::class)->latest();
     }
 
+    public function contacts(){
+        return $this->hasMany(Contact::class)->latest();
+    }
+
     public function products(){
         return $this->hasMany(Product::class)->latest();
     }
