@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="d-flex justify-content-end">
-                        <a href="">editar</a>
+                          <a href="{{route('customer.edit',array('username' => Auth::user()->username , 'customer' => $customer))}}"><i class="fas fa-edit fa-3x"></i></a>
                     </div>
                 </div>
                 <div class="dropdown-divider"></div>
@@ -40,7 +40,4 @@
     </div>
 @endsection
 
-@push('js')
-
-@endpush
 

@@ -54,11 +54,11 @@
                             <form action="{{route('customer.delete',array('id' => $customer['id']))}}" method="post">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
-                                <button type="submit" class="btn btn-danger"><img src="https://es.seaicons.com/wp-content/uploads/2017/02/delete-icon-1.png" width="25" height="25" alt=""></button>
+                                <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x"></i></button>
                             </form>
                         </td>
                         <td>
-                            <a class="btn btn-info"  href="{{route('customer.profile',array('username' => Auth::user()->username , 'customer' => $customer))}}"><img  class="edit" src="http://www.tecnovirtual.edu.ec/virtual/pluginfile.php/2005/block_html/content/icon-user.png" width="25" height="25" alt=""></a>
+                            <a  href="{{route('customer.profile',array('username' => Auth::user()->username , 'customer' => $customer))}}"><i class="far fa-address-card fa-3x"></i></a>
                         </td>
                     </tr>
     @empty
@@ -67,7 +67,7 @@
         </tbody>
         </table>
 </div>
-@include('customers.profile')
+
 
 
 

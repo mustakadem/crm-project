@@ -105,19 +105,54 @@ class CustomersController extends Controller
             'name' => $request->input('name'),
             'user_id' => $user->id,
             'surnames' => $request->input('surnames'),
-            'type_customers' => "exporadico",
-            'image' => $_POST['image']?$_POST['image']:null,
+            'type_customers' => $request->input('type_customer'),
+            'image' => $request->input('image'),
             'address' => $request->input('address'),
-            'number' => $_POST['number']?$_POST['number']:null,
             'movil' => $request->input('movil'),
             'email' => $request->input('email'),
-            'company' => $_POST['company']?$_POST['company']:null,
-            'job_title' => $_POST['job_title']?$_POST['job_title']:null,
-            'notes' => $_POST['notes']?$_POST['notes']:null,
+            'company' => $request->input('company'),
+            'job_title' => $request->input('job_title'),
+            'notes' =>  $request->input('notes'),
         ]);
 
-        return redirect('/home');
+        return redirect('/home/'.$user->username.'/customers/panel');
 
+    }
+
+    /**
+     * @param $username
+     * @param Customer $customer
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($username, Customer $customer){
+        return view('customers.edit',[
+            'customer' => $customer
+        ]);
+    }
+
+    /**
+     * @param CreateCustomersRequest $request
+     * @param $username
+     * @param Customer $customer
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update(CreateCustomersRequest $request, $username, Customer $customer ){
+        $user = User::find($customer->user_id);
+
+        $customer->update([
+            'name' => $request->input('name'),
+            'surnames' => $request->input('surnames'),
+            'type_customers' => $request->input('type_customer'),
+            'image' => $request->input('image'),
+            'address' => $request->input('address'),
+            'movil' => $request->input('movil'),
+            'email' => $request->input('email'),
+            'company' => $request->input('company'),
+            'job_title' => $request->input('job_title'),
+            'notes' =>  $request->input('notes'),
+        ]);
+
+        return redirect('/home/'.$user->username.'/customers/profile/'.$customer->id);
     }
 
     /**
@@ -127,7 +162,8 @@ class CustomersController extends Controller
     public function destroy($id){
 
         Customer::where('id',$id)->delete();
-       return redirect('/home');
+
+       return redirect('/home/'.Auth::user()->username.'/customers/panel');
     }
 
     /**
@@ -158,7 +194,7 @@ class CustomersController extends Controller
             ]);
         }else if($campo == 'movil'){
             $validator = Validator::make($request->all(),[
-                'movil' => 'numeric|required'
+                'movil' => 'numeric|required|min:6'
             ]);
         }else if($campo == 'job_title'){
             $validator = Validator::make($request->all(),[
@@ -167,6 +203,10 @@ class CustomersController extends Controller
         }else if($campo == 'company'){
             $validator = Validator::make($request->all(),[
                 'company' => 'string|min:4|nullable'
+            ]);
+        }else if($campo == 'type_customer'){
+            $validator = Validator::make($request->all(),[
+                'type_customer' => 'in:potencial,activo,exporadico'
             ]);
         }
 

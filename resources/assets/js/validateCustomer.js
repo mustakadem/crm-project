@@ -20,6 +20,9 @@ function validateCustomer() {
     $("#company").on("change",function () {
         validateData("company","#company","#errorCompany");
     });
+    $("#type_customer").on("change",function () {
+        validateData("type_customer","#type_customer","#errorType_customer");
+    });
 
 
 }
@@ -35,17 +38,27 @@ function validateData(dato,selector,selectorDiv) {
             $(selectorDiv).addClass("invalid-feedback").text(response.data[dato]);
             $(selector).removeClass("is-valid");
             $(selector).addClass("is-invalid");
-            $("#buttonForm").attr('disabled');
+            if (!isDisabled()){
+                $("#buttonForm").attr('disabled');
+            }
         }else {
             $(selector).removeClass("is-invalid");
             $(selector).addClass("is-valid");
             $(selectorDiv).removeClass("invalid-feedback");
             $(selectorDiv).addClass("valid-feedback").text("Correct");
-            $("#buttonForm").removeAttr('disabled');
+            if (isDisabled()){
+                $("#buttonForm").removeAttr('disabled');
+            }
         }
     })
         .catch(function (error) {
             console.log(error);
             alert("EERRRORR")
         });
+}
+
+function isDisabled() {
+    return !!($("#name").hasClass('is-valid') && $("#surnames").hasClass('is-valid') && $("#email").hasClass('is-valid')
+        && $("#address").hasClass('is-valid') && $("#movil").hasClass('is-valid') && $("#job_title").hasClass('is-valid')
+        && $("#company").hasClass('is-valid'));
 }

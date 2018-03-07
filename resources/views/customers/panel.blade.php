@@ -4,10 +4,10 @@
 @endsection
 @section('content')
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-2">
             @include('layouts.panel')
         </div>
-        <div id="panel"  class="col-md-10 pt-5">
+        <div id="panel"  class="col-10 pt-5">
             <div class="container">
                 <ul class="nav nav-tabs mb-5">
                     <li class="nav-item">
@@ -21,7 +21,7 @@
                     </li>
                 </ul>
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-5">
                         <h5 class="text-center bg-info">Customers Created Last Week</h5>
 
                         <div id="customersOfTheWeek" class="carousel slide" data-ride="carousel">
@@ -72,7 +72,7 @@
 
 
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-5">
                         <h5 class="text-center bg-info">Customers With More Purchases</h5>
                         <div id="customersMorePurchases" class="carousel slide" data-ride="carousel">
 
