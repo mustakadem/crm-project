@@ -13,14 +13,16 @@
  @yield('style')
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
-<div id="app">
+<div id="app" >
     @yield('content')
 </div>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 @stack('js')
 </body>
 </html>

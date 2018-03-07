@@ -13816,7 +13816,6 @@ var app = new Vue({
 
 
 window._ = __webpack_require__(14);
-
 window.Popper = __webpack_require__(3);
 
 /**

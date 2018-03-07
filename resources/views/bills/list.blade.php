@@ -36,8 +36,8 @@
                                     </table>
 
                                     <div id="option" class="d-flex justify-content-around">
-                                        <a class="btn btn-danger" href="#"><img src="https://es.seaicons.com/wp-content/uploads/2017/02/delete-icon-1.png" width="25" height="25" alt=""></a>
-                                        <a class="btn btn-info" href="#"><img src="http://www.tecnovirtual.edu.ec/virtual/pluginfile.php/2005/block_html/content/icon-user.png" width="25" height="25" alt=""></a>
+                                        <a class="btn btn-danger" href="#"><i class="far fa-trash-alt fa-2x"></i></a>
+                                        <a  href="#"><i class="fas fa-tag fa-3x"></i></a>
                                     </div>
                                 </div>
                                 <div id="footerCard" class=" bg-secondary text-center">
