@@ -30,6 +30,15 @@
                         </ul>
                     </div>
                     <div class="col-md-8">
+                        @if( session('exito') )
+                            <div class="bg-success">
+                                <h5 class="text-white">Actualización correcta</h5>
+                            </div>
+                        @elseif( session('error'))
+                            <div class="bg-dark">
+                                <h5 class="text-white">{{ session('error') }}</h5>
+                            </div>
+                        @endif
                         <form action="{{ Request::url() }}" method="POST">
                             {{ csrf_field() }}
 

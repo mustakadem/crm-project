@@ -6,6 +6,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -24,8 +25,8 @@ class UserController extends Controller
 
     /**
      * Pagina principal del usuario
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-
     public function home(){
         return view('user.panel', ['user' => $this->user]);
     }
@@ -42,7 +43,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra todos los datos del usuario
      *
      * @param $username
      * @return void
@@ -56,11 +57,10 @@ class UserController extends Controller
     }
 
 
-
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el panel principal para elegir que parte de datos se quiere actualizar
      *
-     * @param $username
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request)
@@ -69,7 +69,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza parte de los datos del usuario dependiendo de la ruta que recibe.
      *
      * @param UpdateUserRequest $request
      * @return void
@@ -77,31 +77,34 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request)
     {
         $path = $request->path();
+        $user = User::findOrFail($this->user->id);
 
         if( strpos($path, 'data')) {
             $data = array_filter($request->all());
-            $user = User::findOrFail($this->user->id);
+
 
             $user->fill($data);
+
+
+
         }elseif ( strpos($path, 'password') ){
 
 
-            if( ! Hash::check($request->get('currentPassword'), $this->user->password ) ){
-                return redirect()->back()->with('error', 'La constraseña actual no es correcta');
+            if( ! Hash::check($request->get('current_password'), $this->user->password ) ){
+                return redirect()->back()->with('error', 'La constraseña actual no es correcta');;
             }
 
-            if( strcmp($request->get('currentPassword'), $request->get('newPassword')) == 0){
-                return redirect()->back()->with('error', 'La nueva contraseña debe ser diferente de la antigua.');
+            if( strcmp($request->get('current_password'), $request->get('password')) == 0){
+                return redirect()->back()->with('error', 'La nueva contraseña debe ser diferente de la antigua.');;
             }
 
-            $this->user->password = bcrypt($request->get('newpasswordPassword'));
+            $this->user->password = bcrypt($request->get('password'));
         }
 
         $user->save();
 
         return redirect()
-            ->route('user.edit')
-            ->with('exito', 'Datos actualizados');
+            ->route('user.edit');
 
 
     }

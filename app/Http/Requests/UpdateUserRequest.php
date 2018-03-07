@@ -13,7 +13,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -41,5 +41,32 @@ class UpdateUserRequest extends FormRequest
         }
 
         return $rules;
+    }
+
+    public function messages()
+    {
+        // Se espeficican los mensajes de validación para las reglas definidas
+        // en el método rules de esta clase.
+        return [
+            'name.string' => 'El nombre debe ser una cadena de texto',
+            'name.min' => 'El nombre debe tener minimo 4 caracteres',
+            'name.max' => 'El nombre debe tener maximo 15 caracteres',
+            'surnames.string' => 'El nombre debe ser una cadena de texto',
+            'surnames.min' => 'El nombre debe tener minimo 4 caracteres',
+            'surnames.max' => 'El nombre debe tener maximo 30 caracteres',
+            'movil.min' => 'El movil es debe tener minimo 6 caracteres',
+            'movil.numeric' => 'Debes introducir valores numericos',
+            'sector.string' => 'El sector debe ser una cadena de texto',
+            'sector.min' => 'El nombre debe tener minimo 4 caracteres',
+            'website.string' => 'La website debe ser una cadena de texto',
+            'website.min' => 'La website debe tener minimo 4 caracteres',
+            'current_password.required' => 'La Contraseña es requerida',
+            'current_password.min' => 'La Contraseña debe tener al menos 6 caracteres',
+            'password.required' => 'La Contraseña es requerida',
+            'password.min' => 'La Contraseña debe tener al menos 6 caracteres',
+            'password.confirmed' => 'Las contraseñas no coinciden'
+
+
+        ];
     }
 }
