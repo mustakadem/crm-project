@@ -31,12 +31,12 @@
                                 </div>
 
                                 <div id="option" class="d-flex justify-content-around">
-                                    <form action="{{route('product.delete',array('id' => $product['id']))}}" method="post">
+                                    <form action="{{route('product.delete',array('username' => Auth::user()->username ,'id' => $product['id']))}}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
-                                        <button type="submit" class="btn btn-danger"><img src="https://es.seaicons.com/wp-content/uploads/2017/02/delete-icon-1.png" width="25" height="25" alt=""></button>
-                                    </form>                                    <a class="btn btn-success" href="#"><img src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/write-circle-green-256.png" width="25" height="25" alt=""></a>
-                                    <a class="btn btn-info" href="#"><img src="http://pgatinasycamisetasshop.com/wp-content/uploads/2015/05/icono_paquetes.png" width="25" height="25" alt=""></a>
+                                        <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x"></i></button>
+                                    </form>
+                                    <a class="btn btn-info" href="{{route('product.profile',array('username' => Auth::user()->username , 'product' => $product))}}"><i class="fas fa-box fa-2x"></i></a>
                                 </div>
                                 <br>
                                 <div id="footerCard" class="flex-row bg-secondary text-center">
@@ -47,5 +47,9 @@
                     @empty
                         <p>No hay Productos</p>
                     @endforelse
+
                 </div>
+    <div class="d-flex justify-content-center">
+        {{$products->links()}}
+    </div>
 </div>

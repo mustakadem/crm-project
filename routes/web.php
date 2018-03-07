@@ -31,12 +31,11 @@ Route::group(['middleware' => 'auth'], function(){
      */
     Route::get('/home','UserController@home')->name('user.home');
     Route::get('/home/profile/{user}','UserController@show')->name('user.profile');
-
-    Route::get('edit/data','UserController@edit')->name('user.edit');
-    Route::patch('edit/data','UserController@update');
-    Route::get('edit/password','UserController@edit')->name('edit.password');
-    Route::patch('edit/password','UserController@update');
-    Route::get('edit/avatar','UserController@edit')->name('edit.avatar');
+    Route::get('/edit/data','UserController@edit')->name('user.edit');
+    Route::patch('/edit/data','UserController@update');
+    Route::get('/edit/password','UserController@edit')->name('edit.password');
+    Route::patch('/edit/password','UserController@update');
+    Route::get('/edit/avatar','UserController@edit')->name('edit.avatar');
 
 
     /**
@@ -47,6 +46,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/home/{user}/customers/profile/{customer}', 'CustomersController@show')->name('customer.profile');
     Route::get('/home/{user}/customer/new','CustomersController@create')->name('customer.new');
     Route::post('/home/{user}/customer/new','CustomersController@store')->name('customer.store');
+    Route::get('/home/{user}/customer/edit/{customer}','CustomersController@edit')->name('customer.edit');
+    Route::put('/home/{user}/customer/edit/{customer}','CustomersController@update')->name('customer.update');
     Route::delete('home/{user}/customer/delete','CustomersController@destroy')->name('customer.delete');
     Route::post('/customer/new/validate/{campo}','CustomersController@validateNewCustomer');
 
@@ -61,9 +62,12 @@ Route::group(['middleware' => 'auth'], function(){
      */
     Route::get('/home/{user}/products/panel','ProductController@panel')->name('product.panel');
     Route::get('/home/{user}/products/list','ProductController@index')->name('product.list');
+    Route::get('/home/{user}/products/profile/{product}','ProductController@show')->name('product.profile');
+    Route::get('/home/{user}/products/edit/{product}','ProductController@edit')->name('product.edit');
+    Route::put('/home/{user}/products/edit/{product}','ProductController@update')->name('product.update');
     Route::get('/home/{user}/products/new','ProductController@create')->name('product.new');
     Route::post('/home/{user}/products/new','ProductController@store')->name('product.store');
-    Route::delete('/home/{user}/products/{product}','ProductController@destroy')->name('product.delete');
+    Route::delete('/home/{user}/products/delete/{product}','ProductController@destroy')->name('product.delete');
 
 
 

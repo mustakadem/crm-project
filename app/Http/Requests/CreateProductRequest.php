@@ -33,9 +33,9 @@ class CreateProductRequest extends FormRequest
             'image' => [
                 'required'
             ],
-//            'type_product' => [
-//                'required',
-//            ],
+            'type_product' => [
+                'in:servicio,bienes',
+            ],
         'price' => [
             'numeric','required'
         ]
@@ -55,7 +55,8 @@ class CreateProductRequest extends FormRequest
             'description.min' =>'La descripcion debe contener minimo 4 caracteres',
             'description.max' =>'La descripcion debe contener maximo 255 caracteres',
             'image.required' => 'La Imagen es obligatoria',
-            'price.numeric' => 'El precio debe ser un numero'
+            'price.numeric' => 'El precio debe ser un numero',
+            'type_product.in' => 'Debes seleccionar un tipo de producto'
         ];
     }
 }
