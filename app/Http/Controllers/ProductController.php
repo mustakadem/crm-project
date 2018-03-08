@@ -9,18 +9,55 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use Carbon\Carbon;
+
 
 class ProductController extends Controller
 {
 
 
     /**
-     * Muestra el panel que gestiona las opciones de los productos
+     * Muestra el panel que gestiona las opciones de los productos.
+     * Mustra los productos mas vendidos y los mas caros.
      * @param $username
      * @return mixed
      */
     public function panel($username){
-        return view::make('product.panel')->render();
+
+        $now=Carbon::now();
+
+
+        $user = Auth::user();
+
+        $totalProducts = $user->products()->get();
+
+        $topProducts= array();
+        $moreExpensiveProduct= array();
+        $media= Product::avg('price');
+
+        $max=0;
+
+        foreach ($totalProducts as $product){
+
+
+            $total = DB::table('bills_product')->where('product_id',$product->id)->count();
+
+            $difference = $now->diffInDays($product['created_at']);
+
+            if ($max > 0 ? $total >= $max:$total > $max && $difference <= 7 ){
+                $max = $total;
+                array_push($topProducts,$product);
+            }
+
+            if ($product['price'] >= $media){
+                array_push($moreExpensiveProduct,$product);
+            }
+        }
+
+        return view::make('product.panel',[
+            'topProducts' => $topProducts,
+            'moreExpensiveProduct' => $moreExpensiveProduct
+        ])->render();
     }
 
 

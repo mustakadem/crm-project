@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="form-group ">
-                                <label for="products">Prducts</label>
+                                <label for="products">Products</label><i id="labelProduct" class=" pl-1 far fa-badge"></i>
                                 <select name="products[]" id="products" multiple="multiple">
                                     @forelse($products as $product)
                                         <option data-token="{{$product['name']}}" value="{{$product['id']}}">
@@ -41,6 +41,7 @@
                                         <option value="null" selected>No Tienes Productos</option>
                                     @endforelse
                                 </select>
+                           <div id="errorProduct"></div>
                             </div>
 
                             <div class="form-group ">
@@ -72,7 +73,9 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary" type="submit">Create Bill</button>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-primary" id="buttonForm"  type="submit">Create Bill</button>
+                    </div>
 
                 </form>
                 </div>

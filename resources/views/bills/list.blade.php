@@ -36,8 +36,12 @@
                                     </table>
 
                                     <div id="option" class="d-flex justify-content-around">
-                                        <a class="btn btn-danger" href="#"><i class="far fa-trash-alt fa-2x"></i></a>
-                                        <a  href="#"><i class="fas fa-tag fa-3x"></i></a>
+                                        <form action="{{route('bill.delete',array('id' => $bill['id']))}}" method="post">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x"></i></button>
+                                        </form>
+                                        <a  href="#" ><i class="fas fa-tag fa-3x" data-toggle="modal" data-target="#perfilBillModal"></i></a>
                                     </div>
                                 </div>
                                 <div id="footerCard" class=" bg-secondary text-center">
@@ -46,8 +50,9 @@
                                 <!--/.Card content-->
                             </div>
                         </div>
+                        @include('bills.profile')
                     @empty
-                        <p>No hay Clientes</p>
+                        <p>No hay Facturas</p>
                     @endforelse
                 </div>
             </div>

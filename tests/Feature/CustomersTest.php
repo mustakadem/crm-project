@@ -16,8 +16,9 @@ class CustomersTest extends TestCase
     use DatabaseTransactions;
 
 
-
-
+    /**
+     * Se comprueba si se muestra el panel pricipal de la entidad Customer
+     */
     public function testPanel(){
         $user = factory(User::class)->create();
         $customer = factory(Customer::class)->create([
@@ -87,6 +88,30 @@ class CustomersTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee($customer->name);
+
+    }
+
+    public function testDelete(){
+        $user = factory(User::class)->create();
+        $customer = factory(Customer::class)->create([
+            'user_id' => $user->id,
+        ]);
+
+        $response = $this->delete('customers/delete/'.$customer->id);
+
+        $response->assertStatus(200);
+    }
+
+    public function testEdit(){
+        $user = factory(User::class)->create();
+        $customer = factory(Customer::class)->create([
+            'user_id' => $user->id,
+        ]);
+
+        $response = $this->get('/home/'.$user->username.'/customers/edit/'.$customer->id);
+        $response->assertStatus(200);
+        $response->assertSee('name');
+        $response->assertSee('Type Customer');
 
     }
 }

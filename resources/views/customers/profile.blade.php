@@ -25,6 +25,8 @@
                         <p class="h5">Type: <strong>{{$customer['type_customers']}}</strong></p>
                         <p class="h5">company: <strong>{{$customer['company']}}</strong></p>
                         <p class="h5">job title: <strong>{{$customer['job_title']}}</strong></p>
+                        <p class="h5">Total Sales: <strong>{{$totalSales}}</strong></p>
+
                     </div>
 
                     <div class="d-flex justify-content-end">

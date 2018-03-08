@@ -131,11 +131,8 @@
 @endsection
 
 @push('js')
-    <script src="{{asset('js/chart.min.js')}}"></script>
     <script src="{{asset('js/multi.min.js')}}" ></script>
-    <script src="{{asset('js/iziModal.min.js')}}"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.js"></script>
-    <script src="{{asset('js/panel.js')}}" ></script>
+    <script src="{{asset('js/panelBill.js')}}" ></script>
 @endpush
 
 

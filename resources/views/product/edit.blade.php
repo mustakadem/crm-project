@@ -19,7 +19,7 @@
                             <div class="col">
                                 <div class="form-group ">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="name" placeholder="{{ $product['name'] }}"  value="{{old('name')}}">
+                                    <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="name" placeholder="{{ $product['name'] }}"  value="{{$product['name'] }}">
                                     @if ($errors->has('name'))
                                         <div class="invalid-feedback">
                                             <strong>{{ $errors->first('name') }}</strong>
@@ -44,7 +44,7 @@
                             <div class="col">
                                 <div class="form-group ">
                                     <label for="price">Price</label>
-                                    <input type="number" class="form-control {{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" id="price" min="0" placeholder="{{ $product['price'] }}"  value="{{old('price')}}">
+                                    <input type="number" class="form-control {{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" id="price" min="0" placeholder="{{ $product['price'] }}"  value="{{$product['price']}}">
                                     @if ($errors->has('price'))
                                         <div class="invalid-feedback">
                                             <strong>{{ $errors->first('price') }}</strong>
@@ -86,11 +86,9 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-primary" type="submit">Enviar</button>
-
+                        <div id="button" class=" d-flex justify-content-center">
+                            <button class="btn btn-primary" type="submit"  id="buttonForm">Enviar</button>
                         </div>
-
                     </form>
                 </div>
             </div>

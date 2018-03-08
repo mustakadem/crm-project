@@ -27,6 +27,8 @@ class CustomersController extends Controller
         $now=Carbon::now();
 
 
+
+
         $user = Auth::user();
         $totalCustomers = $user->customers()->get();
         $media= DB::table('bills')->avg('total');
@@ -80,18 +82,21 @@ class CustomersController extends Controller
      */
     public function show($username,Customer $customer){
 
+        $totalSales = Bills::where('customer_id',$customer->id)->count();
         return view('customers.profile',[
-            'customer' => $customer
+            'customer' => $customer,
+            'totalSales' => $totalSales
         ]);
     }
 
     /**
      * Metodo para mostrar el formulario para crear un customer
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Throwable
      */
     public function create($username){
 
-        return view('customers.create');
+        return view('customers.create')->render();
     }
 
     /**
@@ -132,11 +137,10 @@ class CustomersController extends Controller
 
     /**
      * @param CreateCustomersRequest $request
-     * @param $username
      * @param Customer $customer
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(CreateCustomersRequest $request, $username, Customer $customer ){
+    public function update(CreateCustomersRequest $request, Customer $customer ){
         $user = User::find($customer->user_id);
 
         $customer->update([
@@ -166,56 +170,4 @@ class CustomersController extends Controller
        return redirect('/home/'.Auth::user()->username.'/customers/panel');
     }
 
-    /**
-     * Metodo para la validacion asincrona en cliente
-     * @param Request $request
-     * @param $campo
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function validateNewCustomer(Request $request , $campo){
-
-
-
-        if ($campo == 'name'){
-            $validator = Validator::make($request->all(),[
-                'name' => 'required|string|min:4'
-            ]);
-        }else if($campo == 'surnames'){
-            $validator = Validator::make($request->all(),[
-                'surnames' => 'string|min:4|required'
-            ]);
-        }else if($campo == 'email'){
-            $validator = Validator::make($request->all(),[
-                'email' => 'email|required'
-            ]);
-        }else if($campo == 'address'){
-            $validator = Validator::make($request->all(),[
-                'address' => 'string|nullable'
-            ]);
-        }else if($campo == 'movil'){
-            $validator = Validator::make($request->all(),[
-                'movil' => 'numeric|required|min:6'
-            ]);
-        }else if($campo == 'job_title'){
-            $validator = Validator::make($request->all(),[
-                'job_title' => 'string|min:4|nullable'
-            ]);
-        }else if($campo == 'company'){
-            $validator = Validator::make($request->all(),[
-                'company' => 'string|min:4|nullable'
-            ]);
-        }else if($campo == 'type_customer'){
-            $validator = Validator::make($request->all(),[
-                'type_customer' => 'in:potencial,activo,exporadico'
-            ]);
-        }
-
-        $errors=$validator->errors();
-
-
-
-        return response()->json([
-            $campo => $errors->get($campo)
-        ]);
-    }
 }

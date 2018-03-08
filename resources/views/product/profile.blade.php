@@ -38,10 +38,10 @@
 
                 </div>
                 <div class="dropdown-divider"></div>
-                <div class="row">
-                    <div class="d-flex justify-content-center">
-                        <div class="row">
-                            <div class="col">
+                <div class="row d-flex justify-content-center border bg-secondary ">
+
+                        <div class="row border bg-light">
+                            <div class="col border">
                                 <p>Product: <strong>{{$product['name']}}</strong></p>
                                 <p>Type Product: <strong>{{$product['type_product']}}</strong></p>
                                 <p>Price: <strong>{{$product['price']}} $</strong></p>
@@ -56,8 +56,6 @@
                                 <a href="{{route('product.edit',array('username' => Auth::user()->username,'product' => $product))}}"><i class="fas fa-edit fa-2x"></i></a>
                             </div>
                         </div>
-
-                    </div>
                 </div>
             </div>
         </div>

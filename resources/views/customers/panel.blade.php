@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('style')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.css"/>
+    <style>
+        a .rounded:hover{
+            border: 2px solid white;
+        }
+    </style>
 @endsection
 @section('content')
     <div class="row">
@@ -39,7 +44,7 @@
                                     <div class="carousel-item @if($loop->first) active @endif ">
                                         <div class="card card-cascade bg-dark">
                                             <!--Card image-->
-                                            <img class="align-self-center rounded pt-2 position-relative" src="{{$customer->image}}" width="200" height="200" alt="Card image of customer">
+                                            <a class="align-self-center" href="{{route('customer.profile',array('username' => Auth::user()->username,'customer' => $customer))}}"> <img class=" rounded pt-2 position-relative" src="{{$customer->image}}" width="200" height="200" alt="Card image of customer"></a>
                                             <!--/Card image-->
 
                                             <!--Card content-->
@@ -90,7 +95,7 @@
                                     <div class="carousel-item @if($loop->first) active @endif ">
                                         <div class="card card-cascade bg-dark">
                                             <!--Card image-->
-                                            <img class=" align-self-center rounded pt-2" src="{{$customer->image}}" width="200" height="200" alt="Card image of customer">
+                                            <a class="align-self-center" href="{{route('customer.profile',array('username' => Auth::user()->username,'customer' => $customer))}}"> <img class=" rounded pt-2 position-relative" src="{{$customer->image}}" width="200" height="200" alt="Card image of customer"></a>
                                             <!--/Card image-->
 
                                             <!--Card content-->
@@ -106,7 +111,7 @@
                                         </div>
                                     </div>
                                 @empty
-                                    <p>De momento ningun cliente a echo una compra</p>
+                                    <p>De momento ningun cliente a realizado una compra</p>
                                 @endforelse
 
                             </div>
@@ -130,7 +135,7 @@
 
 @push('js')
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.js"></script>
-    <script src="{{asset('js/panel.js')}}" ></script>
+    <script src="{{asset('js/panelCustomer.js')}}" ></script>
 @endpush
 
 

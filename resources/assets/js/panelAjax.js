@@ -19,7 +19,7 @@ $(function () {
     panel.on("click","#newCustomer",function (e) {
         e.preventDefault();
 
-        displayData('/home/'+username+'/customer/new',validateCustomer);
+        displayData('/home/'+username+'/customers/new',validateCustomer);
     });
 
 
@@ -38,7 +38,7 @@ $(function () {
     panel.on("click","#newProduct",function (e) {
         e.preventDefault();
 
-        displayData('/home/'+username+'/products/new',"");
+        displayData('/home/'+username+'/products/new',validateProduct);
     });
 
     /**
@@ -54,14 +54,12 @@ $(function () {
     panel.on("click","#newBill",function (e) {
         e.preventDefault();
 
-        displayData('/home/'+username+'/bills/new',cargarMultiSelect);
+        displayData('/home/'+username+'/bills/new',cargarFunciones);
     });
 
 
 
-    panel.on("change","#discount",function () {
-        discountPrice();
-    });
+
 
 
 

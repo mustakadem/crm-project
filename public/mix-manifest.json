@@ -1,7 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/table.js": "/js/table.js",
     "/js/statistics.js": "/js/statistics.js",
     "/js/scrollPage.js": "/js/scrollPage.js",
     "/js/modal.js": "/js/modal.js",
@@ -13,5 +12,7 @@
     "/js/chart.min.js": "/js/chart.min.js",
     "/js/jquery.fullpage.min.js": "/js/jquery.fullpage.min.js",
     "/css/jquery.fullpage.min.css": "/css/jquery.fullpage.min.css",
-    "/js/panel.js": "/js/panel.js"
+    "/js/panelProduct.js": "/js/panelProduct.js",
+    "/js/panelCustomer.js": "/js/panelCustomer.js",
+    "/js/panelBill.js": "/js/panelBill.js"
 }

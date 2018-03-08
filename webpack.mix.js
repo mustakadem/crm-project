@@ -13,7 +13,6 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/ajaxCalls.js','public/js')
-    .js('resources/assets/js/table.js','public/js')
     .sass('resources/assets/sass/app.scss', 'public/css');
 
 mix.styles(['node_modules/izimodal/css/iziModal.min.css'],'public/css/iziModal.min.css')
@@ -34,7 +33,17 @@ mix.babel('node_modules/fullpage.js/dist/jquery.fullpage.min.js','public/js/jque
 
 mix.combine([
     'resources/assets/js/panelAjax.js',
-    'resources/assets/js/billsFunction.js',
+    'resources/assets/js/validateProduct.js',
+],'public/js/panelProduct.js');
+
+mix.combine([
+    'resources/assets/js/panelAjax.js',
+    'resources/assets/js/validateCustomer.js',
     'resources/assets/js/table.js',
-    'resources/assets/js/validateCustomer.js'
-],'public/js/panel.js');
+],'public/js/panelCustomer.js');
+
+
+mix.combine([
+    'resources/assets/js/panelAjax.js',
+    'resources/assets/js/billsFunction.js',
+],'public/js/panelBill.js');
