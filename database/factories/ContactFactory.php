@@ -14,6 +14,6 @@ $factory->define(App\Contact::class, function (Faker $faker) {
         'address' => $faker->address,
         'movil' => $faker->phoneNumber,
         'email' => $email,
-        'notes'=>$faker->realText(30)
+        'notes'=>$faker->realText(100)
     ];
 });

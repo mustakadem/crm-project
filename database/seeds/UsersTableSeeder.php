@@ -14,8 +14,6 @@ class UsersTableSeeder extends Seeder
 
         $users= factory(App\User::class,10)->create();
 
-
-
         $users->each(function (App\User $user){
             $customers = factory(App\Customer::class)
                ->times(15)

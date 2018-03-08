@@ -82,7 +82,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Product $product)
+    public function create($username)
     {
         return view::make('product.create')->render();
     }

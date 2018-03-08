@@ -53,7 +53,7 @@
                                             <h4 class="text-center text-white">{{$product->name}}</h4>
                                             <div class="row d-flex justify-content-around">
                                                 <p class="card-text text-center text-white">Type Product <br> <strong>{{$product->type_product}}</strong></p>
-                                                <p class="card-text text-center text-white">Price <br> <strong>{{$product->price}}</strong></p>
+                                                <p class="card-text text-center text-white">Price <br> <strong>{{$product->price}} $</strong></p>
                                             </div>
 
 
@@ -107,7 +107,7 @@
                                         <!--Card content-->
                                         <div class="card-body">
                                             <h4 class="text-center text-white">{{$product->name}}</h4>
-                                            <p class="card-text text-center text-white">Price <br> <strong>{{$product->price}}$</strong></p>
+                                            <p class="card-text text-center text-white">Price <br> <strong>{{$product->price}} $</strong></p>
                                             <div id="footerCard" class=" bg-secondary text-center d-flex justify-content-center">
                                                 <p>Created: {{$product->created_at->format('d/m/Y')}}</p>
                                             </div>

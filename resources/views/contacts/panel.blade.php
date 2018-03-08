@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('style')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.css"/>
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-md-2">
@@ -12,7 +16,7 @@
                         <a class="nav-link active" href="{{route('contacts.panel',array('username' => Auth::user()->username))}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="" href="#">Create New Contact</a>
+                        <a class="nav-link" id="newContact" href="#">Create New Contact</a>
                     </li>
                 </ul>
                 <div class="row">
@@ -72,4 +76,12 @@
     </div>
 @endsection
 
+@push('js')
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.js"></script>
+    <script>
+        $('#tabla').DataTable();
+    </script>
+    <script src="{{asset('js/panelContacts.js')}}"></script>
+
+@endpush
 

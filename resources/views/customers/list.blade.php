@@ -51,16 +51,14 @@
                         <td>{{$customer['job_title']}}</td>
                         <td>{{$customer['type_customers']}}</td>
                         <td>
-                            <form action="{{route('customer.delete',array('id' => $customer['id']))}}" method="post">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x"></i></button>
-                            </form>
+                                <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x" data-toggle="modal" data-target="#deleteCustomer{{$customer->id}}"></i></button>
                         </td>
                         <td>
                             <a  href="{{route('customer.profile',array('username' => Auth::user()->username , 'customer' => $customer))}}"><i class="far fa-address-card fa-3x"></i></a>
                         </td>
                     </tr>
+
+                    @include('customers.modalDelete', ['cliente' => $customer])
     @empty
     <p>No hay Clientes</p>
     @endforelse

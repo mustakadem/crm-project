@@ -39,6 +39,7 @@ mix.combine([
 mix.combine([
     'resources/assets/js/panelAjax.js',
     'resources/assets/js/validateCustomer.js',
+    'resources/assets/js/deleteCustomer.js',
     'resources/assets/js/table.js',
 ],'public/js/panelCustomer.js');
 
@@ -47,3 +48,8 @@ mix.combine([
     'resources/assets/js/panelAjax.js',
     'resources/assets/js/billsFunction.js',
 ],'public/js/panelBill.js');
+
+
+mix.combine([
+    'resources/assets/js/panelAjax.js'
+],'public/js/panelContacts.js');

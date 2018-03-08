@@ -57,6 +57,16 @@ $(function () {
         displayData('/home/'+username+'/bills/new',cargarFunciones);
     });
 
+    /**
+     * Function Contacts
+     */
+
+    panel.on("click","#newContact",function (e) {
+        e.preventDefault();
+
+        displayData('/home/'+username+'/contacts/new',"");
+    })
+
 
 
 

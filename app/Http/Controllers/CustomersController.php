@@ -125,6 +125,7 @@ class CustomersController extends Controller
     }
 
     /**
+     * Muestra el formualrio para editar el Cliente
      * @param $username
      * @param Customer $customer
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

@@ -14,5 +14,6 @@
     "/css/jquery.fullpage.min.css": "/css/jquery.fullpage.min.css",
     "/js/panelProduct.js": "/js/panelProduct.js",
     "/js/panelCustomer.js": "/js/panelCustomer.js",
-    "/js/panelBill.js": "/js/panelBill.js"
+    "/js/panelBill.js": "/js/panelBill.js",
+    "/js/panelContacts.js": "/js/panelContacts.js"
 }

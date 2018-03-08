@@ -41,7 +41,7 @@
                                             {{ method_field('DELETE') }}
                                             <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x"></i></button>
                                         </form>
-                                        <a  href="#" ><i class="fas fa-tag fa-3x" data-toggle="modal" data-target="#perfilBillModal"></i></a>
+                                        <a  href="#" ><i class="fas fa-tag fa-3x" data-toggle="modal" data-target="#perfilBillModal{{$bill->id}}"></i></a>
                                     </div>
                                 </div>
                                 <div id="footerCard" class=" bg-secondary text-center">

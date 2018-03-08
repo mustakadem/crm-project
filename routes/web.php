@@ -54,9 +54,12 @@ Route::group(['middleware' => 'auth'], function(){
 
     /**
      * Contacts Controller
+     * [middleware]
      */
 
     Route::get('/home/{user}/contacts','ContactsController@index')->name('contacts.panel');
+    Route::get('/home/{user}/contacts/new','ContactsController@create')->name('contacts.new');
+
 
     /**
      * Rutas del Controlador Product
