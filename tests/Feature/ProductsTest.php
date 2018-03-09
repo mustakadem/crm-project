@@ -18,21 +18,22 @@ class ProductsTest extends TestCase
     /**
      * Se comprueba si se muestra el panel pricipal de la entidad Product
      */
-    public function testPanel(){
+    public function testPanel()
+    {
         $user = factory(User::class)->create();
         $product = factory(Product::class)->create([
             'user_id' => $user->id,
         ]);
 
 
-
-        $response = $this->actingAs($user)->get('/home/'.$user->username.'/products/panel');
+        $response = $this->actingAs($user)->get('/home/' . $user->username . '/products/panel');
 
         $response->assertStatus(200);
-        $response->assertSee('Top Product Last Week');
         $response->assertSee($user->avatar);
         $response->assertSee('home');
         $response->assertSee('contacts');
+        $response->assertSee('List Of Products');
+        $response->assertSee('Product  ID#');
 
     }
 
@@ -49,9 +50,7 @@ class ProductsTest extends TestCase
         ]);
 
 
-
-
-        $response = $this->actingAs($user)->get('/home/'.$user->username.'/products/profile/'.$product->id);
+        $response = $this->actingAs($user)->get('/home/' . $user->username . '/products/profile/' . $product->id);
 
         $response->assertStatus(200);
         $response->assertSee($product->name);
@@ -61,48 +60,49 @@ class ProductsTest extends TestCase
     }
 
 
-
-    /**
-     * Se comprueba si se carga el producto en la lista.
-     * @return void
-     */
-    public function testList(){
-        $user = factory(User::class)->create();
-        $product = factory(Product::class)->create([
-            'user_id' => $user->id,
-        ]);
-
-
-
-        $response = $this->actingAs($user)->get('/home/'.$user->username.'/products/list');
-
-        $response->assertStatus(200);
-        $response->assertSee('List Of Products');
-        $response->assertSee('Product  ID#');
-
-
-    }
-
     /**
      * Este test comprueba si se carga el formulario para crear un nuevo Producto
      */
-    public function testFormNewPage(){
+    public function testFormNewPage()
+    {
         $user = factory(User::class)->create();
 
-        $response = $this->actingAs($user)->get('/home/'.$user->username.'/products/new');
+        $response = $this->actingAs($user)->get('/home/' . $user->username . '/products/new');
         $response->assertStatus(200);
+    }
+
+    /**
+     * Test que comprueba si se crea un producto
+     */
+    public function testStore()
+    {
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+
+        $this->post('/products/new', [
+            'name' => 'producto prueba',
+            'type_product' => 'bienes',
+            'price' => '45',
+            'image' => 'imagen.png',
+            'description' => 'prueba de producto',
+        ]);
+
+        $this->assertDatabaseHas('products', [
+            'name' => 'producto prueba'
+        ]);
     }
 
     /**
      * Comprueba si un producto puede ser eliminado
      */
-    public function testDelete(){
+    public function testDelete()
+    {
         $user = factory(User::class)->create();
         $product = factory(Product::class)->create([
             'user_id' => $user->id,
         ]);
 
-        $response = $this->delete('customers/delete/'.$product->id);
+        $response = $this->delete('products/delete/' . $product->id);
 
         $response->assertStatus(302);
     }
@@ -110,17 +110,44 @@ class ProductsTest extends TestCase
     /**
      * Este test comprueba si se carga el formulario para editar el Producto
      */
-    public function testFormEditPage(){
+    public function testFormEditPage()
+    {
         $user = factory(User::class)->create();
         $product = factory(Product::class)->create([
             'user_id' => $user->id,
         ]);
 
-        $response = $this->actingAs($user)->get('/home/'.$user->username.'/products/edit/'.$product->id);
+        $response = $this->actingAs($user)->get('/home/' . $user->username . '/products/edit/' . $product->id);
         $response->assertStatus(200);
         $response->assertSee('name');
         $response->assertSee('Type Product');
         $response->assertSee('Description');
 
+    }
+
+    /**
+     * Comprueba si se actualiza un Producto
+     */
+    public function testUpdate()
+    {
+        $user = factory(User::class)->create();
+        $product = factory(Product::class)->create([
+            'user_id' => $user->id,
+        ]);
+        $this->actingAs($user);
+
+        $this->put('/products/edit/' . $product->id, [
+            'name' => 'Producto prueba Actualizado',
+            'type_product' => 'servicio',
+            'price' => '145',
+            'image' => 'imagen.png',
+            'description' => 'prueba de producto',
+        ]);
+
+        $this->assertDatabaseHas('products', [
+            'id' => $product->id,
+            'name' => 'Producto prueba Actualizado',
+            'type_product' => 'servicio',
+        ]);
     }
 }

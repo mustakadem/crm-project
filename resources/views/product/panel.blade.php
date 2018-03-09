@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div id="option" class="d-flex justify-content-around">
-                                    <form action="{{route('product.delete',array('username' => Auth::user()->username ,'id' => $product['id']))}}" method="post">
+                                    <form action="{{route('product.delete',array('id' => $product['id']))}}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x"></i></button>

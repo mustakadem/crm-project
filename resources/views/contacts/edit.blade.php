@@ -16,7 +16,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="name">Namel</label><i id="lableName" class=" pl-1 far fa-badge"></i>
+                                    <label for="name">Name</label><i id="lableName" class=" pl-1 far fa-badge"></i>
                                     <input type="text" class="form-control  {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="name" placeholder="Contact Name"  value="{{ $contact->name }}">
                                     <div id="errorName"></div>
                                     @if ($errors->has('name'))

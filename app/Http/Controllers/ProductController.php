@@ -147,11 +147,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($username,$id){
+    public function destroy($id){
 
         Product::where('id',$id)->delete();
 
 
-        return redirect('/home/'.$username.'/products/panel');
+        return redirect('/home/'.Auth::user()->username.'/products/panel');
     }
 }

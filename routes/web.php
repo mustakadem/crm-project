@@ -82,7 +82,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('/products/edit/{product}','ProductController@update')->name('product.update');
     Route::get('/home/{user}/products/new','ProductController@create')->name('product.new');
     Route::post('/products/new','ProductController@store')->name('product.store');
-    Route::delete('/home/{user}/products/delete/{product}','ProductController@destroy')->name('product.delete');
+    Route::delete('products/delete/{product}','ProductController@destroy')->name('product.delete');
 
 
 

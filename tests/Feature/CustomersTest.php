@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Customer;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -34,6 +35,7 @@ class CustomersTest extends TestCase
         $response->assertSee('home');
         $response->assertSee('contacts');
 
+
     }
 
     /**
@@ -60,29 +62,12 @@ class CustomersTest extends TestCase
     }
 
 
-    /**
-     * Se comprueba si se carga el cliente en la lista.
-     * @return void
-     */
-    public function testList(){
-        $user = factory(User::class)->create();
-        $customer = factory(Customer::class)->create([
-            'user_id' => $user->id,
-        ]);
 
-
-
-        $response = $this->actingAs($user)->get('/home/'.$user->username.'/customers/list');
-
-        $response->assertStatus(200);
-        $response->assertSee($customer->name);
-
-    }
 
     /**
      * Este test comprueba si se carga el formulario para crear un nuevo Customer
      */
-    public function testFormNewPage(){
+    public function testFormCreatePage(){
         $user = factory(User::class)->create();
 
         $response = $this->actingAs($user)->get('/home/'.$user->username.'/customers/new');
@@ -105,6 +90,31 @@ class CustomersTest extends TestCase
     }
 
     /**
+     * Test que comprueba si se crea un cliente
+     */
+    public function testStore(){
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+
+        $this->post('/customers/new', [
+            'name' => 'cliente prueba',
+            'surnames' => 'prueba',
+            'type_customer' => 'potencial',
+            'address' => 'prueba',
+            'image' => 'imagen.png',
+            'movil' => '594859',
+            'email' => 'prueba@gmail.com',
+            'company' => 'prueba',
+            'job_title' => 'prueba',
+            'notes' => 'prueba',
+        ]);
+
+        $this->assertDatabaseHas('customers', [
+            'name' => 'cliente prueba'
+        ]);
+    }
+
+    /**
      * Este test comprueba si se carga el formulario para editar el Customer
      */
     public function testFormEditPage(){
@@ -118,4 +128,38 @@ class CustomersTest extends TestCase
         $response->assertSee('name');
         $response->assertSee('Type Customer');
     }
+
+    /**
+     * Comprueba si se actualiza un Cliente
+     */
+    public function testUpdate(){
+        $user = factory(User::class)->create();
+        $customer = factory(Customer::class)->create([
+            'user_id' => $user->id,
+        ]);
+        $this->actingAs($user);
+
+        $this->put('/customers/edit/'.$customer->id, [
+            'name' => 'cliente prueba Actualizado',
+            'surnames' => 'prueba Actualizado',
+            'type_customer' => 'potencial',
+            'address' => 'prueba Actualizado',
+            'image' => 'imagen.png',
+            'movil' => '5948594',
+            'email' => 'prueba@gmail.com',
+            'company' => 'prueba Actualizado',
+            'job_title' => 'prueba',
+            'notes' => 'prueba',
+        ]);
+
+        $this->assertDatabaseHas('customers', [
+            'id'        => $customer->id,
+            'name' => 'cliente prueba Actualizado',
+        ]);
+
+
+
+    }
+
+
 }
