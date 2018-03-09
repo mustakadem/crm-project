@@ -8,6 +8,8 @@
    - DB_HOST=192.168.10.10
    - APP_URL=http://crm.test
    - DB_DATABASE=crm
+   
+  -Una vez cambiadas las variables refactorizamos el archivo y lo llamamos ".env"
   
-  -Una vez echo lo anterior hay que ejecutar las migraciones con los datos de prueba con "php artisan migrate --seed"
+  -Una vez echo todo lo anterior hay que ejecutar las migraciones con los datos de prueba con "php artisan migrate --seed"
 
