@@ -4,6 +4,8 @@
   
   -Modificar el archivo homestead.yaml dentro de la carpeta Homestead en el directorio raiz y añadir las rutas del proyecto y el nombre de la base de datos "crm"
   
+  -Añadir la ruta http://crm.test en el archivo hosts
+  
   -En el archivo .env.example hay que modificar las siguientes constantes. 
    - DB_HOST=192.168.10.10
    - APP_URL=http://crm.test
