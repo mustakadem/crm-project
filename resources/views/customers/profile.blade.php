@@ -1,8 +1,5 @@
 @extends('layouts.app')
-@section('style')
-    <link rel="stylesheet" href="{{asset('css/multi.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.css"/>
-@endsection
+
 @section('content')
     <div class="row">
         <div class="col-md-2">
@@ -12,7 +9,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
-                        <img src="{{$customer['image']}}" alt="" width="150" height="150">
+                        <img src="{{$customer->image}}" alt="" width="150" height="150">
                         <p class="h5 pt-2"><strong>{{$customer['name']}} {{$customer['surnames']}}</strong></p>
                     </div>
 

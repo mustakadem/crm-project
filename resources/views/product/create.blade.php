@@ -4,15 +4,12 @@
             <a class="nav-link " id="homeProduct" href="{{route('product.panel',array('username' => Auth::user()->username))}}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="listProduct" href="#">List Products</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link active" id="newProduct" href="#">Create New Product</a>
         </li>
     </ul>
             <h3 class="text-center">Created New Product</h3>
             <div class="col-md-12">
-                <form action="{{route('product.store',array('user' =>  Auth::user()))}}" method="post" >
+                <form action="{{route('product.store',array('user' =>  Auth::user()))}}" method="post" enctype="multipart/form-data" >
                     {{ csrf_field() }}
                     <div class="row">
                         <div class="col">
@@ -30,8 +27,9 @@
                         <div class="col">
 
                             <div class="form-group ">
-                                <label for="image">Image</label><i  id="labelImage" class="pl-1 far fa-badge"></i>
-                                <input type="text" class="form-control {{ $errors->has('image') ? ' is-invalid' : '' }}" name="image" id="image" placeholder="Customer URL image"  value="{{ old('image') }}">
+                                <label for="image" >Añadir Imagen</label><i id="labelImage" class=" pl-1 far fa-badge"></i>
+                                 <input type="file" id="image" name="image" class="form-control">
+
                                 <div id="errorImage"></div>
 
                             @if ($errors->has('image'))
@@ -75,12 +73,6 @@
                         </div>
                     </div>
 
-                    <div class="row">
-
-                    </div>
-                    <div class="row">
-
-                    </div>
                     <div class="col">
                         <div class="form-group ">
                             <label for="description">Description</label><i id="labelDescription" class=" pl-1 far fa-badge"></i>

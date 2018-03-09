@@ -38,6 +38,11 @@ class UpdateUserRequest extends FormRequest
                 'current_password' => 'required|string|min:6',
                 'password' => 'required|string|min:6|confirmed',
             ];
+        }elseif (strpos($path, 'avatar')){
+            $rules = [
+                'image' => 'required',
+
+            ];
         }
 
         return $rules;
@@ -64,7 +69,8 @@ class UpdateUserRequest extends FormRequest
             'current_password.min' => 'La Contraseña debe tener al menos 6 caracteres',
             'password.required' => 'La Contraseña es requerida',
             'password.min' => 'La Contraseña debe tener al menos 6 caracteres',
-            'password.confirmed' => 'Las contraseñas no coinciden'
+            'password.confirmed' => 'Las contraseñas no coinciden',
+            'image.required'=> 'Introduzca una imagen'
 
 
         ];

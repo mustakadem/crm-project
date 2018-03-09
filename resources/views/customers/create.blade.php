@@ -5,16 +5,13 @@
             <a class="nav-link "  id="homeCostumer" href="{{route('customer.panel',array('username' => Auth::user()->username))}}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " id="listCustomer" href="#">List Customers</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link active" id="newCustomer"  href="#">Create New Customer</a>
         </li>
     </ul>
 
         <h3 class="text-center">Created New Customer</h3>
         <div class="col-md-12">
-        <form action="{{route('customer.store',array('user' =>  Auth::user()))}}" method="post" >
+        <form action="{{route('customer.store',array('user' =>  Auth::user()))}}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
         <div class="row">
             <div class="col">
@@ -121,10 +118,9 @@
             </div>
             <div class="row">
                 <div class="col">
-
                     <div class="form-group ">
-                        <label for="image">Image</label>
-                        <input type="text" class="form-control" name="image" id="image" placeholder="Customer URL image"  value="{{ old('image') }}">
+                        <label for="image" >Añadir Imagen</label>
+                        <input type="file" id="image" name="image" class="form-control">
                     </div>
                 </div>
             </div>

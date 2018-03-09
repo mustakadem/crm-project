@@ -19,9 +19,9 @@
                         <a class="nav-link" id="newContact" href="#">Create New Contact</a>
                     </li>
                 </ul>
-                <div class="row">
+                <div class="container">
 
-                    <h3 class="text-center ">List Of Contacts</h3>
+                    <h3 class="text-center bg-info">List Of Contacts</h3>
                     <table id="tabla" class="display" cellspacing="0" width="100%">
                         <thead>
                         <tr>
@@ -55,14 +55,14 @@
                                 <td>{{$contact['email']}}</td>
 
                                 <td>
-                                    <form action="#" method="post">
+                                    <form action="{{route('contact.delete',array('id' => $contact->id))}}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt fa-2x"></i></button>
                                     </form>
                                 </td>
                                 <td>
-                                    <a   href="#"><i class="far fa-address-card fa-3x"></i></a>
+                                    <a href="{{route('contact.profile',array('username' => Auth::user()->username,"contact" => $contact))}}"><i class="far fa-address-card fa-3x"></i></a>
                                 </td>
                             </tr>
                         @empty

@@ -1,7 +1,5 @@
 @extends('layouts.app')
-@section('style')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.css"/>
-@endsection
+
 @section('content')
     <div class="row">
         <div class="col-2">
@@ -11,7 +9,7 @@
             <div class="container">
                 <h3 class="text-center ">Update {{$customer['name']}} {{$customer['surnames']}}</h3>
                 <div class="col-md-12 pt-4">
-                    <form action="{{route('customer.update',array('username' => Auth::user()->username ,'customer' => $customer))}}" method="post" >
+                    <form enctype="multipart/form-data" action="{{route('customer.update',array('customer' => $customer))}}" method="post" >
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
 
@@ -19,7 +17,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control  {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="name" placeholder="{{$customer['name']}}"  value="{{old('name')}}">
+                                    <input type="text" class="form-control  {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="name" placeholder="{{$customer['name']}}"  value="{{$customer['name']}}">
                                     <div id="errorName"></div>
                                     @if ($errors->has('name'))
                                         <div class="invalid-feedback">
@@ -32,7 +30,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="surnames">Surnames</label>
-                                    <input type="text" class="form-control  {{ $errors->has('surnames') ? ' is-invalid' : '' }}" name="surnames" id="surnames" placeholder="{{$customer['surnames']}}"  value="{{old('surnames')}}">
+                                    <input type="text" class="form-control  {{ $errors->has('surnames') ? ' is-invalid' : '' }}" name="surnames" id="surnames" placeholder="{{$customer['surnames']}}"  value="{{$customer['surnames']}}">
                                     <div id="errorSurnames"></div>
 
                                     @if ($errors->has('surnames'))
@@ -46,7 +44,7 @@
 
                                 <div class="form-group ">
                                     <label for="email" >Email</label>
-                                    <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="email" placeholder="{{$customer['email']}}"  value="{{old('email')}}">
+                                    <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="email" placeholder="{{$customer['email']}}"  value="{{$customer['email']}}">
                                     <div id="errorEmail"></div>
 
                                     @if ($errors->has('email'))
@@ -61,7 +59,7 @@
                             <div class="col">
                                 <div class="form-group ">
                                     <label for="address">Address</label>
-                                    <input type="text" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" id="address" placeholder="{{$customer['address']}}"  value="{{old('address')}}">
+                                    <input type="text" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" id="address" placeholder="{{$customer['address']}}"  value="{{$customer['address']}}">
                                     <div id="errorAddress"></div>
                                     @if ($errors->has('address'))
                                         <div class="invalid-feedback">
@@ -73,7 +71,7 @@
                             <div class="col">
                                 <div class="form-group ">
                                     <label for="movil">Movil</label>
-                                    <input type="number" class="form-control {{ $errors->has('movil') ? ' is-invalid' : '' }}" name="movil" id="movil" min="0" placeholder="{{$customer['movil']}}"  value="{{old('movil')}}">
+                                    <input type="number" class="form-control {{ $errors->has('movil') ? ' is-invalid' : '' }}" name="movil" id="movil" min="0" placeholder="{{$customer['movil']}}"  value="{{$customer['movil']}}">
                                     <div id="errorMovil"></div>
                                     @if ($errors->has('movil'))
                                         <div class="invalid-feedback">
@@ -121,8 +119,8 @@
                             <div class="col">
 
                                 <div class="form-group ">
-                                    <label for="image">Image</label>
-                                    <input type="text" class="form-control" name="image" id="image" placeholder="Customer URL image"  value="{{$customer['image']}}">
+                                    <label for="image" >Añadir Imagen</label>
+                                    <input type="file" id="image" name="image" class="form-control">
                                 </div>
                             </div>
                         </div>

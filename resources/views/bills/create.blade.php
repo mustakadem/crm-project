@@ -5,15 +5,12 @@
             <a class="nav-link " id="homeBill" href="{{route('bill.panel',array('username' => Auth::user()->username))}}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " id="listBill" href="#">List Bills</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link active" id="newBill" href="#">Create New Bill</a>
         </li>
     </ul>
             <div class="w-50 align-content-center">
             <h3 class="text-center">Created New Bill</h3>
-                <form action="{{route('bill.store',array('user' =>  Auth::user()))}}" method="post" >
+                <form action="{{route('bill.store',array('user' =>  Auth::user()))}}" method="post">
                     {{ csrf_field() }}
                     <div class="row">
                         <div class="col">

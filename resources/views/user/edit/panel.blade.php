@@ -27,6 +27,13 @@
                             <li class="list-group-item   @if( Request::is('edit/data') ) active @endif  "><a class="@if( Request::is('edit/data') ) text-white @endif" href="{{route('user.edit')}}">Edit Data</a></li>
                             <li class="list-group-item  @if( Request::is('edit/password') ) active @endif"><a class="@if( Request::is('edit/password') ) text-white @endif" href="{{route('edit.password')}}">Edit Password</a></li>
                             <li class="list-group-item  @if( Request::is('edit/avatar') ) active @endif"><a class="@if( Request::is('edit/avatar') ) text-white @endif" href="{{route('edit.avatar')}}">Edit avatar</a></li>
+                            <li class="list-group-item">
+                                <form action="{{route('user.delete',array('id' => Auth::user()->id))}}" method="post">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x"></i></button>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-md-8">
@@ -35,11 +42,11 @@
                                 <h5 class="text-white">Actualización correcta</h5>
                             </div>
                         @elseif( session('error'))
-                            <div class="bg-dark">
-                                <h5 class="text-white">{{ session('error') }}</h5>
+                            <div class="bg-danger">
+                                <h5 class="text-white text-center ">{{ session('error') }}</h5>
                             </div>
                         @endif
-                        <form action="{{ Request::url() }}" method="POST">
+                        <form action="{{ Request::url() }}" method="POST" enctype="multipart/form-data" >
                             {{ csrf_field() }}
 
 

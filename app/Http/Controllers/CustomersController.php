@@ -5,11 +5,13 @@ use App\Bills;
 use App\User;
 use DateTime;
 use DateTimeZone;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\Http\Requests\CreateCustomersRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Carbon\Carbon;
@@ -18,61 +20,20 @@ class CustomersController extends Controller
 {
 
     /**
-     * Este metodo muestra el panel principal de los Customers, devuelve los clientes creados en la ultima semana y
-     * los clientes que estan por encima de la media en el total de compras.
+     * Este metodo muestra el panel principal de los Customers.
      * @return mixed
      */
     public function panel($username){
 
-        $now=Carbon::now();
-
-
-
-
         $user = Auth::user();
-        $totalCustomers = $user->customers()->get();
-        $media= DB::table('bills')->avg('total');
-
-        $customersOfTheWeek = array();
-        $customersMorePurchases = array();
-
-
-        foreach ($totalCustomers as $customer){
-
-            $fecha2 = $customer['created_at'];
-            $difference = $now->diffInDays($fecha2);
-
-            $totalPrice = $customer->bills()->get()->max('total');
-
-            if ($totalPrice >= $media){
-                array_push($customersMorePurchases,$customer);
-            };
-
-
-            if ($difference <= 7){
-            array_push($customersOfTheWeek,$customer);
-            };
-        }
+        $customers = $user->customers()->get();
 
         return view::make('customers.panel',array(
-            'customersOfTheWeek' => $customersOfTheWeek,
-            'customersMorePurchases' => $customersMorePurchases
+            'customers' => $customers
         ))->render();
     }
 
-    /**
-     * Muestra la lista de los clientes.
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function index($username){
 
-        $user = User::where('username',$username)->first();
-        $customers = $user->customers()->get();
-
-        return view::make('customers.list',array(
-            'customers' => $customers
-            ))->render();
-    }
 
     /**
      * Muestra toda la informacion de un Customer
@@ -100,18 +61,25 @@ class CustomersController extends Controller
     }
 
     /**
-     *
+     *Guarda en la base de datos un nuevo cliente si no hay problemas de validacion
      * @param CreateCustomersRequest $request
-     * @param User $user
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(CreateCustomersRequest $request, User $user){
+    public function store(CreateCustomersRequest $request){
+
+        $user = Auth::user();
+        if( $image = $request->file('image') ){
+            $url = $image->store('ImageCustomers','public');
+        }else{
+            $url = "https://picsum.photos/150/150/?random";
+        }
+
         Customer::create([
             'name' => $request->input('name'),
             'user_id' => $user->id,
             'surnames' => $request->input('surnames'),
             'type_customers' => $request->input('type_customer'),
-            'image' => $request->input('image'),
+            'image' => $url,
             'address' => $request->input('address'),
             'movil' => $request->input('movil'),
             'email' => $request->input('email'),
@@ -139,16 +107,29 @@ class CustomersController extends Controller
     /**
      * @param CreateCustomersRequest $request
      * @param Customer $customer
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(CreateCustomersRequest $request, Customer $customer ){
         $user = User::find($customer->user_id);
+
+
+        if( $image = $request->file('image') ){
+            if( !strpos($customer->image, "http") ) {
+                $routeParts = explode('/', $customer->image);
+                Storage::disk('public')->delete('ImageCustomers/'.end($routeParts));
+            }
+
+            $url = $image->store('ImageCustomers','public');
+        }else{
+            $url = $customer->image;
+        }
+
 
         $customer->update([
             'name' => $request->input('name'),
             'surnames' => $request->input('surnames'),
             'type_customers' => $request->input('type_customer'),
-            'image' => $request->input('image'),
+            'image' => $url,
             'address' => $request->input('address'),
             'movil' => $request->input('movil'),
             'email' => $request->input('email'),
@@ -162,7 +143,7 @@ class CustomersController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id){
 

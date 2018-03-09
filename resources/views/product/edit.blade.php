@@ -12,7 +12,7 @@
             <div class="container">
                 <h3 class="text-center">Update Product {{$product['name']}}</h3>
                 <div class="col-md-12">
-                    <form action="{{route('product.update',array('username' => Auth::user()->username,'product' => $product))}}" method="post" >
+                    <form  enctype="multipart/form-data" action="{{route('product.update',array('username' => Auth::user()->username,'product' => $product))}}" method="post" >
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="row">
@@ -30,8 +30,8 @@
                             <div class="col">
 
                                 <div class="form-group ">
-                                    <label for="image">Image</label>
-                                    <input type="text" class="form-control {{ $errors->has('image') ? ' is-invalid' : '' }}" name="image" id="image" placeholder="Customer URL image"  value="{{ $product['image'] }}">
+                                    <label for="image" >Añadir Imagen</label>
+                                    <input type="file" id="image" name="image" class="form-control">
                                     @if ($errors->has('image'))
                                         <div class="invalid-feedback">
                                             <strong>{{ $errors->first('image') }}</strong>

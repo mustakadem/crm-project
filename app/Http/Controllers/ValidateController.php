@@ -89,7 +89,7 @@ class ValidateController extends Controller
             ]);
         }else if($campo == 'description'){
             $validator = Validator::make($request->all(),[
-                'description' => 'string|required|max:300'
+                'description' => 'string|required|max:300|min:10'
             ]);
 
         }
@@ -114,6 +114,47 @@ class ValidateController extends Controller
 
         return response()->json([
             'products' => $errors->get('products')
+        ]);
+    }
+
+    /**
+     * Metodo para la validacion de contactos asincrona en cliente
+     * @param Request $request
+     * @param $campo
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function validateNewContact(Request $request , $campo){
+
+
+
+        if ($campo == 'name'){
+            $validator = Validator::make($request->all(),[
+                'name' => 'required|string|min:4'
+            ]);
+        }else if($campo == 'surnames'){
+            $validator = Validator::make($request->all(),[
+                'surnames' => 'string|min:4|required'
+            ]);
+        }else if($campo == 'email'){
+            $validator = Validator::make($request->all(),[
+                'email' => 'email|required'
+            ]);
+        }else if($campo == 'address'){
+            $validator = Validator::make($request->all(),[
+                'address' => 'string|required'
+            ]);
+        }else if($campo == 'movil'){
+            $validator = Validator::make($request->all(),[
+                'movil' => 'numeric|required|min:6'
+            ]);
+        }
+
+        $errors=$validator->errors();
+
+
+
+        return response()->json([
+            $campo => $errors->get($campo)
         ]);
     }
 }

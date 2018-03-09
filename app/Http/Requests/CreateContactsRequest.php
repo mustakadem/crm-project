@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateCustomersRequest extends FormRequest
+class CreateContactsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -37,16 +37,7 @@ class CreateCustomersRequest extends FormRequest
                 'required','numeric','min:6'
             ],
             'email' => [
-              'required','email'
-            ],
-            'type_customer'=>[
-                'in:potencial,activo,exporadico'
-            ],
-            'company' => [
-                'string','nullable','min:4'
-            ],
-            'job_title' => [
-                'string','nullable','min:4'
+                'required','email'
             ],
             'notes' => [
                 'string','nullable','min:4'
@@ -73,13 +64,9 @@ class CreateCustomersRequest extends FormRequest
             'movil.required' => 'El numero de movil es requerido',
             'movil.numeric' => 'El numero movil debe estar compuesta solo por numeros',
             'movil.min' => 'El campo movil debe tener minimo 6 numeros',
-            'company.string' => 'El nombre de la Compania debe estar compuesta por letras o letras y numeros',
-            'company.min' => 'El campo company debe tener minimo 4 caracteres',
-            'job_title.string' => 'El puesto de trabajo debe estar compuesta por letras o letras y numeros',
-            'job_title.min' => 'El campo job title debe tener minimo 4 caracteres',
             'notes.string' => 'Las notas sobre el cliente deben estar compuesta por letras o letras y numeros',
             'notes.min' => 'El campo notes debe tener minimo 4 caracteres',
-            'type_customer.in' => 'Debes seleccionar un tipo de cliente'
+
 
         ];
     }

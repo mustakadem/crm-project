@@ -17,24 +17,16 @@ class BillsController extends Controller
      * @return mixed
      */
     public function panel($username){
-        return view::make('bills.panel')->render();
+
+        $user = Auth::user();
+        $bills = $user->bills()->paginate(10);
+
+        return view::make('bills.panel',[
+            'bills' => $bills
+        ])->render();
     }
 
-    /**
-     * Muestra la lista de Facturas
-     * @param $username
-     * @return mixed
-     */
-    public function index( $username){
 
-        $user = User::where('username' ,$username)->first();
-
-        $bills= $user->bills()->get();
-
-        return view::make('bills.list',array(
-                'bills' => $bills
-            ))->render();
-    }
 
 
     /**
@@ -57,12 +49,12 @@ class BillsController extends Controller
     /**
      * En este metodo se crea la factura y luego se le aplica attach para añadir en la tabla pivot
      * bills_products todos los productos que se han seleccionado
-     * @param User $user
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(User $user, Request $request){
+    public function store( Request $request){
 
+        $user= Auth::user();
 
         $customer=Customer::find($request->customer);
 

@@ -30,9 +30,6 @@ class CreateProductRequest extends FormRequest
             'description' => [
                 'required','min:10','max:255','string'
             ],
-            'image' => [
-                'required'
-            ],
             'type_product' => [
                 'in:servicio,bienes',
             ],
@@ -54,7 +51,6 @@ class CreateProductRequest extends FormRequest
             'description.string' => 'La Descripcion debe de ser una cadena de texto',
             'description.min' =>'La descripcion debe contener minimo 4 caracteres',
             'description.max' =>'La descripcion debe contener maximo 255 caracteres',
-            'image.required' => 'La Imagen es obligatoria',
             'price.numeric' => 'El precio debe ser un numero',
             'type_product.in' => 'Debes seleccionar un tipo de producto'
         ];

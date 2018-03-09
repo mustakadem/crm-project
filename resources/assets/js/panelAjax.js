@@ -9,13 +9,6 @@ $(function () {
      */
 
 
-    panel.on("click","#listCustomer",function (e) {
-        e.preventDefault();
-
-        displayData('/home/' + username + '/customers/list', cargarTabla);
-
-    });
-
     panel.on("click","#newCustomer",function (e) {
         e.preventDefault();
 
@@ -28,11 +21,6 @@ $(function () {
      */
 
 
-    panel.on("click","#listProduct",function (e) {
-        e.preventDefault();
-
-        displayData('/home/'+username+'/products/list',"");
-    });
 
 
     panel.on("click","#newProduct",function (e) {
@@ -44,12 +32,6 @@ $(function () {
     /**
      * Function bills
      */
-
-    panel.on("click","#listBill",function (e) {
-        e.preventDefault();
-
-        displayData('/home/'+username+'/bills/list',"")
-    });
 
     panel.on("click","#newBill",function (e) {
         e.preventDefault();
@@ -64,7 +46,7 @@ $(function () {
     panel.on("click","#newContact",function (e) {
         e.preventDefault();
 
-        displayData('/home/'+username+'/contacts/new',"");
+        displayData('/home/'+username+'/contacts/new',validateContact);
     })
 
 

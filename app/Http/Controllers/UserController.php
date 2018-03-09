@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\product;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 
 class UserController extends Controller
@@ -25,28 +28,79 @@ class UserController extends Controller
 
     /**
      * Pagina principal del usuario
+     * Mustra los productos mas vendidos y los mas caros.
+     * Devuelve los clientes creados en la ultima semana y los clientes que estan por encima de la media en el total de compras
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function home(){
-        return view('user.panel', ['user' => $this->user]);
+
+        $now=Carbon::now();
+
+        $media= DB::table('bills')->avg('total');
+        $totalCustomers = $this->user->customers()->get();
+        $customersOfTheWeek = array();
+        $customersMorePurchases = array();
+
+
+        foreach ($totalCustomers as $customer){
+
+            $fecha2 = $customer['created_at'];
+            $difference = $now->diffInDays($fecha2);
+
+            $totalPrice = $customer->bills()->get()->max('total');
+
+
+            if ($totalPrice >= $media){
+                array_push($customersMorePurchases,$customer);
+            };
+
+
+            if ($difference <= 7){
+                array_push($customersOfTheWeek,$customer);
+            };
+        }
+
+
+        $totalProducts = $this->user->products()->get();
+
+        $topProducts= array();
+        $moreExpensiveProduct= array();
+        $media= Product::avg('price');
+
+        $max=0;
+
+        foreach ($totalProducts as $product){
+
+
+            $total = DB::table('bills_product')->where('product_id',$product->id)->count();
+
+            $difference = $now->diffInDays($product['created_at']);
+
+            if ($max > 0 ? $total >= $max:$total > $max && $difference <= 7 ){
+                $max = $total;
+                array_push($topProducts,$product);
+            }
+
+            if ($product['price'] >= $media){
+                array_push($moreExpensiveProduct,$product);
+            }
+        }
+
+        return view('user.panel', [
+            'user' => $this->user,
+            'customersMorePurchases' => $customersMorePurchases,
+            'customersOfTheWeek' => $customersOfTheWeek,
+            'topProducts' => $topProducts,
+            'moreExpensiveProduct' => $moreExpensiveProduct
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return void
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Muestra todos los datos del usuario
      *
      * @param $username
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($username)
     {
@@ -72,7 +126,7 @@ class UserController extends Controller
      * Actualiza parte de los datos del usuario dependiendo de la ruta que recibe.
      *
      * @param UpdateUserRequest $request
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateUserRequest $request)
     {
@@ -99,6 +153,19 @@ class UserController extends Controller
             }
 
             $this->user->password = bcrypt($request->get('password'));
+        }elseif (strpos($path, 'avatar')){
+
+            if( $image = $request->file('image') ){
+
+                if( !strpos($user->image, "http") ) {
+                    $routeParts = explode('/', $user->image);
+                    Storage::disk('public')->delete('ImageUsers/'.end($routeParts));
+                }
+
+                $url = $image->store('ImageUsers','public');
+            }else{
+                $url = $user->image;
+            }
         }
 
         $user->save();
@@ -113,10 +180,12 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int $id
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $this->user->delete();
+
+        return redirect()->route('/home');
     }
 }
