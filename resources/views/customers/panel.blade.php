@@ -62,13 +62,12 @@
                             <td>{{$customer['type_customers']}}</td>
                             <td>
                                 <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x" data-toggle="modal" data-target="#deleteCustomer{{$customer->id}}"></i></button>
+                                @include('customers.modalDelete', ['cliente' => $customer])
                             </td>
                             <td>
                                 <a  href="{{route('customer.profile',array('username' => Auth::user()->username , 'customer' => $customer))}}"><i class="far fa-address-card fa-3x"></i></a>
                             </td>
                         </tr>
-
-                        @include('customers.modalDelete', ['cliente' => $customer])
                     @empty
                         <p>No hay Clientes</p>
                     @endforelse

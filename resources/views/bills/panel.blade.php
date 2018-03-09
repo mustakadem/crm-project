@@ -44,11 +44,9 @@
                                     </table>
 
                                     <div id="option" class="d-flex justify-content-around">
-                                        <form action="{{route('bill.delete',array('id' => $bill['id']))}}" method="post">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x"></i></button>
-                                        </form>
+
+                                        <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x"  data-toggle="modal" data-target="#deleteBill{{$bill->id}}"></i></button>
+                                        @include('bills.modalDelete')
                                         <a  href="#" ><i class="fas fa-tag fa-3x" data-toggle="modal" data-target="#perfilBillModal{{$bill->id}}"></i></a>
                                     </div>
                                 </div>

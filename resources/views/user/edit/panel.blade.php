@@ -28,11 +28,7 @@
                             <li class="list-group-item  @if( Request::is('edit/password') ) active @endif"><a class="@if( Request::is('edit/password') ) text-white @endif" href="{{route('edit.password')}}">Edit Password</a></li>
                             <li class="list-group-item  @if( Request::is('edit/avatar') ) active @endif"><a class="@if( Request::is('edit/avatar') ) text-white @endif" href="{{route('edit.avatar')}}">Edit avatar</a></li>
                             <li class="list-group-item">
-                                <form action="{{route('user.delete',array('id' => Auth::user()->id))}}" method="post">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x"></i></button>
-                                </form>
+                                    <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x"  data-toggle="modal" data-target="#deleteUser"></i></button>
                             </li>
                         </ul>
                     </div>
@@ -63,7 +59,7 @@
                     </div>
                 </div>
             </div>
-
+            @include('user.edit.modalDelete')
         </div>
     </div>
 @endsection

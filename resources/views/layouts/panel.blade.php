@@ -3,7 +3,9 @@
 <nav class="nav  flex-column navbar-dark bg-dark pt-1 position-fixed ">
     <div class="text-center">
 
-        <a href="{{route('user.profile',array('username' => Auth::user()->username))}}" id="buttonProfile" class="nav-link"><img src="{{Auth::user()->avatar}}" alt="user image" class="rounded-circle">
+        <a href="{{route('user.profile',array('username' => Auth::user()->username))}}" id="buttonProfile" class="nav-link">
+            <img src="{{asset('storage/'.Auth::user()->avatar)}}"  alt=""  class="rounded-circle">
+            <img src="{{Auth::user()->avatar}}" alt="user image" class="rounded-circle">
             <p class="bg-info">hellow!! <strong>{{Auth::user()->name}}</strong></p></a>
         <input type="hidden" id="username" value="{{Auth::user()->username}}">
     </div>

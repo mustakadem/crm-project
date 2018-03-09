@@ -23,7 +23,9 @@
 
                         <!-- The slideshow -->
                         <div class="carousel-inner" id="elementCarousel">
-                            <img src="{{$product['image']}}"  alt="" height="300" width="600">
+                            <img src="{{asset('storage/'.$product->image)}}"  alt="" height="300" width="600">
+                            <img src="{{$product->image}}"  alt="" height="300" width="600">
+
                         </div>
 
                         <!-- Left and right controls -->

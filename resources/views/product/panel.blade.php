@@ -22,7 +22,11 @@
                             <!--Card-->
                             <div class="card card-cascade">
                                 <!--Card image-->
-                                <img class="card-img-top" src="{{$product['image']}}" alt="Card image of product {{$product['name']}}">
+                                @if(strrpos($product->image,'Image'))
+                                    <img src="{{asset('storage/'.$product->image)}}"  class="card-img-top" >
+                                @else
+                                    <img class="card-img-top" src="{{$product['image']}}">
+                            @endif
                                 <!--/Card image-->
 
                                 <!--Card content-->
@@ -35,11 +39,9 @@
                                 </div>
 
                                 <div id="option" class="d-flex justify-content-around">
-                                    <form action="{{route('product.delete',array('id' => $product['id']))}}" method="post">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x"></i></button>
-                                    </form>
+                                    <button type="submit"  class="btn btn-danger"><i class="far fa-trash-alt fa-2x" data-toggle="modal" data-target="#deleteProduct{{$product->id}}"></i></button>
+                                    @include('product.modalDelete')
+
                                     <a class="btn btn-info" href="{{route('product.profile',array('username' => Auth::user()->username , 'product' => $product))}}"><i class="fas fa-box fa-2x"></i></a>
                                 </div>
                                 <br>

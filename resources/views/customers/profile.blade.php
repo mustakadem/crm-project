@@ -9,7 +9,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
-                        <img src="{{$customer->image}}" alt="" width="150" height="150">
+                        <img src="{{asset('storage/'.$customer->image)}}"  alt="" height="150" width="150">
+                        <img src="{{$customer->image}}"  alt="" height="150" width="150">
                         <p class="h5 pt-2"><strong>{{$customer['name']}} {{$customer['surnames']}}</strong></p>
                     </div>
 

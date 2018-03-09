@@ -141,7 +141,7 @@
                                 <div class="carousel-item @if($loop->first) active @endif ">
                                     <div class="card card-cascade bg-dark">
                                         <!--Card image-->
-                                        <a class="align-self-center" href="{{route('product.profile',array('username' => Auth::user()->username,'product' => $product))}}"> <img class=" rounded pt-2 position-relative" src="{{$product->image}}" width="200" height="200" alt="Card image of customer"></a>
+                                        <a class="align-self-center" href="{{route('product.profile',array('username' => Auth::user()->username,'product' => $product))}}"> <img class=" rounded pt-2 position-relative" src="{{$product->image}}" width="200" height="200" alt="Card image of Product"></a>
                                         <!--/Card image-->
 
                                         <!--Card content-->
@@ -197,7 +197,7 @@
                                 <div class="carousel-item @if($loop->first) active @endif ">
                                     <div class="card card-cascade bg-dark">
                                         <!--Card image-->
-                                        <a class="align-self-center" href="{{route('product.profile',array('username' => Auth::user()->username,'product' => $product))}}"> <img class=" rounded pt-2 position-relative" src="{{$product->image}}" width="200" height="200" alt="Card image of customer"></a>
+                                        <a class="align-self-center" href="{{route('product.profile',array('username' => Auth::user()->username,'product' => $product))}}"> <img class=" rounded pt-2 position-relative" src="{{$product->image}}" width="200" height="200" alt="Card image of Product"></a>
                                         <!--/Card image-->
 
                                         <!--Card content-->
