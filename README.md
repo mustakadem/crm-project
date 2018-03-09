@@ -16,4 +16,8 @@
   -Una vez cambiadas las variables refactorizamos el archivo y lo llamamos ".env"
   
   -Una vez echo todo lo anterior hay que ejecutar las migraciones con los datos de prueba con "php artisan migrate --seed"
+  
+  -Datos de inicio de sesion
+    - Email: juanLopez@gmail.com
+    - Password: secret
 
