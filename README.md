@@ -4,7 +4,7 @@
   
   -Modificar el archivo homestead.yaml dentro de la carpeta Homestead en el directorio raiz y añadir las rutas del proyecto y el nombre de la base de datos "crm"
   
-  -Añadir al archivo /etc/hosts esta linea:
+  -Añadir al archivo /etc/hosts esta linea.
      - 192.168.10.10  crm.test
 
   
