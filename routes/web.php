@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('home');
-})->name('/home');
+})->name('/');
 
 /**
  * Rutas de los controladores de la carpeta Auth
@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function(){
      */
     Route::get('/home','UserController@home')->name('user.home');
     Route::get('/home/profile/{user}','UserController@show')->name('user.profile');
+    Route::get('user/data/login','UserController@dataLogin');
     Route::get('/edit/data','UserController@edit')->name('user.edit');
     Route::patch('/edit/data','UserController@update');
     Route::get('/edit/password','UserController@edit')->name('edit.password');
@@ -121,6 +122,7 @@ Route::post('/bill/new/validate','ValidateController@validateNewBill');
 
 Route::post('/contact/new/validate/{campo}','ValidateController@validateNewContact');
 
+Route::post('/user/new/validate/{campo}','ValidateController@validateRegister');
 
 
 

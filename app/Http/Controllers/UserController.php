@@ -188,4 +188,21 @@ class UserController extends Controller
 
         return redirect()->route('/home');
     }
+
+
+    public function dataLogin(Request $request){
+
+        $ip = $request->ip();
+
+        $agent = ($request->server->getHeaders())['USER_AGENT'];
+
+        DB::table('data_session')->insert([
+            'user_id' => $this->user->id,
+            'ip' => $ip,
+            'explore' => $agent
+        ]);
+
+        return redirect('/home');
+
+    }
 }
