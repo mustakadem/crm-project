@@ -190,6 +190,11 @@ class UserController extends Controller
     }
 
 
+    /**
+     * Registra la ip y el cliente cada vez que hay un login
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function dataLogin(Request $request){
 
         $ip = $request->ip();
@@ -199,7 +204,8 @@ class UserController extends Controller
         DB::table('data_session')->insert([
             'user_id' => $this->user->id,
             'ip' => $ip,
-            'explore' => $agent
+            'explore' => $agent,
+            'created_at' => now()
         ]);
 
         return redirect('/home');
