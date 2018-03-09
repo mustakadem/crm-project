@@ -157,4 +157,37 @@ class ValidateController extends Controller
             $campo => $errors->get($campo)
         ]);
     }
+
+    /**
+     * @param Request $request
+     * @param $dato
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function validateRegister(Request $request,$dato){
+
+
+        if ($dato == 'username') {
+            $validator = Validator::make($request->all(), [
+                'username' => 'required|string|max:20|min:4|unique:users'
+            ]);
+        }
+        if ($dato == 'email') {
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email|unique:users'
+            ]);
+        }
+
+        if ($dato == 'password'){
+            $validator = Validator::make($request->all(),[
+                'password' => 'required|string|min:8|confirmed'
+            ]);
+        }
+
+
+        $errors=$validator->errors();
+
+        return response()->json([
+            $dato => $errors->get($dato)
+        ]);
+    }
 }

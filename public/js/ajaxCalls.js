@@ -82,16 +82,12 @@ $(function () {
         validateRegister("username", "#username", "#errorUsername");
     });
 
-    $("#userEmail").on("change", function () {
-        validateRegister('email', "#userEmail", "#errorUserEmail");
+    $("#emailRegister").on("change", function () {
+        validateRegister('email', "#emailRegister", "#errorUserEmail");
     });
 
     $("#passwordRegister").on("change", function () {
         validateRegister('password', "#passwordRegister", "#errorUserPassword");
-    });
-
-    $("#password_confirmation").on("change", function () {
-        validateRegister('password_confirmation', "#password_confirmation", "#errorUserPasswordConfirmation");
     });
 });
 
@@ -116,7 +112,7 @@ function validateRegister(dato, selector, selectorDiv) {
 
     // Comienza la llamada
 
-    fetch("/register/validate/" + dato, configuration).then(function (response) {
+    fetch('/user/new/validate/' + dato, configuration).then(function (response) {
         return response.json();
     }).then(function (data) {
         console.log(dato);

@@ -51,7 +51,6 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'username' =>'required|string|unique:users|min:5',
             'email' => 'required|string|email|max:255|unique:users',
-            'movil' => 'required|numeric',
             'password' => 'required|string|min:8|confirmed',
         ]);
     }
@@ -67,41 +66,9 @@ class RegisterController extends Controller
         return User::create([
             'username' => $data['username'],
             'email' => $data['email'],
-            'movil'=> $data['movil'],
             'password' => bcrypt($data['password'])
         ]);
     }
 
-    public function validateRegister(Request $request,$dato){
 
-
-        if ($dato == 'username') {
-            $validator = Validator::make($request->all(), [
-                'username' => 'required|string|max:20|min:4|unique:users'
-            ]);
-        }
-        if ($dato == 'email') {
-            $validator = Validator::make($request->all(), [
-                'email' => 'required|email|unique:users'
-            ]);
-        }
-
-        if ($dato == 'password'){
-            $validator = Validator::make($request->all(),[
-                'password' => 'required|string|min:8'
-            ]);
-        }
-
-        if ($dato == 'password_confirmation'){
-            $validator = Validator::make($request->all(),[
-                'password_confirmation' => 'required|string|min:8|confirmed'
-            ]);
-        }
-
-        $errors=$validator->errors();
-
-        return response()->json([
-            $dato => $errors->get($dato)
-        ]);
-    }
 }

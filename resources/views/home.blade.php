@@ -39,11 +39,11 @@
                         <div id="errorUsername"></div>
                     </li>
 
-                    <li class="m-3"><input type="text" placeholder="email" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
+                    <li class="m-3"><input type="text" placeholder="email" id="emailRegister" name="email" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
                    <li><div id="errorUserEmail"></div></li>
-                    <li class="m-3"><input type="text" placeholder="password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
+                    <li class="m-3"><input type="password" name="password" id="passwordRegister" placeholder="password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
                     <li> <div id="errorUserPassword"></div></li>
-                    <li class="m-3"><input type="text" placeholder="confirmate password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0 "></li>
+                    <li class="m-3"><input type="password" name="password_confirmation" id="password_confirmation" placeholder="confirmate password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0 "></li>
                     <li><div id="errorUserPasswordConfirmation"></div></li>
                     <li class="m-3"><button type="submit" class="btn btn-info w-100">Create Account</button></li>
                 </ul>
