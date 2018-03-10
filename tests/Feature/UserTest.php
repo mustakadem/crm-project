@@ -58,6 +58,7 @@ class UserTest extends TestCase
 
 
         $response = $this->actingAs($user)->get('/edit/data');
+
         $response->assertStatus(200);
         $response->assertSee('Edit Data');
         $response->assertSee('Edit Password');
@@ -78,27 +79,62 @@ class UserTest extends TestCase
         $response->assertStatus(302);
     }
 
-//    /**
-//     * Comprueba si se actualiza un Producto
-//     */
-//    public function testUpdateData()
-//    {
-//        $user = factory(User::class)->create();
-//
-//        $this->actingAs($user);
-//
-//        $this->patch('/edit/data', [
-//            'name' => 'usuario prueba Actualizado',
-//            'surnames' => 'prueba',
-//            'sector' => 'prueba',
-//            'website' => 'imagen.png',
-//            'movil' => '51658',
-//        ]);
-//
-//        $this->assertDatabaseHas('users', [
-//            'id' => $user->id,
-//            'name' => 'usuario prueba Actualizado',
-//            'surnames' => 'prueba',
-//        ]);
-//    }
+    /**
+     * Comprueba si se actualiza un Usuario
+     */
+    public function testUpdateData()
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user);
+
+        $this->patch('/edit/data', [
+            'name' => 'Actualizado',
+            'surnames' => 'prueba',
+            'sector' => 'prueba',
+            'website' => 'imagen.png',
+            'movil' => '516585544',
+        ]);
+
+        $this->assertDatabaseHas('users', [
+            'id' => $user->id,
+            'name' => 'Actualizado',
+            'surnames' => 'prueba',
+        ]);
+    }
+
+    /**
+     * Este test comprueba si se carga la pagina para editar la contraseña
+     */
+    public function testFormEditPasswordPage()
+    {
+        $user = factory(User::class)->create();
+
+
+        $response = $this->actingAs($user)->get('/edit/password');
+
+        $response->assertStatus(200);
+        $response->assertSee('Edit Data');
+        $response->assertSee('Edit Password');
+        $response->assertSee('Edit avatar');
+
+    }
+
+    /**
+     * Este test comprueba si se carga la pagina para editar el avatar
+     */
+    public function testFormEditAvatarPage()
+    {
+        $user = factory(User::class)->create();
+
+
+        $response = $this->actingAs($user)->get('/edit/avatar');
+
+        $response->assertStatus(200);
+        $response->assertSee('Edit Data');
+        $response->assertSee('Edit Password');
+        $response->assertSee('Edit avatar');
+
+    }
+
 }
