@@ -41,10 +41,13 @@
 
                     <li class="m-3"><input type="text" placeholder="email" id="emailRegister" name="email" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
                    <li><div id="errorUserEmail"></div></li>
-                    <li class="m-3"><input type="password" name="password" id="passwordRegister" placeholder="password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
-                    <li> <div id="errorUserPassword"></div></li>
-                    <li class="m-3"><input type="password" name="password_confirmation" id="password_confirmation" placeholder="confirmate password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0 "></li>
+
+                    <li class="m-3"><input type="password" name="password_confirmation" id="password_confirmation" placeholder="password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0 "></li>
                     <li><div id="errorUserPasswordConfirmation"></div></li>
+
+                    <li class="m-3"><input type="password" name="password" id="passwordRegister" placeholder="confirmate password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
+                    <li> <div id="errorUserPassword"></div></li>
+
                     <li class="m-3"><button type="submit" class="btn btn-info w-100">Create Account</button></li>
                 </ul>
                 </form>
@@ -54,42 +57,51 @@
             <div class="col-md-12">
                 <p class="h4 text-white">Las aplicaciones de mayor peso y a la que le debe su mayor fama hasta el momento, ha sido la creación de enciclopedias colectivas, género al que pertenece Wikipedia. Existen muchas otras aplicaciones más cercanas a la coordinación de informaciones y acciones, o la puesta en común de conocimientos o textos dentro de grupos.</p>
             </div>
-            <div class="row">
+            <div class="row m-3">
                 <div class="col-md-6">
-                    <img src="{{asset('img/list')}}" alt="" height="500" width="600">
+                    <img src="{{asset('img/list')}}" alt="" height="300" width="400">
                 </div>
                 <div class="col-md-6">
-                    <img src="{{asset('img/panel')}}" alt="" height="500" width="600">
+                    <img src="{{asset('img/panel')}}" alt="" height="300" width="400">
                 </div>
             </div>
         </section>
       <section class="section ">
           <div class="slide">
-          <div class="col-md-5">
-              <img class="featurette-image img-fluid mx-auto w-75 h-100" src="https://cdn.onlinewebfonts.com/svg/img_21192.png" alt="">
-          </div>
-            <div class="col-md-7">
-                <h2>ACCEDE DESDE DONDE QUIERAS</h2>
-                <p>Una forma sencilla y eficaz de llevar tu negocio en el bolsillo</p>
-            </div>
+              <div class="row">
+                  <div class="col">
+                      <img class="featurette-image img-fluid mx-auto w-75 h-100" src="https://cdn.onlinewebfonts.com/svg/img_21192.png" alt="">
+                  </div>
+                  <div class="col">
+                      <h2>ACCEDE DESDE DONDE QUIERAS</h2>
+                      <p>Una forma sencilla y eficaz de llevar tu negocio en el bolsillo</p>
+                  </div>
+              </div>
+
           </div>
           <div class="slide">
-            <div class="col-md-5">
-                <h2>CREA TU RED</h2>
-                <p>Gestiona tus clientes y contactos de manera dinamica</p>
-            </div>
-            <div class="col-md-7">
-                <img class="featurette-image img-fluid mx-auto w-75 h-100" src="http://www.westside-tennis.com/wp-content/uploads/2015/01/4-user-icon.png" alt="">
-            </div>
+              <div class="row container">
+                  <div class="col">
+                      <h2>CREA TU RED</h2>
+                      <p>Gestiona tus clientes y contactos de manera dinamica</p>
+                  </div>
+                  <div class="col">
+                      <img class="featurette-image img-fluid mx-auto w-75 h-100" src="http://www.westside-tennis.com/wp-content/uploads/2015/01/4-user-icon.png" alt="">
+                  </div>
+              </div>
+
           </div>
           <div class="slide">
-              <div class="col-md-5">
-                  <img class="featurette-image img-fluid mx-auto w-75 h-100" src="http://freevector.co/wp-content/uploads/2014/06/46998-bars-graphic-with-ascendant-arrow.png" alt="">
+              <div class="row container">
+                  <div class="col">
+                      <img class="featurette-image img-fluid mx-auto w-75 h-100" src="http://freevector.co/wp-content/uploads/2014/06/46998-bars-graphic-with-ascendant-arrow.png" alt="">
+                  </div>
+                  <div class="col">
+                      <h2>AUMENTA TUS INGRESOS</h2>
+                      <p>Gestiona tus facturas y visualiza estadisticas personalizadas</p>
+                  </div>
               </div>
-              <div class="col-md-7">
-                  <h2>AUMENTA TUS INGRESOS</h2>
-                  <p>Gestiona tus facturas y visualiza estadisticas personalizadas</p>
-              </div>
+
           </div>
         </section>
 
