@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Bills;
 use App\Customer;
+use App\product;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -66,11 +67,16 @@ class BillsTest extends TestCase
 //        $customer = factory(Customer::class)->create([
 //            'user_id' => $user->id
 //        ]);
+//        $product = factory(Product::class)->create([
+//            'user_id' => $user->id
+//        ]);
+//
 //        $this->actingAs($user);
 //
 //       $this->post('/bills/new', [
 //           'user_id' => $user->id,
 //            'customer_id' => $customer->id,
+//            'products' => $product->id,
 //            'price' => 45,
 //            'discount' => 5,
 //            'total' => 40

@@ -42,6 +42,21 @@ Route::group(['middleware' => 'auth'], function(){
     Route::delete('/user/delete/{id}','UserController@destroy')->name('user.delete');
 
 
+    /**
+     * Rutas del controlador Objective
+     * [middleware]
+     */
+
+    Route::get('/home/{user}/objectives/panel','ObjectivesController@panel')->name('objective.panel');
+    Route::get('/home/{user}/objectives/profile/{objective}','ObjectivesController@show')->name('objective.profile');
+    Route::get('/home/{user}/objectives/new','ObjectivesController@create')->name('objective.new');
+    Route::post('/objectives/new','ObjectivesController@store')->name('objective.store');
+    Route::get('/home/{user}/objectives/edit/{objective}','ObjectivesController@edit')->name('objective.edit');
+    Route::put('/objectives/edit/{objective}','ObjectivesController@update')->name('objective.update');
+    Route::delete('/objectives/delete/{objective}','ObjectivesController@destroy')->name('objective.delete');
+
+
+
 
 
     /**
