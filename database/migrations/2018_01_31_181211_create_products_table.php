@@ -20,7 +20,6 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->enum('type_product',['servicio','bienes']);
             $table->bigInteger('price');
-            $table->string('image');
             $table->string('description');
             $table->timestamps();
             $table->softDeletes();

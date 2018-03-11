@@ -18,13 +18,23 @@
 
                         <!-- Indicators -->
                         <ul class="carousel-indicators">
-                                <li data-target="#imagesProduct" data-slide-to="0" ></li>
+                            @for($i = 0 ; $i < count($images) ; $i++)
+                                <li data-target="#imagesProduct" data-slide-to="{{$i+1}}"></li>
+                            @endfor
+
                         </ul>
 
                         <!-- The slideshow -->
                         <div class="carousel-inner" id="elementCarousel">
-                            <img src="{{asset('storage/'.$product->image)}}"  alt="" height="300" width="600">
-                            <img src="{{$product->image}}"  alt="" height="300" width="600">
+                            @forelse($images as $image)
+                            <div class="carousel-item @if($loop->first) active @endif ">
+                                <img src="{{asset('storage/'.$image->path)}}"  alt="" height="300" width="600">
+                                <img src="{{$image->path}}"  alt="" height="300" width="600">
+                            </div>
+                            @empty
+                                    <p>No hay imagenes</p>
+                            @endforelse
+
 
                         </div>
 

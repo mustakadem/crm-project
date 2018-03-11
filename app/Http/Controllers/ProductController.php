@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateProductRequest;
+use App\Image;
 use App\product;
 use App\User;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Carbon\Carbon;
+use stdClass;
 
 
 class ProductController extends Controller
@@ -27,11 +29,36 @@ class ProductController extends Controller
 
         $user = Auth::user();
 
-        $products = $user->products()->paginate(6);
+        $products = $user->products()->get();
+        $data= array();
+
+
+        foreach ($products as $product) {
+            $images = $product->images()->get();
+            $send = new stdClass();
+            $send->producto=$product;
+            $send->imagenes=$images;
+
+            array_push($data,$send);
+
+        }
+
+//            foreach ($data as $datum){
+//            foreach ($datum as $key=>$valor){
+//                if  ($key == 'imagenes'){
+//                    foreach ($valor as $item){
+//                        dd($item);
+//                    }
+//                }
+//
+//            }
+//            }
+
 
 
         return view::make('product.panel',[
-            'products' => $products
+            'data' => $data
+
         ])->render();
     }
 
@@ -64,14 +91,18 @@ class ProductController extends Controller
             $url = "https://picsum.photos/150/150/?random";
         }
 
-        Product::create([
+      $product = $user->products()->create([
             'name' => $request->input('name'),
-            'user_id' => $user->id,
             'description' => $request->input('description'),
             'type_product' => $request->input('type_product'),
-            'image' => $url,
             'price' => $request->input('price'),
         ]);
+
+       $image =  Image::create([
+          'path' => $url
+        ]);
+
+       $product->images()->attach($image);
 
         return redirect('/home/'.$user->username.'/products/panel');
     }
@@ -86,11 +117,13 @@ class ProductController extends Controller
     public function show($username,Product $product)
     {
         $countSales = $product->bills()->where('product_id',$product->id)->count();
+        $images = $product->images()->get();
 
 
         return view('product.profile',[
                 'product' => $product,
-                'sales' => $countSales
+                'sales' => $countSales,
+                'images' => $images
             ]);
     }
 
@@ -117,23 +150,38 @@ class ProductController extends Controller
      */
     public function update(CreateProductRequest $request, Product $product)
     {
-        $user = Auth::user();
-        if( $image = $request->file('image') ){
-            if( !strpos($product->image, "http") ) {
-                $routeParts = explode('/', $product->image);
-                Storage::disk('public')->delete('ImageProducts/'.end($routeParts));
-            }
+        $imagesProduct= $product->images()->get();
 
-            $url = $image->store('ImageProducts','public');
-        }else{
-            $url = $product->image;
-        }
+
+        $user = Auth::user();
+        foreach ($imagesProduct as $imgProduct){
+
+            if( $image = $request->file('image') ){
+                if( !strpos($imgProduct->path, "http") ) {
+
+                    $routeParts = explode('/', $imgProduct->path);
+                    Storage::disk('public')->delete('ImageProducts/'.$imgProduct->path);
+
+                    $product->images()->detach($imgProduct->id);
+
+                }
+
+                $url = $image->store('ImageProducts','public');
+
+                $image =  Image::create([
+                    'path' => $url
+                ]);
+
+                $product->images()->attach($image);
+
+            }
+    }
+
 
 
         $product->update([
             'name' => $request->input('name'),
             'price' => $request->input('price'),
-            'image' =>$url,
             'type_product' => $request->input('type_product'),
             'description' => $request->input('description'),
         ]);

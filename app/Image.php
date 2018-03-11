@@ -5,9 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class product extends Model
+class Image extends Model
 {
-
     use SoftDeletes;
     protected $dates = ['deleted_at'];
 
@@ -15,10 +14,7 @@ class product extends Model
         'id','created_at','update_at'
     ];
 
-    public function bills(){
-        return $this->belongsToMany(Bills::class);
-    }
-    public function images(){
-        return $this->belongsToMany(Image::class);
+    public function products(){
+        return $this->belongsToMany(Product::class);
     }
 }

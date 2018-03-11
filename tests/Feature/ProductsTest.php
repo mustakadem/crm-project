@@ -83,7 +83,6 @@ class ProductsTest extends TestCase
             'name' => 'producto prueba',
             'type_product' => 'bienes',
             'price' => '45',
-            'image' => 'imagen.png',
             'description' => 'prueba de producto',
         ]);
 
@@ -140,7 +139,6 @@ class ProductsTest extends TestCase
             'name' => 'Producto prueba Actualizado',
             'type_product' => 'servicio',
             'price' => '145',
-            'image' => 'imagen.png',
             'description' => 'prueba de producto',
         ]);
 

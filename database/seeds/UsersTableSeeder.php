@@ -78,7 +78,6 @@ class UsersTableSeeder extends Seeder
             'name' => 'movil',
             'type_product' => 'servicio',
             'price' => 50,
-            'image' => 'https://picsum.photos/150/150/?random',
             'description' => 'el mejor movil de todos',
         ]);
         $product2 = \App\Product::create([
@@ -86,7 +85,6 @@ class UsersTableSeeder extends Seeder
             'name' => 'coche',
             'type_product' => 'servicio',
             'price' => 150,
-            'image' => 'https://picsum.photos/150/150/?random',
             'description' => 'el mejor coche de todos',
         ]);
         $product3 = \App\Product::create([
@@ -94,9 +92,20 @@ class UsersTableSeeder extends Seeder
             'name' => 'radiador',
             'type_product' => 'servicio',
             'price' => 350,
-            'image' => 'https://picsum.photos/150/150/?random',
             'description' => 'el mejor radiador de todos',
         ]);
+
+        $image1 = \App\Image::create([
+            'path' => 'https://picsum.photos/150/150/?random',
+
+        ]);
+        $image2 = \App\Image::create([
+            'path' => 'https://picsum.photos/150/150/?random',
+
+        ]);
+
+
+
 
         $bill1 = \App\Bills::create([
             'user_id' => $user1->id,
@@ -123,6 +132,11 @@ class UsersTableSeeder extends Seeder
         $bill1->products()->attach([$product1->id,$product2->id]);
         $bill2->products()->attach([$product1->id,$product3->id]);
         $bill3->products()->attach([$product1->id,$product3->id,$product2->id]);
+
+        $product1->images()->attach($image1->id);
+        $product2->images()->attach($image2->id);
+        $product3->images()->attach([$image1->id,$image2->id]);
+
 
 
 
