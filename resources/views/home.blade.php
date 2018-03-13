@@ -35,19 +35,24 @@
                     {!! csrf_field() !!}
                 <ul class="navbar-nav mr-5 ">
                     <li class="m-3"><p class="h3 text-white">Quick Registration</p></li>
-                    <li class="m-3"><input type="text" id="username" name="username" placeholder="username" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0">
+                    <li class="m-3">
+                        <input type="text" id="username" name="username"  placeholder="username" size="40" class=" form-control  {{ $errors->has('username') ? ' is-invalid' : '' }} bg-transparent border border-top-0 border-left-0 border-right-0">
                         <div id="errorUsername"></div>
                     </li>
 
-                    <li class="m-3"><input type="text" placeholder="email" id="emailRegister" name="email" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
-                   <li><div id="errorUserEmail"></div></li>
+                    <li class="m-3">
+                        <input type="text" placeholder="email" id="emailRegister" name="email" size="40" class=" form-control  {{ $errors->has('email') ? ' is-invalid' : '' }} bg-transparent border border-top-0 border-left-0 border-right-0">
+                        <div id="errorUserEmail"></div>
+                    </li>
 
-                    <li class="m-3"><input type="password" name="password_confirmation" id="password_confirmation" placeholder="password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0 "></li>
-                    <li><div id="errorUserPasswordConfirmation"></div></li>
 
-                    <li class="m-3"><input type="password" name="password" id="passwordRegister" placeholder="confirmate password" size="40" class="bg-transparent border border-top-0 border-left-0 border-right-0"></li>
+                    <li class="m-3">
+                        <input type="password" name="password_confirmation" id="password_confirmation" placeholder="password" size="40" class="form-control bg-transparent border border-top-0 border-left-0 border-right-0 ">
+                        <div id="errorUserPasswordConfirmation"></div>
+                    </li>
+
+                    <li class="m-3"><input type="password" name="password" id="passwordRegister " placeholder="confirmate password" size="40" class=" form-control  {{ $errors->has('password') ? ' is-invalid' : '' }} bg-transparent border border-top-0 border-left-0 border-right-0"></li>
                     <li> <div id="errorUserPassword"></div></li>
-
                     <li class="m-3"><button type="submit" class="btn btn-info w-100">Create Account</button></li>
                 </ul>
                 </form>
@@ -129,6 +134,7 @@
 @endsection
 
 @push('js')
+
     <script src="{{asset('js/iziModal.min.js')}}"></script>
     <script src="{{asset('js/modal.js')}}"></script>
     <script src="{{asset('js/ajaxCalls.js')}}"></script>

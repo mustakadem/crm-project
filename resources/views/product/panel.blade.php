@@ -19,11 +19,12 @@
                 <h3 class="text-center bg-info">List Of Products</h3>
                 <div class="row m-2">
                     @forelse($data as $datum)
-                        @foreach($datum as $key => $item)
-                            <div class="col-4 mb-3">
-                                <!--Card-->
-                                <div class="card card-cascade">
-                                    <!--Card image-->
+
+                        <div class="col-4 mb-3">
+                            <!--Card-->
+                            <div class="card card-cascade">
+                                <!--Card image-->
+                                @foreach($datum as $key => $item)
                                     @if($key == 'imagenes')
 
                                         <div id="imagesProduct" class="carousel slide" data-ride="carousel">
@@ -48,7 +49,6 @@
                                                     <p>No hay imagenes</p>
                                                 @endforelse
 
-
                                             </div>
 
                                             <!-- Left and right controls -->
@@ -60,37 +60,77 @@
                                             </a>
 
                                         </div>
-
-                                    @elseif($key == 'producto')
+                                    @endif
+                                    @if($key == 'producto')
                                         <div class="card-body">
                                             <h4 class="text-center">Product ID#{{$item['id']}}</h4>
-                                            <p class="card-text">Name: <br><strong>{{$item['name']}}</strong></p>
-                                            <p class="card-text">Description: <br>
-                                                <strong>{{$item['description']}}</strong></p>
-                                            <p class="card-text">Price: <br><strong>{{$item['price']}}$</strong></p>
-                                            <p class="card-text">Type Product:
-                                                <br><strong>{{$item['type_product']}}</strong></p>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p class="card-text">Name:
+                                                        <br>
+                                                        <strong>{{$item['name']}}</strong>
+                                                    </p>
+                                                </div>
+
+                                                <div class="col">
+                                                    <p class="card-text">Price:
+                                                        <br>
+                                                        <strong>{{$item['price']}}$</strong>
+                                                    </p>
+
+                                                </div>
+                                                <div class="col">
+                                                    <p class="card-text">Type Product:
+                                                        <br>
+                                                        <strong>{{$item['type_product']}}$</strong>
+                                                    </p>
+
+                                                </div>
+                                            </div>
+
                                         </div>
 
                                         <div id="option" class="d-flex justify-content-around">
                                             <button type="submit" class="btn btn-danger"><i
                                                         class="far fa-trash-alt fa-2x" data-toggle="modal"
-                                                        data-target="#deleteProduct{{$item->id}}"></i></button>
+                                                        data-target="#deleteProduct"></i></button>
                                             @include('product.modalDelete')
+
+                                            <button class="btn btn-success" type="button" data-toggle="collapse"
+                                                    data-target="#infoProduct{{$item['id']}}" aria-expanded="false"
+                                                    aria-controls="collapse Porduct"><i
+                                                        class="fas fa-info-circle fa-3x"></i></button>
 
                                             <a class="btn btn-info"
                                                href="{{route('product.profile',array('username' => Auth::user()->username , 'product' => $item))}}"><i
                                                         class="fas fa-box fa-2x"></i></a>
                                         </div>
                                         <br>
+                                            <div class="collapse" id="infoProduct{{$item['id']}}">
+                                                <div class="card card-body">
+                                                    <div class="row">
+                                                        <div class="col text-center">
+                                                            <p>Description</p>
+                                                            <strong>
+                                                                {{$item->description}}
+                                                            </strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         <div id="footerCard" class="flex-row bg-secondary text-center">
                                             <p>Created: <strong class="align-text-top">{{$item['created_at']}}</strong>
                                             </p>
                                         </div>
+
+
+
+
                                     @endif
-                                </div>
+                                @endforeach
                             </div>
-                        @endforeach
+                        </div>
+
                     @empty
                         <p>No hay Productos</p>
                     @endforelse

@@ -3,6 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/js/statistics.js": "/js/statistics.js",
     "/js/scrollPage.js": "/js/scrollPage.js",
+    "/js/progressDataUser.js": "/js/progressDataUser.js",
     "/js/modal.js": "/js/modal.js",
     "/js/ajaxCalls.js": "/js/ajaxCalls.js",
     "/css/iziModal.min.css": "/css/iziModal.min.css",

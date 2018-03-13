@@ -36,8 +36,9 @@ class ProductController extends Controller
         foreach ($products as $product) {
             $images = $product->images()->get();
             $send = new stdClass();
-            $send->producto=$product;
             $send->imagenes=$images;
+            $send->producto=$product;
+
 
             array_push($data,$send);
 

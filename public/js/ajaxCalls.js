@@ -120,6 +120,9 @@ function validateRegister(dato, selector, selectorDiv) {
             $(selectorDiv).addClass("invalid-feedback").text(data[dato]);
             $(selector).removeClass("is-valid");
             $(selector).addClass("is-invalid");
+            // $(function () {
+            //     $(selector).tooltip({'trigger':'focus', 'title': data[dato]});
+            // });
         } else {
             $(selector).removeClass("is-invalid");
             $(selector).addClass("is-valid");

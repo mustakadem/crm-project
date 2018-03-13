@@ -16,42 +16,65 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label for="name">Namel</label><i id="lableName" class=" pl-1 far fa-badge"></i>
-                    <input type="text" class="form-control  {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="name" placeholder="Customer Name"  value="{{ old('name') }}">
-                   <div id="errorName"></div>
-                    @if ($errors->has('name'))
-                        <div class="invalid-feedback">
-                            <strong>{{ $errors->first('name') }}</strong>
+                    <label for="name">Name</label><i id="lableName" class=" pl-1 far fa-badge"></i>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                    @endif
+                        <input type="text" class="form-control  {{ $errors->has('name') ? ' is-invalid' : '' }}"
+                               name="name" id="name" placeholder="Customer Name" value="{{ old('name') }}">
+                        @if ($errors->has('name'))
+                            <div class="invalid-feedback">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </div>
+                        @endif
+                        <div id="errorName"></div>
+                    </div>
+
+
                 </div>
             </div>
 
             <div class="col">
                 <div class="form-group">
                     <label for="surnames">Surnames</label><i id="lableSurnames" class=" pl-1 far fa-badge"></i>
-                    <input type="text" class="form-control  {{ $errors->has('surnames') ? ' is-invalid' : '' }}" name="surnames" id="surnames" placeholder="Customer Surnames"  value="{{ old('surnames') }}">
-                    <div id="errorSurnames"></div>
-
-                @if ($errors->has('surnames'))
-                        <div class="invalid-feedback">
-                            <strong>{{ $errors->first('surnames') }}</strong>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-info"></i></span>
                         </div>
-                    @endif
+                        <input type="text" class="form-control  {{ $errors->has('surnames') ? ' is-invalid' : '' }}"
+                               name="surnames" id="surnames" placeholder="Customer Surnames" value="{{ old('surnames') }}">
+                        <div id="errorSurnames"></div>
+
+                        @if ($errors->has('surnames'))
+                            <div class="invalid-feedback">
+                                <strong>{{ $errors->first('surnames') }}</strong>
+                            </div>
+                        @endif
+                    </div>
+
                 </div>
             </div>
             <div class="col">
 
                 <div class="form-group ">
-                    <label for="email" >Email</label><i id="lableEmail" class=" pl-1 far fa-badge"></i>
-                    <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="email" placeholder="Customer Email"  value="{{ old('email') }}">
-                    <div id="errorEmail"></div>
+                    <label for="email">Email</label><i id="lableEmail" class=" pl-1 far fa-badge"></i>
 
-                @if ($errors->has('email'))
-                        <div class="invalid-feedback">
-                            <strong>{{ $errors->first('email') }}</strong>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-envelope"></i></span>
                         </div>
-                    @endif
+                        <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                               name="email" id="email" placeholder="Customer  Email" value="{{ old('email') }}">
+                        <div id="errorEmail"></div>
+
+                        @if ($errors->has('email'))
+                            <div class="invalid-feedback">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </div>
+                        @endif
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -59,25 +82,38 @@
             <div class="col">
                 <div class="form-group ">
                     <label for="address">Address</label><i id="lableAddress" class=" pl-1 far fa-badge"></i>
-                    <input type="text" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" id="address" placeholder="Customer Address"  value="{{ old('address') }}">
-                    <div id="errorAddress"></div>
-                @if ($errors->has('address'))
-                        <div class="invalid-feedback">
-                            <strong>{{ $errors->first('address') }}</strong>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-address-card"></i></span>
                         </div>
-                    @endif
+                        <input type="text" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}"
+                               name="address" id="address" placeholder="Customer Address" value="{{ old('address') }}">
+                        <div id="errorAddress"></div>
+                        @if ($errors->has('address'))
+                            <div class="invalid-feedback">
+                                <strong>{{ $errors->first('address') }}</strong>
+                            </div>
+                        @endif
+                    </div>
+
                 </div>
             </div>
            <div class="col">
                <div class="form-group ">
                    <label for="movil">Movil</label><i id="lableMovil" class=" pl-1 far fa-badge"></i>
-                   <input type="number" class="form-control {{ $errors->has('movil') ? ' is-invalid' : '' }}" name="movil" id="movil" min="0" placeholder="Customer Movil"  value="{{ old('movil') }}">
-                   <div id="errorMovil"></div>
-               @if ($errors->has('movil'))
-                       <div class="invalid-feedback">
-                           <strong>{{ $errors->first('movil') }}</strong>
+                   <div class="input-group">
+                       <div class="input-group-prepend">
+                           <span class="input-group-text"><i class="fas fa-phone"></i></span>
                        </div>
-                   @endif
+                       <input type="number" class="form-control {{ $errors->has('movil') ? ' is-invalid' : '' }}"
+                              name="movil" id="movil" min="0" placeholder="Customer Movil" value="{{ old('movil') }}">
+                       <div id="errorMovil"></div>
+                       @if ($errors->has('movil'))
+                           <div class="invalid-feedback">
+                               <strong>{{ $errors->first('movil') }}</strong>
+                           </div>
+                       @endif
+                   </div>
                </div>
            </div>
         </div>
@@ -86,8 +122,13 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="job_title">Job Title</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-graduation-cap"></i></span>
+                            </div>
                         <input type="text" class="form-control {{ $errors->has('job_title') ? ' is-invalid' : '' }}" name="job_title" id="job_title" placeholder="Job Title Customer"  value="{{ old('job_title') }}">
                         <div id="errorJob_title"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="col">
@@ -107,12 +148,17 @@
                         @endif
                     </div>
                 </div>
+
                 <div class="col">
                     <div class="form-group">
                         <label for="company">Company</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-building"></i></span>
+                            </div>
                         <input type="text" class="form-control" name="company" id="company" placeholder="Customer Company"  value="{{ old('company') }}">
                         <div id="errorCompany"></div>
-
+                        </div>
                     </div>
                 </div>
             </div>

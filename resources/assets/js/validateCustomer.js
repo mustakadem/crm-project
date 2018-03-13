@@ -40,6 +40,7 @@ function validateData(dato,selector,selectorDiv,selectorLabel) {
             $(selector).addClass("is-invalid");
             if (!isDisabled()){
                 $("#buttonForm").attr('disabled');
+
             }
         }else {
             $(selector).removeClass("is-invalid");

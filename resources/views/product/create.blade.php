@@ -15,6 +15,10 @@
                         <div class="col">
                             <div class="form-group ">
                                 <label  for="name">Name</label><i id="labelName" class=" pl-1 far fa-badge"></i>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-box"></i></span>
+                                    </div>
                                 <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="name" placeholder="Product Name"  value="{{ old('name') }}">
                                 <div id="errorName"></div>
                             @if ($errors->has('name'))
@@ -22,6 +26,7 @@
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </div>
                                 @endif
+                                </div>
                             </div>
                         </div>
                         <div class="col">
@@ -44,6 +49,10 @@
                         <div class="col">
                             <div class="form-group ">
                                 <label for="price">Price</label><i id="labelPrice" class=" pl-1 far fa-badge"></i>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                                    </div>
                                 <input type="number" class="form-control {{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" id="price" min="0" placeholder="Product Price"  value="{{ old('price') }}">
 
                                 <div id="errorPrice"></div>
@@ -52,6 +61,7 @@
                                         <strong>{{ $errors->first('price') }}</strong>
                                     </div>
                                 @endif
+                                </div>
                             </div>
                         </div>
                         <div class="col">
